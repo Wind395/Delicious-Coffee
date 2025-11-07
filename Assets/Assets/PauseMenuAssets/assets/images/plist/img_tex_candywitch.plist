@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>images/plist/tex_candywitch/UI_W_diban.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1},{333,206}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{333,206}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/UI_W_lose.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{187,336},{274,115}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{274,115}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_shou1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{187,453},{45,127}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{45,127}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_shou2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{379,1},{81,113}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{81,113}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_jiao2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{316,453},{105,51}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{105,51}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_erduo1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{423,453},{90,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{90,52}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_erduo2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{379,116},{54,82}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{54,82}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_huazi1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{339,188},{61,57}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{61,57}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_huzi2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{339,251},{60,15}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{60,15}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_shenqu.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{209,1},{115,168}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{115,168}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_tk1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{339,153},{33,34}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{33,34}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_tk2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{339,118},{33,37}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{33,37}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_tou.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,336},{184,174}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{184,174}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_weiba.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{463,1},{169,150}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{169,150}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_yan2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{209,118},{128,107}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,107}</string>
+			</dict>
+			<key>images/plist/tex_candywitch/lose_yan3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{209,227},{128,107}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,107}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>img_tex_candywitch.png</string>
+			<key>realTextureFileName</key>
+			<string>img_tex_candywitch.png</string>
+			<key>size</key>
+			<string>{1024,512}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>1024</integer>
+			<key>height</key>
+			<integer>512</integer>
+		</dict>
+	</dict>
+</plist>

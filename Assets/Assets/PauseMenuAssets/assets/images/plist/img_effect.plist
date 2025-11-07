@@ -1,0 +1,808 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>images/plist/effect/blue (1).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{749,1351},{132,132}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,132}</string>
+			</dict>
+			<key>images/plist/effect/blue (10).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{113,497},{104,536}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{104,536}</string>
+			</dict>
+			<key>images/plist/effect/blue (11).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{515,497},{100,552}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{100,552}</string>
+			</dict>
+			<key>images/plist/effect/blue (12).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1949},{96,568}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,568}</string>
+			</dict>
+			<key>images/plist/effect/blue (2).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{597,1209},{132,194}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,194}</string>
+			</dict>
+			<key>images/plist/effect/blue (3).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1895,1},{132,248}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,248}</string>
+			</dict>
+			<key>images/plist/effect/blue (4).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1443,465},{132,308}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,308}</string>
+			</dict>
+			<key>images/plist/effect/blue (5).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1069,427},{132,372}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,372}</string>
+			</dict>
+			<key>images/plist/effect/blue (6).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1685},{130,438}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{130,438}</string>
+			</dict>
+			<key>images/plist/effect/blue (7).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{219,1035},{120,464}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{120,464}</string>
+			</dict>
+			<key>images/plist/effect/blue (8).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{525,1},{114,494}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,494}</string>
+			</dict>
+			<key>images/plist/effect/blue (9).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1},{110,522}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{110,522}</string>
+			</dict>
+			<key>images/plist/effect/effect_glow_15.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{641,197},{229,229}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{229,229}</string>
+			</dict>
+			<key>images/plist/effect/effect_glow_16.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1015,1613},{128,126}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{128,126}</string>
+			</dict>
+			<key>images/plist/effect/effect_shandian (1).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1015,1743},{126,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{126,128}</string>
+			</dict>
+			<key>images/plist/effect/effect_shandian (2).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1141,1873},{126,126}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{126,126}</string>
+			</dict>
+			<key>images/plist/effect/effect_shandian (3).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{865,1093},{130,130}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{130,130}</string>
+			</dict>
+			<key>images/plist/effect/effect_shandian (4).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{865,1225},{126,124}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{126,124}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00000.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{379,1501},{72,48}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{72,48}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00001.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{289,1501},{88,50}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{88,50}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00002.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{461,453},{98,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{98,52}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00003.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{461,229},{106,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{106,54}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00004.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{461,1},{110,54}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{110,54}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00005.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{461,113},{114,52}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{114,52}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00006.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{461,337},{114,48}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{114,48}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_00007.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{431,497},{114,16}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{114,16}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_big_blue.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{453,1501},{64,50}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{64,50}</string>
+			</dict>
+			<key>images/plist/effect/effect_shuihua_big_blue2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{219,1501},{68,68}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{68,68}</string>
+			</dict>
+			<key>images/plist/effect/green (1).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{749,1485},{132,132}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,132}</string>
+			</dict>
+			<key>images/plist/effect/green (10).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{219,497},{104,536}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{104,536}</string>
+			</dict>
+			<key>images/plist/effect/green (11).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{431,857},{100,552}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{100,552}</string>
+			</dict>
+			<key>images/plist/effect/green (12).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{571,1949},{96,568}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,568}</string>
+			</dict>
+			<key>images/plist/effect/green (2).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{615,1405},{132,194}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,194}</string>
+			</dict>
+			<key>images/plist/effect/green (3).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{463,959},{132,248}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,248}</string>
+			</dict>
+			<key>images/plist/effect/green (4).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1476,135},{132,308}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,308}</string>
+			</dict>
+			<key>images/plist/effect/green (5).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1102,197},{132,372}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,372}</string>
+			</dict>
+			<key>images/plist/effect/green (6).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1817},{130,438}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{130,438}</string>
+			</dict>
+			<key>images/plist/effect/green (7).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{341,1035},{120,464}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{120,464}</string>
+			</dict>
+			<key>images/plist/effect/green (8).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{113,1},{114,494}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,494}</string>
+			</dict>
+			<key>images/plist/effect/green (9).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,525},{110,522}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{110,522}</string>
+			</dict>
+			<key>images/plist/effect/play_effect_glow01.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{883,1351},{130,130}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{130,130}</string>
+			</dict>
+			<key>images/plist/effect/play_effect_glow02.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{872,197},{228,228}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{228,228}</string>
+			</dict>
+			<key>images/plist/effect/play_effect_glow05.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{883,1483},{128,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,128}</string>
+			</dict>
+			<key>images/plist/effect/play_effect_glow06.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{505,1459},{108,108}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{108,108}</string>
+			</dict>
+			<key>images/plist/effect/play_effect_glow07.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1013,1483},{128,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,128}</string>
+			</dict>
+			<key>images/plist/effect/play_effect_glow08.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{865,959},{130,132}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{130,132}</string>
+			</dict>
+			<key>images/plist/effect/play_effect_glow12.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{985,803},{130,132}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{130,132}</string>
+			</dict>
+			<key>images/plist/effect/red (1).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{881,1619},{132,132}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,132}</string>
+			</dict>
+			<key>images/plist/effect/red (10).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{325,497},{104,536}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{104,536}</string>
+			</dict>
+			<key>images/plist/effect/red (11).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{897,599},{100,552}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{100,552}</string>
+			</dict>
+			<key>images/plist/effect/red (12).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{641,1},{96,568}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,568}</string>
+			</dict>
+			<key>images/plist/effect/red (2).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{731,959},{132,194}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,194}</string>
+			</dict>
+			<key>images/plist/effect/red (3).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{463,1209},{132,248}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,248}</string>
+			</dict>
+			<key>images/plist/effect/red (4).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1585,1},{132,308}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,308}</string>
+			</dict>
+			<key>images/plist/effect/red (5).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1211,1},{132,372}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,372}</string>
+			</dict>
+			<key>images/plist/effect/red (6).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{441,1685},{130,438}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{130,438}</string>
+			</dict>
+			<key>images/plist/effect/red (7).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{431,613},{120,464}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{120,464}</string>
+			</dict>
+			<key>images/plist/effect/red (8).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{229,1},{114,494}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,494}</string>
+			</dict>
+			<key>images/plist/effect/red (9).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1049},{110,522}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{110,522}</string>
+			</dict>
+			<key>images/plist/effect/yellow (1).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{881,1753},{132,132}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,132}</string>
+			</dict>
+			<key>images/plist/effect/yellow (10).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{113,1035},{104,536}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{104,536}</string>
+			</dict>
+			<key>images/plist/effect/yellow (11).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{897,701},{100,552}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{100,552}</string>
+			</dict>
+			<key>images/plist/effect/yellow (12).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{641,99},{96,568}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{96,568}</string>
+			</dict>
+			<key>images/plist/effect/yellow (2).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{731,1155},{132,194}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,194}</string>
+			</dict>
+			<key>images/plist/effect/yellow (3).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{597,959},{132,248}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{132,248}</string>
+			</dict>
+			<key>images/plist/effect/yellow (4).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1786,135},{132,308}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,308}</string>
+			</dict>
+			<key>images/plist/effect/yellow (5).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1443,331},{132,372}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{132,372}</string>
+			</dict>
+			<key>images/plist/effect/yellow (6).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{441,1817},{130,438}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{130,438}</string>
+			</dict>
+			<key>images/plist/effect/yellow (7).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{431,735},{120,464}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{120,464}</string>
+			</dict>
+			<key>images/plist/effect/yellow (8).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{345,1},{114,494}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{114,494}</string>
+			</dict>
+			<key>images/plist/effect/yellow (9).png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1573},{110,522}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{110,522}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>img_effect.png</string>
+			<key>realTextureFileName</key>
+			<string>img_effect.png</string>
+			<key>size</key>
+			<string>{4096,2048}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>4096</integer>
+			<key>height</key>
+			<integer>2048</integer>
+		</dict>
+	</dict>
+</plist>

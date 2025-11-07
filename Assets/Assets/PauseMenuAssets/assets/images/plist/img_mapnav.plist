@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>images/plist/mapnav/BC_landmark_symbol_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{337,161},{80,80}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{80,80}</string>
+			</dict>
+			<key>images/plist/mapnav/lableb.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{338,2},{185,67}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{185,67}</string>
+			</dict>
+			<key>images/plist/mapnav/landmark_locked.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{421,161},{40,79}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{40,79}</string>
+			</dict>
+			<key>images/plist/mapnav/map_level.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{302,89},{39,26}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{39,26}</string>
+			</dict>
+			<key>images/plist/mapnav/map_line.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{488,73},{168,13}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{168,13}</string>
+			</dict>
+			<key>images/plist/mapnav/slide_scene_slice.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,2},{332,83}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{332,83}</string>
+			</dict>
+			<key>images/plist/mapnav/top_star_1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{302,132},{31,30}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{31,30}</string>
+			</dict>
+			<key>images/plist/mapnav/BC_landmark_symbol_2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,176},{80,80}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{80,80}</string>
+			</dict>
+			<key>images/plist/mapnav/BC_landmark_symbol_3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{86,176},{80,80}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{80,80}</string>
+			</dict>
+			<key>images/plist/mapnav/BC_landmark_symbol_4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{170,176},{80,80}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{80,80}</string>
+			</dict>
+			<key>images/plist/mapnav/BC_landmark_symbol_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{677,2},{80,80}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{80,80}</string>
+			</dict>
+			<key>images/plist/mapnav/map_road_0a.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{527,2},{84,146}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{84,146}</string>
+			</dict>
+			<key>images/plist/mapnav/map_road_0b.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{2,89},{83,146}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{83,146}</string>
+			</dict>
+			<key>images/plist/mapnav/map_road_1a.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{338,73},{84,146}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{84,146}</string>
+			</dict>
+			<key>images/plist/mapnav/map_road_1b.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{152,89},{83,146}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{83,146}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>img_mapnav.png</string>
+			<key>realTextureFileName</key>
+			<string>img_mapnav.png</string>
+			<key>size</key>
+			<string>{1024,512}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>1024</integer>
+			<key>height</key>
+			<integer>512</integer>
+		</dict>
+	</dict>
+</plist>

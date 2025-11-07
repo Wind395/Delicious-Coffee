@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>images/plist/tex_effect/box_exp1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{193,85},{64,66}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{64,66}</string>
+			</dict>
+			<key>images/plist/tex_effect/box_exp2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{131,1},{80,82}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{80,82}</string>
+			</dict>
+			<key>images/plist/tex_effect/box_exp3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{129,389},{66,66}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{66,66}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_map_cell_light.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1},{128,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,128}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,131},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,389},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,647},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line3.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,905},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line4.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{65,131},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{65,389},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line6.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{65,647},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+			<key>images/plist/tex_effect/effect_same_line7.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{129,131},{256,62}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{256,62}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>img_tex_effect.png</string>
+			<key>realTextureFileName</key>
+			<string>img_tex_effect.png</string>
+			<key>size</key>
+			<string>{512,1024}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>512</integer>
+			<key>height</key>
+			<integer>1024</integer>
+		</dict>
+	</dict>
+</plist>

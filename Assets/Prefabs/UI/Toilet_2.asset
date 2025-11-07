@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6571965fcc56de449db72af6e296870, type: 3}
+  m_Name: Toilet_2
+  m_EditorClassIdentifier: 
+  itemID: toilet_clean
+  itemName: Clean Toilet
+  icon: {fileID: 8400000, guid: 5a1e31e077792ce46b03e034d253e1d2, type: 2}
+  price: 100
+  itemType: 1
+  prefab: {fileID: 7357394634530238544, guid: 0010141578fe5674fa718debe5eb45b1, type: 3}
+  description: Just a Normal Toilet

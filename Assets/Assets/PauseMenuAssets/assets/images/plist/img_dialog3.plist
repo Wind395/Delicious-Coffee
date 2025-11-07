@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>frames</key>
+		<dict>
+			<key>images/plist/dialog3/magic_beforebombbomb_msg.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,1},{286,367}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{286,367}</string>
+			</dict>
+			<key>images/plist/dialog3/magic_beforelineline_msg.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,370},{286,367}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{286,367}</string>
+			</dict>
+			<key>images/plist/dialog3/magic_beforesame_msg.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{289,1},{286,367}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{286,367}</string>
+			</dict>
+			<key>images/plist/dialog3/button_playon1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{289,598},{221,111}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{221,111}</string>
+			</dict>
+			<key>images/plist/dialog3/button_playon2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{432,481},{221,111}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{221,111}</string>
+			</dict>
+			<key>images/plist/dialog3/goon_icon_play5m.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{918,75},{148,98}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{148,98}</string>
+			</dict>
+			<key>images/plist/dialog3/magic_bomb.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{658,75},{128,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,128}</string>
+			</dict>
+			<key>images/plist/dialog3/magic_hammer.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{788,73},{128,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,128}</string>
+			</dict>
+			<key>images/plist/dialog3/magic_same.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{818,362},{128,128}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{128,128}</string>
+			</dict>
+			<key>images/plist/dialog3/finish_text_score_fail.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{616,289},{337,71}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{337,71}</string>
+			</dict>
+			<key>images/plist/dialog3/Icon_Coin.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{655,463},{86,88}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{86,88}</string>
+			</dict>
+			<key>images/plist/dialog3/target_title.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{289,289},{307,141}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<true />
+				<key>sourceSize</key>
+				<string>{307,141}</string>
+			</dict>
+			<key>images/plist/dialog3/key-gabang.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{658,1},{70,70}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{70,70}</string>
+			</dict>
+			<key>images/plist/dialog3/key-gabang_opne.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{730,1},{70,70}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{70,70}</string>
+			</dict>
+			<key>images/plist/dialog3/daily1.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{432,289},{182,190}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{182,190}</string>
+			</dict>
+			<key>images/plist/dialog3/daily2.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{616,362},{200,99}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{200,99}</string>
+			</dict>
+			<key>images/plist/dialog3/button_tv.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{955,1},{62,72}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{62,72}</string>
+			</dict>
+			<key>images/plist/dialog3/move_5.png</key>
+			<dict>
+				<key>frame</key>
+				<string>{{1,739},{300,223}}</string>
+				<key>offset</key>
+				<string>{0,0}</string>
+				<key>rotated</key>
+				<false />
+				<key>sourceSize</key>
+				<string>{300,223}</string>
+			</dict>
+		</dict>
+		<key>metadata</key>
+		<dict>
+			<key>format</key>
+			<integer>2</integer>
+			<key>textureFileName</key>
+			<string>img_dialog3.png</string>
+			<key>realTextureFileName</key>
+			<string>img_dialog3.png</string>
+			<key>size</key>
+			<string>{1024,1024}</string>
+		</dict>
+		<key>texture</key>
+		<dict>
+			<key>width</key>
+			<integer>1024</integer>
+			<key>height</key>
+			<integer>1024</integer>
+		</dict>
+	</dict>
+</plist>

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6571965fcc56de449db72af6e296870, type: 3}
+  m_Name: Toilet_3
+  m_EditorClassIdentifier: 
+  itemID: toilet_gold
+  itemName: Gold Toilet
+  icon: {fileID: 8400000, guid: 5eb470444a1731c49a8e24fad73fa950, type: 2}
+  price: 500
+  itemType: 1
+  prefab: {fileID: 5666430807734278650, guid: 562829c3ef491cf4eb2a34773dade34d, type: 3}
+  description: Golden Toilet
