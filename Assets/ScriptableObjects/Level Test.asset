@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996ca6e0871dfb246bda4f5c618e26d1, type: 3}
+  m_Name: Level Test
+  m_EditorClassIdentifier: 
+  levelNumber: 1
+  levelName: Level 1
+  duration: 60
+  playerSpeed: 10
+  laneChangeSpeed: 10
+  minPatternDelay: 4
+  maxPatternDelay: 8
+  obstacleSpeed: 0
+  enableFillerSpawning: 1
+  fillerObstacleChance: 0.3
+  fillerCoinChance: 0.6
+  fillerSpawnInterval: 2
+  scoreMultiplier: 1
+  completionBonus: 500
+  trackColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  skyboxMaterial: {fileID: 0}
+  ambientLightColor: {r: 1, g: 1, b: 1, a: 1}

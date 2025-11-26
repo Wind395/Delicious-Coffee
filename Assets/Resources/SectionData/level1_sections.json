@@ -1,0 +1,171 @@
+{
+  "sectionLibrary": {
+    "metadata": {
+      "version": "1.0",
+      "totalSections": 10,
+      "difficulty": "Easy - Tutorial"
+    },
+    "sections": [
+      {
+        "id": "l1_safe_start",
+        "name": "Level 1 - Safe Start",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": true,
+        "obstacles": [],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 5, "count": 12, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 2, "zStart": 10, "count": 10, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 1, "zPosition": 35 }
+        ]
+      },
+      {
+        "id": "l1_s01",
+        "name": "Single Barrier",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "trashcan", "lane": 1, "zPosition": 5, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 15, "count": 5, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 2, "zStart": 25, "count": 8, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 2, "zPosition": 50 }
+        ]
+      },
+      {
+        "id": "l1_s02",
+        "name": "Jump Training",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "human", "lane": 1, "zPosition": 10, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 5, "count": 8, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 2, "zStart": 20, "count": 8, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 1, "zPosition": 35 }
+        ]
+      },
+      {
+        "id": "l1_s03",
+        "name": "Two Barriers",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "car", "lane": 0, "zPosition": 7, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 28, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 5, "count": 12, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 0, "zPosition": 40 }
+        ]
+      },
+      {
+        "id": "l1_s04",
+        "name": "Mixed Easy",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "streetvendor", "lane": 1, "zPosition": 4, "yPosition": 0.5 },
+          { "type": "motorcycle", "lane": 0, "zPosition": 25, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 2, "zStart": 10, "count": 10, "spacing": 2.5 }
+        ]
+      },
+      {
+        "id": "l1_s05",
+        "name": "Lane Switch",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "car", "lane": 0, "zPosition": 20, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 15, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 5, "count": 8, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 0, "zStart": 39, "count": 8, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 2, "zPosition": 38 }
+        ]
+      },
+      {
+        "id": "l1_s06",
+        "name": "Simple Slide",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "fence", "lane": 0, "zPosition": 18, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 5, "count": 10, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 2, "zStart": 25, "count": 8, "spacing": 2.5 }
+        ]
+      },
+      {
+        "id": "l1_s07",
+        "name": "Rhythm Training",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "fence", "lane": 1, "zPosition": 6, "yPosition": 0.5 },
+          { "type": "human", "lane": 2, "zPosition": 40, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 10, "count": 10, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 2, "zPosition": 45 }
+        ]
+      },
+      {
+        "id": "l1_s08",
+        "name": "Side Lanes",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "car", "lane": 0, "zPosition": 10, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 26, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 15, "count": 10, "spacing": 2.5 }
+        ]
+      },
+      {
+        "id": "l1_s09",
+        "name": "Finale Easy",
+        "length": 70,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "car", "lane": 0, "zPosition": 15, "yPosition": 0.5 },
+          { "type": "trashcan", "lane": 1, "zPosition": 30, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 2, "zStart": 5, "count": 10, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 0, "zPosition": 38 }
+        ]
+      }
+    ]
+  }
+}

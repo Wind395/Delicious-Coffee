@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3604428fdcd5bf8409e98b4fb02b39fc, type: 3}
+  m_Name: ObstacleSet_ShoppingMall
+  m_EditorClassIdentifier: 
+  setID: mall_obstacles
+  setName: Shopping Mall Obstacles
+  carVariants:
+  - {fileID: 3426792102596122655, guid: c271a88354bfefb49b21e2c14f0c21bf, type: 3}
+  - {fileID: 5814053527160790751, guid: 430f62a96ef5e5047b4ca9cb0aba94c9, type: 3}
+  - {fileID: 8504637087787073367, guid: 3ba9918ba18346d42810b04c81dfd7bb, type: 3}
+  - {fileID: 7475697216734759735, guid: 9fab4485c76aa0c46bbd879c49087163, type: 3}
+  motorcycleVariants:
+  - {fileID: 9188005143055588542, guid: 95ea091184bc09c48bf3a359d1ba3141, type: 3}
+  streetVendorVariants:
+  - {fileID: 2970661771987805949, guid: 0af3afb4744889a4b801b4805c49161e, type: 3}
+  fenceVariants:
+  - {fileID: 484206927459324441, guid: 9a23c48702209094493caf54dfaf001f, type: 3}
+  trashCanVariants:
+  - {fileID: 5070793984286133474, guid: 699f5c096b351a74b82c21517b789dd7, type: 3}
+  humanVariants:
+  - {fileID: 7476145127882570512, guid: 022d992f32b8ebf488a8c674797a9e7f, type: 3}

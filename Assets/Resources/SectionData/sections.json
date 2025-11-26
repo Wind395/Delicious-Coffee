@@ -1,0 +1,126 @@
+{
+  "sectionLibrary": {
+    "metadata": {
+      "version": "1.1",
+      "totalSections": 7
+    },
+    "sections": [
+      {
+        "id": "safe_start",
+        "name": "Safe Start - Tutorial",
+        "length": 50,
+        "difficulty": 0,
+        "isSafeZone": true,
+        "obstacles": [],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 5, "count": 15, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 1, "zStart": 10, "count": 10, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 2, "zStart": 15, "count": 12, "spacing": 2.5 }
+        ]
+      },
+      {
+        "id": "tutorial_01",
+        "name": "Tutorial - Easy Start",
+        "length": 50,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "barrier", "lane": 1, "zPosition": 15, "yPosition": 0.50 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 0, "count": 15, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 2, "zPosition": 25 }
+        ]
+      },
+      {
+        "id": "easy_01",
+        "name": "Easy1",
+        "length": 50,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "low", "lane": 0, "zPosition": 10, "yPosition": 0.5 },
+          { "type": "barrier", "lane": 2, "zPosition": 25, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 5, "count": 10, "spacing": 3 }
+        ],
+        "supportItems": [
+          { "lane": 0, "zPosition": 20 },
+          { "lane": 2, "zPosition": 40 }
+        ]
+      },
+      {
+        "id": "easy_02",
+        "name": "Easy2",
+        "length": 50,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "barrier", "lane": 1, "zPosition": 10, "yPosition": 0.5 },
+          { "type": "barrier", "lane": 2, "zPosition": 30, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 5, "count": 10, "spacing": 3 }
+        ],
+        "supportItems": [
+          { "lane": 1, "zPosition": 18 }
+        ]
+      },
+      {
+        "id": "easy_03",
+        "name": "Easy3",
+        "length": 50,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "high", "lane": 2, "zPosition": 10, "yPosition": 0.5 },
+          { "type": "low", "lane": 0, "zPosition": 25, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 15, "count": 10, "spacing": 3 }
+        ],
+        "supportItems": [
+          { "lane": 2, "zPosition": 20 },
+          { "lane": 1, "zPosition": 42 }
+        ]
+      },
+      {
+        "id": "easy_04",
+        "name": "Easy4",
+        "length": 50,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "barrier", "lane": 1, "zPosition": 30, "yPosition": 0.5 },
+          { "type": "barrier", "lane": 0, "zPosition": 30, "yPosition": 0.5 },
+          { "type": "barrier", "lane": 2, "zPosition": 10, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 5, "count": 5, "spacing": 3 },
+          { "pattern": "vertical_line", "lane": 2, "zStart": 15, "count": 5, "spacing": 3 }
+        ]
+      },
+      {
+        "id": "easy_05",
+        "name": "Easy5",
+        "length": 50,
+        "difficulty": 1,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "barrier", "lane": 0, "zPosition": 10, "yPosition": 0.5 },
+          { "type": "low", "lane": 2, "zPosition": 40, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 2, "zStart": 5, "count": 10, "spacing": 3 }
+        ],
+        "supportItems": [
+          { "lane": 1, "zPosition": 18 },
+          { "lane": 0, "zPosition": 35 }
+        ]
+      }
+    ]
+  }
+}

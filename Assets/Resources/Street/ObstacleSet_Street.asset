@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3604428fdcd5bf8409e98b4fb02b39fc, type: 3}
+  m_Name: ObstacleSet_Street
+  m_EditorClassIdentifier: 
+  setID: street_obstacles
+  setName: Street Obstacles
+  carVariants:
+  - {fileID: 574792729878287508, guid: aa38141e3afcf204f8a72aeeafd11eed, type: 3}
+  - {fileID: 9001244737016304924, guid: c1216ee607cb4354c965fbdb1c9ffc75, type: 3}
+  - {fileID: 5119032463502785687, guid: be1814b5ad2c61a448b42d98413e1dc4, type: 3}
+  - {fileID: 3426792102596122655, guid: c271a88354bfefb49b21e2c14f0c21bf, type: 3}
+  motorcycleVariants:
+  - {fileID: 9188005143055588542, guid: 95ea091184bc09c48bf3a359d1ba3141, type: 3}
+  streetVendorVariants:
+  - {fileID: 6572041782495303895, guid: 47fd1e4781a60774e96cd422be17f0e3, type: 3}
+  fenceVariants:
+  - {fileID: 6316416803332500684, guid: 8824bc4a8a459ad4bb3c9e981105d4be, type: 3}
+  trashCanVariants:
+  - {fileID: 5070793984286133474, guid: 699f5c096b351a74b82c21517b789dd7, type: 3}
+  humanVariants:
+  - {fileID: 7476145127882570512, guid: 022d992f32b8ebf488a8c674797a9e7f, type: 3}

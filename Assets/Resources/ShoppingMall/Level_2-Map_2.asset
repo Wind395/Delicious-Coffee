@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 996ca6e0871dfb246bda4f5c618e26d1, type: 3}
+  m_Name: Level_2-Map_2
+  m_EditorClassIdentifier: 
+  levelID: shopping_mall_lv2
+  levelNumber: 2
+  mapID: shopping_mall
+  levelName: 
+  targetDistance: 3000
+  sectionsFileName: level2_sections
+  difficulty: 2
+  thumbnail: {fileID: 21300000, guid: 25de2f80d9188b24b81046f163100a0a, type: 3}
+  isUnlockedByDefault: 0
+  requiredLevels:
+  - shopping_mall_lv1
+  goldReward: 0
+  coinReward: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6571965fcc56de449db72af6e296870, type: 3}
+  m_Name: Home_1
+  m_EditorClassIdentifier: 
+  itemID: home_default
+  itemName: Poor Home
+  icon: {fileID: 8400000, guid: 022916219da37464586146095e450592, type: 2}
+  price: 0
+  itemType: 1
+  prefab: {fileID: 5425825084011059657, guid: 6c3adf0e5b8c01243a42b0137d408e93, type: 3}
+  description: 
