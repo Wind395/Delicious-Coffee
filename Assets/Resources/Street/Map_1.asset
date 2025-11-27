@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090fcff8abc5dc640a981a8186c510ff, type: 3}
+  m_Name: Map_1
+  m_EditorClassIdentifier: 
+  mapID: street
+  mapName: Street
+  description: 
+  levels:
+  - {fileID: 11400000, guid: 54f8a15dc914b3446a732e0b8bc3cd6d, type: 2}
+  - {fileID: 11400000, guid: dfeebd0c69eefd34fa54bf2d0cb3b539, type: 2}
+  - {fileID: 11400000, guid: 3158ab8d08b4e5f488c209f0a9e2201b, type: 2}
+  - {fileID: 11400000, guid: 927e4702fab9533448b4b9afa84777e5, type: 2}
+  - {fileID: 11400000, guid: 69c57fc539b08654d82efa175d591126, type: 2}
+  floorPrefab: {fileID: 5186540786173031682, guid: a3faa51ecdad4294ebb5d1cc269f8e1a, type: 3}
+  obstacleVariantSet: {fileID: 11400000, guid: da3db6bdbb8e5b04da6388e0c456a514, type: 2}
+  mapIcon: {fileID: 21300000, guid: 577daf8fec392bb44be9919855188a02, type: 3}
+  mapBanner: {fileID: 0}
+  themeColor: {r: 1, g: 1, b: 1, a: 1}
+  isUnlockedByDefault: 1
+  requiredMapID: 

@@ -1,0 +1,184 @@
+{
+  "sectionLibrary": {
+    "metadata": {
+      "version": "1.0",
+      "totalSections": 10,
+      "difficulty": "Easy Plus"
+    },
+    "sections": [
+      {
+        "id": "l2_s01",
+        "name": "Triple Threat",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "human", "lane": 1, "zPosition": 40, "yPosition": 0.5 },
+          { "type": "car", "lane": 0, "zPosition": 40, "yPosition": 0.5 },
+          { "type": "streetvendor", "lane": 2, "zPosition": 55, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 5, "count": 6, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 2, "zPosition": 45 }
+        ]
+      },
+      {
+        "id": "l2_s02",
+        "name": "Quick Reactions",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "car", "lane": 0, "zPosition": 8, "yPosition": 0.5 },
+          { "type": "trashcan", "lane": 1, "zPosition": 18, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 28, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 35, "count": 5, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 1, "zPosition": 42 }
+        ]
+      },
+      {
+        "id": "l2_s03",
+        "name": "Blocking Pattern",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "car", "lane": 0, "zPosition": 8, "yPosition": 0.5 },
+          { "type": "fence", "lane": 2, "zPosition": 17, "yPosition": 0.5 },
+          { "type": "human", "lane": 1, "zPosition": 40, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 5, "count": 5, "spacing": 2.5 }
+        ]
+      },
+      {
+        "id": "l2_s04",
+        "name": "Jump Combo",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "streetvendor", "lane": 1, "zPosition": 5, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 30, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 15, "count": 8, "spacing": 2.5 },
+          { "pattern": "vertical_line", "lane": 1, "zStart": 30, "count": 6, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 2, "zPosition": 48 }
+        ]
+      },
+      {
+        "id": "l2_s05",
+        "name": "Zigzag",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "trashcan", "lane": 1, "zPosition": 5, "yPosition": 0.5 },
+          { "type": "car", "lane": 0, "zPosition": 15, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 22, "yPosition": 0.5 },
+          { "type": "car", "lane": 0, "zPosition": 40, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 15, "count": 8, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 1, "zPosition": 45 }
+        ]
+      },
+      {
+        "id": "l2_s06",
+        "name": "High Low Mix",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "streetvendor", "lane": 0, "zPosition": 12, "yPosition": 0.5 },
+          { "type": "human", "lane": 1, "zPosition": 30, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 2, "zStart": 5, "count": 10, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 0, "zPosition": 42 }
+        ]
+      },
+      {
+        "id": "l2_s07",
+        "name": "Four Obstacles",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "trashcan", "lane": 1, "zPosition": 3, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 30, "yPosition": 0.5 },
+          { "type": "human", "lane": 1, "zPosition": 50, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 45, "count": 5, "spacing": 2.5 }
+        ]
+      },
+      {
+        "id": "l2_s08",
+        "name": "Side Pressure",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "human", "lane": 0, "zPosition": 10, "yPosition": 0.5 },
+          { "type": "trashcan", "lane": 2, "zPosition": 24, "yPosition": 0.5 },
+          { "type": "fence", "lane": 1, "zPosition": 30, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 0, "zStart": 30, "count": 6, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 1, "zPosition": 42 }
+        ]
+      },
+      {
+        "id": "l2_s09",
+        "name": "Rhythm Challenge",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "human", "lane": 1, "zPosition": 5, "yPosition": 0.5 },
+          { "type": "car", "lane": 0, "zPosition": 28, "yPosition": 0.5 },
+          { "type": "fence", "lane": 2, "zPosition": 50, "yPosition": 0.5 }
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 35, "count": 5, "spacing": 2.5 }
+        ],
+        "supportItems": [
+          { "lane": 0, "zPosition": 50 }
+        ]
+      },
+      {
+        "id": "l2_s10",
+        "name": "Final Test",
+        "length": 70,
+        "difficulty": 2,
+        "isSafeZone": false,
+        "obstacles": [
+          { "type": "fence", "lane": 1, "zPosition": 8, "yPosition": 0.5 },
+          { "type": "car", "lane": 2, "zPosition": 20, "yPosition": 0.5 },
+          { "type": "car", "lane": 0, "zPosition": 30, "yPosition": 0.5 },
+          { "type": "streetvendor", "lane": 1, "zPosition": 52, "yPosition": 0.5 }
+
+        ],
+        "coins": [
+          { "pattern": "vertical_line", "lane": 1, "zStart": 18, "count": 8, "spacing": 2.5 }
+        ]
+      }
+    ]
+  }
+}

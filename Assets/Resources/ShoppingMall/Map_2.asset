@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090fcff8abc5dc640a981a8186c510ff, type: 3}
+  m_Name: Map_2
+  m_EditorClassIdentifier: 
+  mapID: shopping_mall
+  mapName: Shopping Mall
+  description: 
+  levels:
+  - {fileID: 11400000, guid: 8b9079a92acf5ec469b382dd01d74a6a, type: 2}
+  - {fileID: 11400000, guid: be0c72766c588a147b4bcdf55af25bdf, type: 2}
+  - {fileID: 11400000, guid: bb82aa6af50e7f64d9852dc4f3c784f1, type: 2}
+  - {fileID: 11400000, guid: 01e9cee244c215b40a300b7908c70822, type: 2}
+  - {fileID: 11400000, guid: d8661d359296947458f2bc4943212156, type: 2}
+  floorPrefab: {fileID: 5647988909143389026, guid: fb8e8a10a0284684fa327c6ffe0f16e5, type: 3}
+  obstacleVariantSet: {fileID: 11400000, guid: 607ef08b6937a1a4bb1b46c112ff39f3, type: 2}
+  mapIcon: {fileID: 21300000, guid: ba2b2d50640a26940b376293d8d1eaa8, type: 3}
+  mapBanner: {fileID: 0}
+  themeColor: {r: 1, g: 1, b: 1, a: 1}
+  isUnlockedByDefault: 1
+  requiredMapID: 
