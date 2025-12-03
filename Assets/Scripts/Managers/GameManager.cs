@@ -1,9 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Game Manager - UPDATED: Scene-aware management
-/// </summary>
+
 public class GameManager : MonoBehaviour
 {
     #region Singleton
@@ -462,6 +460,19 @@ public class GameManager : MonoBehaviour
 
         // Record game stats
         RecordGameStats(false);
+
+        // ═══ NEW: Submit to ranking if Endless mode ═══
+        if (GameModeManager.Instance != null && 
+            GameModeManager.Instance.CurrentMode == GameMode.Endless)
+        {
+            if (DistanceTracker.Instance != null && RankingManager.Instance != null)
+            {
+                float finalDistance = DistanceTracker.Instance.CurrentDistance;
+                RankingManager.Instance.SubmitPlayerDistance(finalDistance);
+                
+                Debug.Log($"[GameManager] Submitted distance to ranking: {finalDistance:F0}m");
+            }
+        }
     }
 
     public void Victory()

@@ -14,6 +14,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private GameObject howToPlayPanel;
+    [SerializeField] private RankingPanelUI rankingPanel; // ← NEW
 
     [Header("Main Menu")]
     [SerializeField] private Button playButton;
@@ -21,6 +22,7 @@ public class MenuUIManager : MonoBehaviour
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
     [SerializeField] private Button howToPlayButton;
+    [SerializeField] private Button rankingButton;
     [SerializeField] private Button quitButton;
     [SerializeField] private TextMeshProUGUI goldText;
 
@@ -78,6 +80,7 @@ public class MenuUIManager : MonoBehaviour
         settingsBackButton?.onClick.AddListener(OnSettingsBackClicked);
         creditsBackButton?.onClick.AddListener(OnCreditsBackClicked);
         howToPlayBackButton?.onClick.AddListener(OnHowToPlayBackClicked);
+        rankingButton?.onClick.AddListener(OnRankingButtonClicked);
 
         musicVolumeSlider?.onValueChanged.AddListener(OnMusicVolumeChanged);
         sfxVolumeSlider?.onValueChanged.AddListener(OnSFXVolumeChanged);
@@ -208,6 +211,12 @@ public class MenuUIManager : MonoBehaviour
     {
         AudioManager.Instance?.PlayButtonClickSound();
         ShowMainMenu();
+    }
+
+    private void OnRankingButtonClicked()
+    {
+        rankingPanel?.Initialize();
+        rankingPanel?.Show();
     }
 
     private void OnQuitButtonClicked()

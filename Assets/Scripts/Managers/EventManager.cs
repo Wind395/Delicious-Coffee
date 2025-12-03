@@ -17,7 +17,7 @@ public class EventManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<EventManager>();
+                _instance = FindAnyObjectByType<EventManager>();
                 if (_instance == null)
                 {
                     GameObject go = new GameObject("EventManager");
