@@ -59,29 +59,6 @@ public class CameraFollowController : MonoBehaviour
 
     #endregion
 
-    // #region Initialization
-
-    // /// <summary>
-    // /// Initialize camera
-    // /// </summary>
-    // private void Initialize()
-    // {
-    //     // Auto find player
-    //     if (autoFindPlayer && target == null)
-    //     {
-    //         if (GameManager.Instance != null)
-    //         {
-    //             target = GameManager.Instance.GetPlayer()?.transform;
-    //         }
-    //     }
-
-    //     if (target == null)
-    //     {
-    //         Debug.LogWarning("[CameraFollow] No target assigned!");
-    //     }
-    // }
-    
-    // #endregion
     
     #region Target Finding - UPDATED
     
