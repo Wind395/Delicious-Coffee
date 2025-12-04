@@ -59,23 +59,4 @@ public class MapData : ScriptableObject
     }
     
     #endregion
-    
-    #region Validation - UPDATED
-    
-    void OnValidate()
-    {
-        // Check floor prefab
-        if (floorPrefab == null)
-        {
-            Debug.LogWarning($"[MapData] {mapName}: Floor prefab not assigned!");
-        }
-        
-        // Check obstacle variant set
-        if (obstacleVariantSet == null)
-        {
-            Debug.LogWarning($"[MapData] {mapName}: Obstacle variant set not assigned!");
-        }
-    }
-    
-    #endregion
 }

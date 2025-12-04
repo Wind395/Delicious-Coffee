@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Delicious-Coffee-Local.sln"
+    "dotnet.defaultSolution": "Delicious-Coffee.sln"
 }

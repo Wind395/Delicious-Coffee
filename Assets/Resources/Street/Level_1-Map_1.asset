@@ -16,7 +16,7 @@ MonoBehaviour:
   levelNumber: 1
   mapID: street
   levelName: 
-  targetDistance: 2000
+  targetDistance: 200
   sectionsFileName: level1_sections
   difficulty: 1
   thumbnail: {fileID: 21300000, guid: 434fcbfd9a5663f4caafc72cdafed43b, type: 3}
