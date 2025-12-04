@@ -14,7 +14,6 @@ public class VictorySequenceController : MonoBehaviour
     
     [Header("Victory Timeline")]
     [Tooltip("Duration of each victory step")]
-    [SerializeField] private float walkToHomeDelay = 0.5f;
     [SerializeField] private float waitForDoorOpenDelay = 0.3f; // NEW: Wait after door opens
     [SerializeField] private float enterHomeDuration = 2f;
     [SerializeField] private float beforeUIDelay = 0.5f; // NEW: Reduced, door close handles delay
@@ -33,8 +32,8 @@ public class VictorySequenceController : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private GameObject confettiEffect;
 
-    [Header("Debug")]
-    [SerializeField] private bool debugMode = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool debugMode = true;
     
     #endregion
 
@@ -66,18 +65,18 @@ public class VictorySequenceController : MonoBehaviour
     {
         if (homeManager == null)
         {
-            homeManager = FindObjectOfType<HomeModelManager>();
+            homeManager = FindAnyObjectByType<HomeModelManager>();
         }
         
         if (cameraController == null)
         {
-            cameraController = FindObjectOfType<CameraFollowController>();
+            cameraController = FindAnyObjectByType<CameraFollowController>();
         }
 
-        if (debugMode)
-        {
-            Debug.Log("[VictorySequence] ✓ Initialized");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[VictorySequence] ✓ Initialized");
+        // }
     }
     
     #endregion
@@ -90,7 +89,7 @@ public class VictorySequenceController : MonoBehaviour
         if (GameModeManager.Instance != null && 
             GameModeManager.Instance.CurrentMode == GameMode.Endless)
         {
-            Debug.LogWarning("[VictorySequence] ⚠️ Triggered in Endless mode - ignored!");
+            //Debug.LogWarning("[VictorySequence] ⚠️ Triggered in Endless mode - ignored!");
             return;
         }
 
@@ -101,7 +100,7 @@ public class VictorySequenceController : MonoBehaviour
         
         if (player == null)
         {
-            Debug.LogError("[VictorySequence] ❌ Player is null!");
+            //Debug.LogError("[VictorySequence] ❌ Player is null!");
             return;
         }
         
@@ -130,10 +129,10 @@ public class VictorySequenceController : MonoBehaviour
                         _doorController.OnDoorOpenComplete += OnDoorOpened;
                         _doorController.OnDoorCloseComplete += OnDoorClosed;
                     }
-                    else
-                    {
-                        Debug.LogWarning("[VictorySequence] ⚠️ No DoorController found!");
-                    }
+                    // else
+                    // {
+                    //     Debug.LogWarning("[VictorySequence] ⚠️ No DoorController found!");
+                    // }
                 }
             }
         }
@@ -142,10 +141,10 @@ public class VictorySequenceController : MonoBehaviour
             _homePosition = transform.position;
         }
         
-        if (debugMode)
-        {
-            Debug.Log($"[VictorySequence] ▶️ Starting victory sequence");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log($"[VictorySequence] ▶️ Starting victory sequence");
+        // }
         
         StartCoroutine(PlayCompleteVictorySequence());
     }
@@ -157,9 +156,9 @@ public class VictorySequenceController : MonoBehaviour
     {
         _isPlayingSequence = true;
 
-        Debug.Log("[VictorySequence] ═══════════════════════════════");
-        Debug.Log("[VictorySequence] 🎉 VICTORY SEQUENCE START");
-        Debug.Log("[VictorySequence] ═══════════════════════════════");
+        // Debug.Log("[VictorySequence] ═══════════════════════════════");
+        // Debug.Log("[VictorySequence] 🎉 VICTORY SEQUENCE START");
+        // Debug.Log("[VictorySequence] ═══════════════════════════════");
 
         // ═══ STEP 1: Stop systems ═══
         yield return StartCoroutine(StopGameSystems());
@@ -187,9 +186,9 @@ public class VictorySequenceController : MonoBehaviour
 
         _isPlayingSequence = false;
         
-        Debug.Log("[VictorySequence] ═══════════════════════════════");
-        Debug.Log("[VictorySequence] ✅ VICTORY SEQUENCE COMPLETE");
-        Debug.Log("[VictorySequence] ═══════════════════════════════");
+        // Debug.Log("[VictorySequence] ═══════════════════════════════");
+        // Debug.Log("[VictorySequence] ✅ VICTORY SEQUENCE COMPLETE");
+        // Debug.Log("[VictorySequence] ═══════════════════════════════");
     }
 
     #endregion
@@ -198,18 +197,18 @@ public class VictorySequenceController : MonoBehaviour
     
     private IEnumerator StopGameSystems()
     {
-        Debug.Log("[VictorySequence] Step 1: Stop systems");
+        //Debug.Log("[VictorySequence] Step 1: Stop systems");
         
         if (DogChaseController.Instance != null)
         {
             DogChaseController.Instance.StopChaseOnDeath();
-            Debug.Log("[VictorySequence] 🐕 Dog chase stopped");
+            //Debug.Log("[VictorySequence] 🐕 Dog chase stopped");
         }
         
         if (_player != null)
         {
             _player.StopForVictory();
-            Debug.Log("[VictorySequence] ✓ Player stopped");
+            //Debug.Log("[VictorySequence] ✓ Player stopped");
         }
         
         yield return new WaitForSeconds(0.2f);
@@ -224,11 +223,11 @@ public class VictorySequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator WalkPlayerToVictoryPointAndOpenDoor()
     {
-        Debug.Log("[VictorySequence] Step 2: Walk to victory + OPEN DOOR");
+        //Debug.Log("[VictorySequence] Step 2: Walk to victory + OPEN DOOR");
         
         if (_player == null)
         {
-            Debug.LogError("[VictorySequence] Player is null!");
+            //Debug.LogError("[VictorySequence] Player is null!");
             yield break;
         }
 
@@ -336,10 +335,10 @@ public class VictorySequenceController : MonoBehaviour
             OpenDoor();
         }
 
-        if (debugMode)
-        {
-            Debug.Log($"[VictorySequence] ✓ Player at victory position");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log($"[VictorySequence] ✓ Player at victory position");
+        // }
         
         AdjustCameraForVictory("BeforeVictory");
         
@@ -353,7 +352,7 @@ public class VictorySequenceController : MonoBehaviour
     
     private IEnumerator WalkPlayerIntoHome()
     {
-        Debug.Log("[VictorySequence] Step 3: Walk into home");
+        //Debug.Log("[VictorySequence] Step 3: Walk into home");
         
         if (_player == null)
         {
@@ -389,10 +388,10 @@ public class VictorySequenceController : MonoBehaviour
             yield return null;
         }
 
-        if (debugMode)
-        {
-            Debug.Log("[VictorySequence] ✓ Player reached entrance");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[VictorySequence] ✓ Player reached entrance");
+        // }
     }
     
     #endregion
@@ -404,7 +403,7 @@ public class VictorySequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator CloseDoorAfterPlayerEnters()
     {
-        Debug.Log("[VictorySequence] Step 4: CLOSE DOOR");
+        //Debug.Log("[VictorySequence] Step 4: CLOSE DOOR");
         
         CloseDoor();
         
@@ -417,7 +416,7 @@ public class VictorySequenceController : MonoBehaviour
     
     private IEnumerator HidePlayer()
     {
-        Debug.Log("[VictorySequence] Step 5: Hide player");
+        //Debug.Log("[VictorySequence] Step 5: Hide player");
         
         if (_player == null)
         {
@@ -433,10 +432,10 @@ public class VictorySequenceController : MonoBehaviour
             _player.gameObject.SetActive(false);
         }
 
-        if (debugMode)
-        {
-            Debug.Log("[VictorySequence] ✓ Player hidden");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[VictorySequence] ✓ Player hidden");
+        // }
     }
     
     private IEnumerator FadeOutPlayer()
@@ -484,11 +483,11 @@ public class VictorySequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator WaitForDoorCloseComplete()
     {
-        Debug.Log("[VictorySequence] Step 6: Wait for door close complete");
+        //Debug.Log("[VictorySequence] Step 6: Wait for door close complete");
         
         if (_doorController == null)
         {
-            Debug.LogWarning("[VictorySequence] No door controller, skipping wait");
+            //Debug.LogWarning("[VictorySequence] No door controller, skipping wait");
             yield break;
         }
         
@@ -502,14 +501,14 @@ public class VictorySequenceController : MonoBehaviour
             yield return null;
         }
         
-        if (_isDoorClosedComplete)
-        {
-            Debug.Log("[VictorySequence] ✅ Door close complete!");
-        }
-        else
-        {
-            Debug.LogWarning("[VictorySequence] ⚠️ Door close timeout!");
-        }
+        // if (_isDoorClosedComplete)
+        // {
+        //     Debug.Log("[VictorySequence] ✅ Door close complete!");
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("[VictorySequence] ⚠️ Door close timeout!");
+        // }
     }
     
     #endregion
@@ -518,7 +517,7 @@ public class VictorySequenceController : MonoBehaviour
     
     private IEnumerator PlayVictoryEffects()
     {
-        Debug.Log("[VictorySequence] Step 7: Play effects");
+        //Debug.Log("[VictorySequence] Step 7: Play effects");
         
         if (victorySound != null)
         {
@@ -544,7 +543,7 @@ public class VictorySequenceController : MonoBehaviour
 
     private void ShowVictoryUI()
     {
-        Debug.Log("[VictorySequence] Step 8: Show Victory UI");
+        //Debug.Log("[VictorySequence] Step 8: Show Victory UI");
 
         EventManager.Instance?.TriggerEvent("OnHomeReached");
 
@@ -553,10 +552,10 @@ public class VictorySequenceController : MonoBehaviour
             GameManager.Instance.Victory();
         }
 
-        if (debugMode)
-        {
-            Debug.Log("[VictorySequence] ✓ Victory UI shown");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[VictorySequence] ✓ Victory UI shown");
+        // }
     }
     
     #endregion
@@ -570,11 +569,11 @@ public class VictorySequenceController : MonoBehaviour
     {
         if (_doorController == null)
         {
-            Debug.LogWarning("[VictorySequence] No door to open!");
+            //Debug.LogWarning("[VictorySequence] No door to open!");
             return;
         }
         
-        Debug.Log("[VictorySequence] 🚪 Opening door...");
+        //Debug.Log("[VictorySequence] 🚪 Opening door...");
         _doorController.Open();
     }
     
@@ -585,11 +584,11 @@ public class VictorySequenceController : MonoBehaviour
     {
         if (_doorController == null)
         {
-            Debug.LogWarning("[VictorySequence] No door to close!");
+            //Debug.LogWarning("[VictorySequence] No door to close!");
             return;
         }
         
-        Debug.Log("[VictorySequence] 🚪 Closing door...");
+        //Debug.Log("[VictorySequence] 🚪 Closing door...");
         _doorController.Close();
     }
     
@@ -602,7 +601,7 @@ public class VictorySequenceController : MonoBehaviour
     /// </summary>
     private void OnDoorOpened()
     {
-        Debug.Log("[VictorySequence] 🚪✅ Door OPENED");
+        //Debug.Log("[VictorySequence] 🚪✅ Door OPENED");
         // Door is now open, player can enter
     }
     
@@ -611,7 +610,7 @@ public class VictorySequenceController : MonoBehaviour
     /// </summary>
     private void OnDoorClosed()
     {
-        Debug.Log("[VictorySequence] 🚪✅ Door CLOSED");
+        //Debug.Log("[VictorySequence] 🚪✅ Door CLOSED");
         _isDoorClosedComplete = true;
     }
     
@@ -633,10 +632,10 @@ public class VictorySequenceController : MonoBehaviour
                 break;
         }
         
-        if (debugMode)
-        {
-            Debug.Log($"[VictorySequence] 📷 Camera adjusted");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log($"[VictorySequence] 📷 Camera adjusted");
+        // }
     }
     
     #endregion

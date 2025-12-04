@@ -11,24 +11,46 @@ public class SaveLoadManager : MonoBehaviour
     #region Singleton
     
     private static SaveLoadManager _instance;
+    private static bool _isQuitting = false;
     public static SaveLoadManager Instance
     {
         get
         {
+            if (_isQuitting)
+            {
+                return null;
+            }
             if (_instance == null)
             {
-                GameObject go = new GameObject("SaveLoadManager");
-                _instance = go.AddComponent<SaveLoadManager>();
-                DontDestroyOnLoad(go);
+                _instance = FindAnyObjectByType<SaveLoadManager>();
+                
+                if (_instance == null && !_isQuitting)
+                {
+                    GameObject go = new GameObject("SaveLoadManager");
+                    _instance = go.AddComponent<SaveLoadManager>();
+                }
             }
             return _instance;
         }
     }
-    
+
     #endregion
 
+    void OnApplicationQuit()
+    {
+        _isQuitting = true;
+    }
+
+    void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _isQuitting = true;
+        }
+    }
+
     #region Constants
-    
+
     private const string SAVE_FOLDER = "SaveData";
     private const string SAVE_FILE_NAME = "playerdata.json";
     private const string BACKUP_FILE_NAME = "playerdata_backup.json";
@@ -72,10 +94,10 @@ public class SaveLoadManager : MonoBehaviour
         if (!Directory.Exists(SaveFolderPath))
         {
             Directory.CreateDirectory(SaveFolderPath);
-            Debug.Log($"[SaveLoad] Created save folder: {SaveFolderPath}");
+            //Debug.Log($"[SaveLoad] Created save folder: {SaveFolderPath}");
         }
         
-        Debug.Log($"[SaveLoad] Save file path: {SaveFilePath}");
+        //Debug.Log($"[SaveLoad] Save file path: {SaveFilePath}");
     }
     
     #endregion
@@ -108,12 +130,12 @@ public class SaveLoadManager : MonoBehaviour
             // Write to file
             File.WriteAllText(SaveFilePath, json);
             
-            Debug.Log($"[SaveLoad] ✓ Data saved successfully to: {SaveFilePath}");
+            //Debug.Log($"[SaveLoad] ✓ Data saved successfully to: {SaveFilePath}");
             return true;
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError($"[SaveLoad] ❌ Save failed: {e.Message}");
+            //Debug.LogError($"[SaveLoad] ❌ Save failed: {e.Message}");
             return false;
         }
     }
@@ -128,11 +150,11 @@ public class SaveLoadManager : MonoBehaviour
             try
             {
                 File.Copy(SaveFilePath, BackupFilePath, true);
-                Debug.Log("[SaveLoad] Backup created");
+                //Debug.Log("[SaveLoad] Backup created");
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                Debug.LogWarning($"[SaveLoad] Backup failed: {e.Message}");
+                //Debug.LogWarning($"[SaveLoad] Backup failed: {e.Message}");
             }
         }
     }
@@ -149,7 +171,7 @@ public class SaveLoadManager : MonoBehaviour
         // Check if save file exists
         if (!File.Exists(SaveFilePath))
         {
-            Debug.LogWarning("[SaveLoad] No save file found. Creating new data...");
+            //Debug.LogWarning("[SaveLoad] No save file found. Creating new data...");
             return CreateNewPlayerData();
         }
 
@@ -164,18 +186,18 @@ public class SaveLoadManager : MonoBehaviour
             // Validate
             if (data == null)
             {
-                Debug.LogError("[SaveLoad] Failed to deserialize data!");
+                //Debug.LogError("[SaveLoad] Failed to deserialize data!");
                 return TryLoadBackup();
             }
             
-            Debug.Log($"[SaveLoad] ✓ Data loaded successfully");
-            Debug.Log($"[SaveLoad] Gold: {data.gold}, Characters: {data.purchasedCharacters.Count}, Toilets: {data.purchasedHomes.Count}");
+            //Debug.Log($"[SaveLoad] ✓ Data loaded successfully");
+            //Debug.Log($"[SaveLoad] Gold: {data.gold}, Characters: {data.purchasedCharacters.Count}, Toilets: {data.purchasedHomes.Count}");
             
             return data;
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError($"[SaveLoad] ❌ Load failed: {e.Message}");
+            //Debug.LogError($"[SaveLoad] ❌ Load failed: {e.Message}");
             return TryLoadBackup();
         }
     }
@@ -185,11 +207,11 @@ public class SaveLoadManager : MonoBehaviour
     /// </summary>
     private PlayerData TryLoadBackup()
     {
-        Debug.LogWarning("[SaveLoad] Attempting to load backup...");
+        //Debug.LogWarning("[SaveLoad] Attempting to load backup...");
         
         if (!File.Exists(BackupFilePath))
         {
-            Debug.LogWarning("[SaveLoad] No backup found. Creating new data...");
+            //Debug.LogWarning("[SaveLoad] No backup found. Creating new data...");
             return CreateNewPlayerData();
         }
 
@@ -208,9 +230,9 @@ public class SaveLoadManager : MonoBehaviour
                 return data;
             }
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError($"[SaveLoad] Backup load failed: {e.Message}");
+            //Debug.LogError($"[SaveLoad] Backup load failed: {e.Message}");
         }
         
         return CreateNewPlayerData();
@@ -221,7 +243,7 @@ public class SaveLoadManager : MonoBehaviour
     /// </summary>
     private PlayerData CreateNewPlayerData()
     {
-        Debug.Log("[SaveLoad] Creating new player data...");
+        //Debug.Log("[SaveLoad] Creating new player data...");
         
         PlayerData newData = new PlayerData();
         
@@ -253,18 +275,18 @@ public class SaveLoadManager : MonoBehaviour
             if (File.Exists(SaveFilePath))
             {
                 File.Delete(SaveFilePath);
-                Debug.Log("[SaveLoad] Save file deleted");
+                //Debug.Log("[SaveLoad] Save file deleted");
             }
             
             if (File.Exists(BackupFilePath))
             {
                 File.Delete(BackupFilePath);
-                Debug.Log("[SaveLoad] Backup file deleted");
+                //Debug.Log("[SaveLoad] Backup file deleted");
             }
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError($"[SaveLoad] Delete failed: {e.Message}");
+            //Debug.LogError($"[SaveLoad] Delete failed: {e.Message}");
         }
     }
 

@@ -29,8 +29,8 @@ public class GameModeManager : MonoBehaviour
     [Header("Database")]
     [SerializeField] private LevelDatabase levelDatabase;
     
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = true;
     
     #endregion
 
@@ -68,10 +68,10 @@ public class GameModeManager : MonoBehaviour
         {
             levelDatabase = Resources.Load<LevelDatabase>("LevelDatabase");
             
-            if (levelDatabase == null)
-            {
-                Debug.LogError("[GameModeManager] ❌ LevelDatabase not found in Resources!");
-            }
+            // if (levelDatabase == null)
+            // {
+            //     Debug.LogError("[GameModeManager] ❌ LevelDatabase not found in Resources!");
+            // }
         }
     }
     
@@ -86,10 +86,10 @@ public class GameModeManager : MonoBehaviour
     {
         _currentMode = GameMode.Level;
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[GameModeManager] 🎮 Mode: LEVEL");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[GameModeManager] 🎮 Mode: LEVEL");
+        // }
     }
     
     /// <summary>
@@ -99,10 +99,10 @@ public class GameModeManager : MonoBehaviour
     {
         _currentMode = GameMode.Endless;
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[GameModeManager] 🎮 Mode: ENDLESS");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[GameModeManager] 🎮 Mode: ENDLESS");
+        // }
     }
     
     #endregion
@@ -118,14 +118,14 @@ public class GameModeManager : MonoBehaviour
         
         if (_selectedMap == null)
         {
-            Debug.LogError($"[GameModeManager] ❌ Map not found: {mapID}");
+            //Debug.LogError($"[GameModeManager] ❌ Map not found: {mapID}");
             return;
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[GameModeManager] 🗺️ Map selected: {_selectedMap.mapName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[GameModeManager] 🗺️ Map selected: {_selectedMap.mapName}");
+        // }
     }
     
     /// <summary>
@@ -137,16 +137,16 @@ public class GameModeManager : MonoBehaviour
         
         if (_selectedLevel == null)
         {
-            Debug.LogError($"[GameModeManager] ❌ Level not found: {levelID}");
+            //Debug.LogError($"[GameModeManager] ❌ Level not found: {levelID}");
             return;
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[GameModeManager] 📍 Level selected: {_selectedLevel.levelName}");
-            Debug.Log($"[GameModeManager]   Distance: {_selectedLevel.targetDistance}m");
-            Debug.Log($"[GameModeManager]   JSON: {_selectedLevel.sectionsFileName}.json");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[GameModeManager] 📍 Level selected: {_selectedLevel.levelName}");
+        //     Debug.Log($"[GameModeManager]   Distance: {_selectedLevel.targetDistance}m");
+        //     Debug.Log($"[GameModeManager]   JSON: {_selectedLevel.sectionsFileName}.json");
+        // }
     }
     
     /// <summary>
@@ -158,7 +158,7 @@ public class GameModeManager : MonoBehaviour
         
         if (map == null)
         {
-            Debug.LogError($"[GameModeManager] ❌ Map not found: {mapID}");
+            //Debug.LogError($"[GameModeManager] ❌ Map not found: {mapID}");
             return;
         }
         
@@ -166,17 +166,17 @@ public class GameModeManager : MonoBehaviour
         
         if (level == null)
         {
-            Debug.LogError($"[GameModeManager] ❌ Level {levelNumber} not found in map {mapID}");
+            //Debug.LogError($"[GameModeManager] ❌ Level {levelNumber} not found in map {mapID}");
             return;
         }
         
         _selectedMap = map;
         _selectedLevel = level;
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[GameModeManager] 📍 Selected: {map.mapName} - Level {levelNumber}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[GameModeManager] 📍 Selected: {map.mapName} - Level {levelNumber}");
+        // }
     }
     
     #endregion
@@ -249,14 +249,14 @@ public class GameModeManager : MonoBehaviour
         
         if (nextLevel == null)
         {
-            Debug.LogWarning("[GameModeManager] No next level available!");
+            //Debug.LogWarning("[GameModeManager] No next level available!");
             return false;
         }
         
         // Select next level
         SelectLevel(nextLevel.levelID);
         
-        Debug.Log($"[GameModeManager] ✓ Next level selected: {nextLevel.levelName}");
+        //Debug.Log($"[GameModeManager] ✓ Next level selected: {nextLevel.levelName}");
         
         return true;
     }
@@ -366,10 +366,10 @@ public class GameModeManager : MonoBehaviour
         // Unlock next level
         UnlockNextLevel();
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[GameModeManager] ✓ Level completed: {_selectedLevel.levelName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[GameModeManager] ✓ Level completed: {_selectedLevel.levelName}");
+        // }
     }
     
     /// <summary>
@@ -389,19 +389,19 @@ public class GameModeManager : MonoBehaviour
         {
             PlayerDataManager.Instance.UnlockLevel(nextLevel.levelID);
             
-            if (showDebugLogs)
-            {
-                Debug.Log($"[GameModeManager] 🔓 Unlocked: Level {nextLevelNumber}");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[GameModeManager] 🔓 Unlocked: Level {nextLevelNumber}");
+            // }
         }
-        else
-        {
-            // Map completed - unlock next map
-            if (showDebugLogs)
-            {
-                Debug.Log($"[GameModeManager] 🎉 Map {_selectedMap.mapName} COMPLETED!");
-            }
-        }
+        // else
+        // {
+        //     // Map completed - unlock next map
+        //     if (showDebugLogs)
+        //     {
+        //         Debug.Log($"[GameModeManager] 🎉 Map {_selectedMap.mapName} COMPLETED!");
+        //     }
+        // }
     }
     
     #endregion
@@ -416,10 +416,10 @@ public class GameModeManager : MonoBehaviour
         _selectedMap = null;
         _selectedLevel = null;
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[GameModeManager] Selection reset");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[GameModeManager] Selection reset");
+        // }
     }
     
     #endregion

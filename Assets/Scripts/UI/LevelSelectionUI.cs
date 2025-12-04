@@ -29,8 +29,8 @@ public class LevelSelectionUI : MonoBehaviour
     [Header("References")]
     [SerializeField] private MapSelectionUI mapUI;
     
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = false;
     
     #endregion
 
@@ -68,7 +68,7 @@ public class LevelSelectionUI : MonoBehaviour
     {
         if (mapData == null)
         {
-            Debug.LogError("[LevelSelectionUI] Map data is null!");
+            //Debug.LogError("[LevelSelectionUI] Map data is null!");
             return;
         }
         
@@ -123,10 +123,10 @@ public class LevelSelectionUI : MonoBehaviour
             SpawnLevelItem(level);
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[LevelSelectionUI] Populated {_currentMap.levels.Count} levels");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[LevelSelectionUI] Populated {_currentMap.levels.Count} levels");
+        // }
     }
     
     /// <summary>
@@ -136,7 +136,7 @@ public class LevelSelectionUI : MonoBehaviour
     {
         if (levelItemPrefab == null)
         {
-            Debug.LogError("[LevelSelectionUI] Level item prefab not assigned!");
+            //Debug.LogError("[LevelSelectionUI] Level item prefab not assigned!");
             return;
         }
         
@@ -177,14 +177,14 @@ public class LevelSelectionUI : MonoBehaviour
     {
         if (levelData == null)
         {
-            Debug.LogError("[LevelSelectionUI] Level data is null!");
+            //Debug.LogError("[LevelSelectionUI] Level data is null!");
             return;
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[LevelSelectionUI] Level selected: {levelData.levelName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[LevelSelectionUI] Level selected: {levelData.levelName}");
+        // }
         
         AudioManager.Instance?.PlayButtonClickSound();
         
@@ -208,13 +208,13 @@ public class LevelSelectionUI : MonoBehaviour
         // Back to map selection
         if (mapUI != null)
         {
-            Debug.Log("[LevelSelectionUI] Back to Map Selection");
+            //Debug.Log("[LevelSelectionUI] Back to Map Selection");
             mapUI.OpenMapSelection();
         }
-        else
-        {
-            Debug.LogError("[LevelSelectionUI] MapSelectionUI not assigned!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[LevelSelectionUI] MapSelectionUI not assigned!");
+        // }
     }
     
     #endregion

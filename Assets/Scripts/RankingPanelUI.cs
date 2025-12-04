@@ -64,7 +64,7 @@ public class RankingPanelUI : MonoBehaviour
             panel.SetActive(false);
         }
         
-        Debug.Log("[RankingPanelUI] ✓ Initialized");
+        //Debug.Log("[RankingPanelUI] ✓ Initialized");
     }
     
     #endregion
@@ -115,7 +115,7 @@ public class RankingPanelUI : MonoBehaviour
     {
         if (RankingManager.Instance == null)
         {
-            Debug.LogError("[RankingPanelUI] RankingManager not found!");
+            //Debug.LogError("[RankingPanelUI] RankingManager not found!");
             return;
         }
         
@@ -165,7 +165,7 @@ public class RankingPanelUI : MonoBehaviour
     {
         if (entryPrefab == null || entryContainer == null)
         {
-            Debug.LogError("[RankingPanelUI] Entry prefab or container not assigned!");
+            //Debug.LogError("[RankingPanelUI] Entry prefab or container not assigned!");
             return;
         }
         

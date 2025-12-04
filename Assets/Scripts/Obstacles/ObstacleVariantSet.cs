@@ -51,7 +51,7 @@ public class ObstacleVariantSet : ScriptableObject
             }
         }
 
-        Debug.LogWarning($"[ObstacleSet] No variants found for type: {typeName} in set '{setName}'");
+        //Debug.LogWarning($"[ObstacleSet] No variants found for type: {typeName} in set '{setName}'");
         return null;
     }
 
@@ -129,14 +129,14 @@ public class ObstacleVariantSet : ScriptableObject
 
         // Check for empty set
         List<string> availableTypes = GetAvailableTypes();
-        if (availableTypes.Count == 0)
-        {
-            Debug.LogWarning($"[ObstacleSet] '{name}' has NO obstacle variants assigned!");
-        }
-        else
-        {
-            Debug.Log($"[ObstacleSet] '{name}' has {availableTypes.Count} obstacle types: {string.Join(", ", availableTypes)}");
-        }
+        // if (availableTypes.Count == 0)
+        // {
+        //     Debug.LogWarning($"[ObstacleSet] '{name}' has NO obstacle variants assigned!");
+        // }
+        // else
+        // {
+        //     Debug.Log($"[ObstacleSet] '{name}' has {availableTypes.Count} obstacle types: {string.Join(", ", availableTypes)}");
+        // }
     }
 
     #endregion

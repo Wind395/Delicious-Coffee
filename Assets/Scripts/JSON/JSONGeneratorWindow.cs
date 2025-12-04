@@ -11,7 +11,6 @@ using System.Collections.Generic;
 public class JSONGeneratorWindow : EditorWindow
 {
     private string fileName = "sections";
-    private int numberOfSections = 10;
     private int supportItemsPerSection = 2; // NEW
     private Vector2 scrollPosition;
 
@@ -127,7 +126,7 @@ public class JSONGeneratorWindow : EditorWindow
             // Relocate to lane 0 or 2
             lane = Random.Range(0, 2) == 0 ? 0 : 2;
 
-            Debug.Log($"[JSONGenerator] Relocated {obstacleType} from center to lane {lane}");
+            //Debug.Log($"[JSONGenerator] Relocated {obstacleType} from center to lane {lane}");
         }
 
         ObstacleData obs = new ObstacleData
@@ -223,9 +222,9 @@ public class JSONGeneratorWindow : EditorWindow
         // Refresh Unity
         AssetDatabase.Refresh();
 
-        Debug.Log($"✓ JSON file saved to: {path}");
-        Debug.Log($"  Sections: {wrapper.sectionLibrary.sections.Count}");
-        Debug.Log($"  Support items per section: ~{supportItemsPerSection}");
+        // Debug.Log($"✓ JSON file saved to: {path}");
+        // Debug.Log($"  Sections: {wrapper.sectionLibrary.sections.Count}");
+        // Debug.Log($"  Support items per section: ~{supportItemsPerSection}");
         
         EditorUtility.DisplayDialog("Success", 
             $"JSON file created!\n{path}\n\n" +

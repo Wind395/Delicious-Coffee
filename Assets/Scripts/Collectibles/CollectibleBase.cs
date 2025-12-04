@@ -43,10 +43,10 @@ public abstract class CollectibleBase : MonoBehaviour, ICollectible, IPoolable
     {
         _collider = GetComponent<Collider>();
         
-        if (_collider == null)
-        {
-            Debug.LogError($"[Collectible] {name} missing Collider!");
-        }
+        // if (_collider == null)
+        // {
+        //     Debug.LogError($"[Collectible] {name} missing Collider!");
+        // }
     }
 
     protected virtual void Update()
@@ -127,7 +127,7 @@ public abstract class CollectibleBase : MonoBehaviour, ICollectible, IPoolable
         // CRITICAL: Validate first
         if (!CanCollect())
         {
-            Debug.LogWarning($"[Collectible] {name} cannot be collected! State: {_state}");
+            //Debug.LogWarning($"[Collectible] {name} cannot be collected! State: {_state}");
             return;
         }
         
@@ -187,7 +187,7 @@ public abstract class CollectibleBase : MonoBehaviour, ICollectible, IPoolable
         
         if (distanceBehindPlayer > autoDespawnDistance)
         {
-            Debug.Log($"[Collectible] {name} auto despawned (behind player by {distanceBehindPlayer:F1}m)");
+            //Debug.Log($"[Collectible] {name} auto despawned (behind player by {distanceBehindPlayer:F1}m)");
             ReturnToPoolSafe();
         }
     }
@@ -242,7 +242,7 @@ public abstract class CollectibleBase : MonoBehaviour, ICollectible, IPoolable
         
         if (player == null)
         {
-            Debug.LogError($"[Collectible] Player collider missing PlayerController!");
+            //Debug.LogError($"[Collectible] Player collider missing PlayerController!");
             return;
         }
         
@@ -265,10 +265,10 @@ public abstract class CollectibleBase : MonoBehaviour, ICollectible, IPoolable
         {
             _playerTransform = playerObj.transform;
         }
-        else
-        {
-            Debug.LogWarning("[Collectible] Player not found!");
-        }
+        // else
+        // {
+        //     Debug.LogWarning("[Collectible] Player not found!");
+        // }
     }
     
     #endregion

@@ -16,8 +16,8 @@ public class HomeTriggerZone : MonoBehaviour
     [Header("Victory Controller")]
     public VictorySequenceController victoryController;
 
-    [Header("Debug")]
-    [SerializeField] private bool showDebug = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebug = true;
 
     #endregion
 
@@ -40,17 +40,17 @@ public class HomeTriggerZone : MonoBehaviour
         // Auto-find VictorySequenceController if not assigned
         if (victoryController == null)
         {
-            victoryController = FindObjectOfType<VictorySequenceController>();
+            victoryController = FindAnyObjectByType<VictorySequenceController>();
 
-            if (victoryController == null)
-            {
-                Debug.LogError("[HomeTrigger] ❌ VictorySequenceController not found!");
-            }
-            else
-            {
-                if (showDebug)
-                    Debug.Log("[HomeTrigger] ✓ Auto-found VictorySequenceController");
-            }
+            // if (victoryController == null)
+            // {
+            //     Debug.LogError("[HomeTrigger] ❌ VictorySequenceController not found!");
+            // }
+            // else
+            // {
+            //     if (showDebug)
+            //         Debug.Log("[HomeTrigger] ✓ Auto-found VictorySequenceController");
+            // }
         }
         
         transform.rotation = Quaternion.Euler(toiletRotation);
@@ -74,8 +74,8 @@ public class HomeTriggerZone : MonoBehaviour
         _triggerCollider.center = triggerOffset;
         transform.rotation = Quaternion.Euler(toiletRotation);
         
-        if (showDebug)
-            Debug.Log($"[HomeTrigger] Trigger zone setup at {transform.position}");
+        // if (showDebug)
+        //     Debug.Log($"[HomeTrigger] Trigger zone setup at {transform.position}");
     }
 
     #endregion
@@ -84,22 +84,22 @@ public class HomeTriggerZone : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (showDebug)
-            Debug.Log($"[HomeTrigger] Trigger hit by: {other.name}, Tag: {other.tag}");
+        // if (showDebug)
+        //     Debug.Log($"[HomeTrigger] Trigger hit by: {other.name}, Tag: {other.tag}");
         
         // Only trigger once
         if (_hasTriggered)
         {
-            if (showDebug)
-                Debug.Log("[HomeTrigger] Already triggered - ignoring");
+            // if (showDebug)
+            //     Debug.Log("[HomeTrigger] Already triggered - ignoring");
             return;
         }
         
         // Check if player
         if (!other.CompareTag("Player"))
         {
-            if (showDebug)
-                Debug.LogWarning($"[HomeTrigger] Not player! Tag: {other.tag}");
+            // if (showDebug)
+            //     Debug.LogWarning($"[HomeTrigger] Not player! Tag: {other.tag}");
             return;
         }
         
@@ -108,14 +108,14 @@ public class HomeTriggerZone : MonoBehaviour
         
         if (player == null)
         {
-            Debug.LogError("[HomeTrigger] ❌ Player has no PlayerController component!");
+            //Debug.LogError("[HomeTrigger] ❌ Player has no PlayerController component!");
             return;
         }
         
         // Mark as triggered
         _hasTriggered = true;
         
-        Debug.Log("[HomeTrigger] 🏠 Player reached Home!");
+        //Debug.Log("[HomeTrigger] 🏠 Player reached Home!");
         
         // ═══ NEW: STOP DOG CHASE IMMEDIATELY ═══
         StopDogChaseImmediately();
@@ -135,12 +135,12 @@ public class HomeTriggerZone : MonoBehaviour
     {
         if (DogChaseController.Instance == null)
         {
-            if (showDebug)
-                Debug.Log("[HomeTrigger] No DogChaseController found");
+            // if (showDebug)
+            //     Debug.Log("[HomeTrigger] No DogChaseController found");
             return;
         }
 
-        Debug.Log("[HomeTrigger] 🐕 Stopping dog chase...");
+        //Debug.Log("[HomeTrigger] 🐕 Stopping dog chase...");
 
         // ═══ STEP 1: Stop chase logic ═══
         DogChaseController.Instance.StopChaseOnVictory();
@@ -155,18 +155,18 @@ public class HomeTriggerZone : MonoBehaviour
             if (dogAnimator != null)
             {
                 dogAnimator.enabled = false;
-                Debug.Log("[HomeTrigger] 🐕 Dog animator stopped");
+                //Debug.Log("[HomeTrigger] 🐕 Dog animator stopped");
             }
 
             // Disable GameObject
             dogInstance.SetActive(false);
-            Debug.Log("[HomeTrigger] 🐕 Dog GameObject disabled");
+            //Debug.Log("[HomeTrigger] 🐕 Dog GameObject disabled");
         }
-        else
-        {
-            if (showDebug)
-                Debug.Log("[HomeTrigger] Dog instance is null (not spawned)");
-        }
+        // else
+        // {
+        //     if (showDebug)
+        //         Debug.Log("[HomeTrigger] Dog instance is null (not spawned)");
+        // }
     }
 
     #endregion
@@ -180,10 +180,10 @@ public class HomeTriggerZone : MonoBehaviour
     {
         if (victoryController == null)
         {
-            Debug.LogError("[HomeTrigger] ❌ VictorySequenceController is null!");
+            //Debug.LogError("[HomeTrigger] ❌ VictorySequenceController is null!");
             
             // Fallback: Call GameManager directly
-            Debug.LogWarning("[HomeTrigger] ⚠️ Using fallback - calling GameManager.Victory() directly");
+            //Debug.LogWarning("[HomeTrigger] ⚠️ Using fallback - calling GameManager.Victory() directly");
             
             if (player != null)
             {
@@ -199,7 +199,7 @@ public class HomeTriggerZone : MonoBehaviour
         }
         
         // Call victory sequence
-        Debug.Log("[HomeTrigger] → Calling VictorySequenceController.TriggerVictory()");
+        //Debug.Log("[HomeTrigger] → Calling VictorySequenceController.TriggerVictory()");
         victoryController.TriggerVictory(player);
     }
 
@@ -219,7 +219,7 @@ public class HomeTriggerZone : MonoBehaviour
     #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        if (!showDebug) return;
+        //if (!showDebug) return;
         
         Gizmos.color = _hasTriggered ? Color.green : Color.cyan;
         

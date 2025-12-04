@@ -11,20 +11,38 @@ public class EventManager : MonoBehaviour
 {
     // Singleton instance
     private static EventManager _instance;
+    private static bool _isQuitting = false;
     public static EventManager Instance
     {
         get
         {
+            if (_isQuitting)
+            {
+                return null;
+            }
             if (_instance == null)
             {
                 _instance = FindAnyObjectByType<EventManager>();
-                if (_instance == null)
+                if (_instance == null && !_isQuitting)
                 {
                     GameObject go = new GameObject("EventManager");
                     _instance = go.AddComponent<EventManager>();
                 }
             }
             return _instance;
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        _isQuitting = true;
+    }
+
+    void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _isQuitting = true;
         }
     }
 

@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
                     if (_instance == null)
                     {
                         // Only search once on first access
-                        _instance = FindObjectOfType<AudioManager>();
+                        _instance = FindAnyObjectByType<AudioManager>();
                         
                         if (_instance == null)
                         {
@@ -122,7 +122,6 @@ public class AudioManager : MonoBehaviour
 
     #region State (CACHED)
     
-    private int _currentMusicTrackIndex = 0;
     
     // OPTIMIZATION: Cache volume calculations
     private float _cachedLayer1Volume;

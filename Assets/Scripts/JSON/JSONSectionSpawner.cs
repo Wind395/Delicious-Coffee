@@ -61,11 +61,11 @@ public class JSONSectionSpawner : MonoBehaviour
     [SerializeField] private int sectionsPerDifficultyIncrease = 5;
 
     [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
-    [SerializeField] private bool showSafeZoneLogs = true; // ← NEW: Debug safe zone
+    // [SerializeField] private bool showDebugLogs = false;
 
     [Header("Obstacle Type Database")]
     [Tooltip("Assign ObstacleTypeDatabase - will be passed to all obstacles")]
+
     [SerializeField] private ObstacleTypeDatabase obstacleTypeDatabase;
 
     [Header("Safe Zone Settings")]
@@ -77,8 +77,6 @@ public class JSONSectionSpawner : MonoBehaviour
 
     // ═══ NEW: Granular control ═══
     [Header("Safe Zone Content Control")]
-    [Tooltip("Remove obstacles in safe zone")]
-    [SerializeField] private bool clearObstaclesInSafeZone = true;
 
     [Tooltip("Remove coins in safe zone")]
     [SerializeField] private bool clearCoinsInSafeZone = true;
@@ -140,14 +138,14 @@ public class JSONSectionSpawner : MonoBehaviour
         {
             _homePosition = 0f; // No home in Endless mode
             
-            if (showSafeZoneLogs)
-            {
-                Debug.Log("[JSONSpawner] ═══════════════════════════════");
-                Debug.Log("[JSONSpawner] ENDLESS MODE DETECTED");
-                Debug.Log("[JSONSpawner] Home safe zone DISABLED");
-                Debug.Log("[JSONSpawner] Obstacles will spawn infinitely");
-                Debug.Log("[JSONSpawner] ═══════════════════════════════");
-            }
+            // if (showSafeZoneLogs)
+            // {
+            //     Debug.Log("[JSONSpawner] ═══════════════════════════════");
+            //     Debug.Log("[JSONSpawner] ENDLESS MODE DETECTED");
+            //     Debug.Log("[JSONSpawner] Home safe zone DISABLED");
+            //     Debug.Log("[JSONSpawner] Obstacles will spawn infinitely");
+            //     Debug.Log("[JSONSpawner] ═══════════════════════════════");
+            // }
             
             return;
         }
@@ -157,18 +155,18 @@ public class JSONSectionSpawner : MonoBehaviour
         {
             _homePosition = DistanceTracker.Instance.TargetDistance;
             
-            if (showSafeZoneLogs)
-            {
-                Debug.Log($"[JSONSpawner] ═══════════════════════════════");
-                Debug.Log($"[JSONSpawner] LEVEL MODE DETECTED");
-                Debug.Log($"[JSONSpawner] 🏠 Home position: {_homePosition}m");
-                Debug.Log($"[JSONSpawner] Safe zone starts at: {_homePosition - homeSafeZoneDistance}m");
-                Debug.Log($"[JSONSpawner] ═══════════════════════════════");
-            }
+            // if (showSafeZoneLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] ═══════════════════════════════");
+            //     Debug.Log($"[JSONSpawner] LEVEL MODE DETECTED");
+            //     Debug.Log($"[JSONSpawner] 🏠 Home position: {_homePosition}m");
+            //     Debug.Log($"[JSONSpawner] Safe zone starts at: {_homePosition - homeSafeZoneDistance}m");
+            //     Debug.Log($"[JSONSpawner] ═══════════════════════════════");
+            // }
         }
         else
         {
-            Debug.LogWarning("[JSONSpawner] DistanceTracker not found! Home safe zone disabled.");
+            //Debug.LogWarning("[JSONSpawner] DistanceTracker not found! Home safe zone disabled.");
             _homePosition = 0f;
         }
     }
@@ -176,7 +174,7 @@ public class JSONSectionSpawner : MonoBehaviour
     private void OnVictory()
     {
         _isActive = false;
-        Debug.Log("[JSONSpawner] 🏠 Victory - stopped spawning"); // CHANGED emoji/text
+        //Debug.Log("[JSONSpawner] 🏠 Victory - stopped spawning"); // CHANGED emoji/text
     }
 
     void Update()
@@ -194,7 +192,7 @@ public class JSONSectionSpawner : MonoBehaviour
 
     private void Initialize()
     {
-        Debug.Log("[JSONSpawner] ===== INITIALIZING =====");
+        //Debug.Log("[JSONSpawner] ===== INITIALIZING =====");
 
         // ═══ STEP 1: Load obstacle set từ Map ═══
         LoadObstacleSetFromMap();
@@ -220,11 +218,11 @@ public class JSONSectionSpawner : MonoBehaviour
 
         if (!jsonLoader.LoadSections())
         {
-            Debug.LogError("[JSONSpawner] Failed to load sections from JSON!");
+            //Debug.LogError("[JSONSpawner] Failed to load sections from JSON!");
             return;
         }
 
-        jsonLoader.ValidateSections();
+        //jsonLoader.ValidateSections();
         
         // Initialize all pools
         InitializePools();
@@ -237,7 +235,7 @@ public class JSONSectionSpawner : MonoBehaviour
             SpawnNextSection();
         }
 
-        Debug.Log($"[JSONSpawner] ✓ Initialized with {_activeSections.Count} sections");
+        //Debug.Log($"[JSONSpawner] ✓ Initialized with {_activeSections.Count} sections");
     }
 
     /// <summary>
@@ -245,21 +243,21 @@ public class JSONSectionSpawner : MonoBehaviour
     /// </summary>
     void InitializePools()
     {
-        Debug.Log("[JSONSpawner] ═══ CREATING OBJECT POOLS ═══");
+        //Debug.Log("[JSONSpawner] ═══ CREATING OBJECT POOLS ═══");
         
         // ═══ CHECK: Use ObstacleSet or Fallback ═══
         bool useObstacleSet = (currentObstacleSet != null);
         
         if (useObstacleSet)
         {
-            Debug.Log($"[JSONSpawner] Using ObstacleSet: {currentObstacleSet.setName}");
+            //Debug.Log($"[JSONSpawner] Using ObstacleSet: {currentObstacleSet.setName}");
             
             // Create pools from ObstacleVariantSet
             CreatePoolsFromObstacleSet();
         }
         else
         {
-            Debug.LogWarning("[JSONSpawner] ⚠️ Using fallback variants (deprecated)");
+            //Debug.LogWarning("[JSONSpawner] ⚠️ Using fallback variants (deprecated)");
             
             // Create pools from legacy arrays
             CreatePoolsFromLegacyVariants();
@@ -277,7 +275,7 @@ public class JSONSectionSpawner : MonoBehaviour
                 coin.SetActive(false);
                 _coinPool.Enqueue(coin);
             }
-            Debug.Log($"[JSONSpawner] ✓ Coin pool created: {poolSizePerPrefab * 3} objects");
+            //Debug.Log($"[JSONSpawner] ✓ Coin pool created: {poolSizePerPrefab * 3} objects");
         }
 
         // ═══ SUPPORT ITEM POOL (unchanged) ═══
@@ -295,8 +293,8 @@ public class JSONSectionSpawner : MonoBehaviour
             }
         }
         
-        Debug.Log($"[JSONSpawner] ✓ Support item pool created: {_supportItemPool.Count} objects");
-        Debug.Log($"[JSONSpawner] ✓ All pools created - Total obstacle pools: {_obstaclePools.Count}");
+        //Debug.Log($"[JSONSpawner] ✓ Support item pool created: {_supportItemPool.Count} objects");
+        //Debug.Log($"[JSONSpawner] ✓ All pools created - Total obstacle pools: {_obstaclePools.Count}");
     }
 
     /// <summary>
@@ -348,7 +346,7 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (prefab == null)
         {
-            Debug.LogError($"[JSONSpawner] Cannot create pool - prefab is null for {category}!");
+            //Debug.LogError($"[JSONSpawner] Cannot create pool - prefab is null for {category}!");
             return;
         }
 
@@ -357,7 +355,7 @@ public class JSONSectionSpawner : MonoBehaviour
         // Check if pool already exists
         if (_obstaclePools.ContainsKey(prefabID))
         {
-            Debug.LogWarning($"[JSONSpawner] Pool already exists for {prefab.name} (ID: {prefabID})");
+            //Debug.LogWarning($"[JSONSpawner] Pool already exists for {prefab.name} (ID: {prefabID})");
             return;
         }
 
@@ -373,7 +371,7 @@ public class JSONSectionSpawner : MonoBehaviour
 
         _obstaclePools[prefabID] = pool;
         
-        Debug.Log($"[JSONSpawner] ✓ Pool created: {prefab.name} [{category}] (ID: {prefabID}, Size: {poolSizePerPrefab})");
+        //Debug.Log($"[JSONSpawner] ✓ Pool created: {prefab.name} [{category}] (ID: {prefabID}, Size: {poolSizePerPrefab})");
     }
 
     /// <summary>
@@ -460,10 +458,10 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         _isFloorChanging = isChanging;
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] Floor changing: {isChanging} - Recycle {(isChanging ? "PAUSED" : "RESUMED")}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] Floor changing: {isChanging} - Recycle {(isChanging ? "PAUSED" : "RESUMED")}");
+        // }
     }
 
     #endregion
@@ -484,34 +482,34 @@ public class JSONSectionSpawner : MonoBehaviour
             {
                 currentObstacleSet = currentMap.obstacleVariantSet;
                 
-                if (showDebugLogs)
-                {
-                    Debug.Log($"[JSONSpawner] ✓ Loaded obstacle set: {currentObstacleSet.setName}");
-                    Debug.Log($"[JSONSpawner]   Map: {currentMap.mapName}");
-                }
+                // if (showDebugLogs)
+                // {
+                //     Debug.Log($"[JSONSpawner] ✓ Loaded obstacle set: {currentObstacleSet.setName}");
+                //     Debug.Log($"[JSONSpawner]   Map: {currentMap.mapName}");
+                // }
                 
                 return;
             }
-            else if (currentMap != null)
-            {
-                Debug.LogWarning($"[JSONSpawner] ⚠️ Map '{currentMap.mapName}' has no obstacle set!");
-            }
+            // else if (currentMap != null)
+            // {
+            //     Debug.LogWarning($"[JSONSpawner] ⚠️ Map '{currentMap.mapName}' has no obstacle set!");
+            // }
         }
 
         // ═══ METHOD 2: Fallback to assigned variants ═══
-        if (barrierVariants != null && barrierVariants.Length > 0 ||
-            lowVariants != null && lowVariants.Length > 0 ||
-            highVariants != null && highVariants.Length > 0)
-        {
-            if (showDebugLogs)
-            {
-                Debug.LogWarning("[JSONSpawner] ⚠️ Using fallback obstacle variants (deprecated)");
-            }
-        }
-        else
-        {
-            Debug.LogError("[JSONSpawner] ❌ No obstacle variants available!");
-        }
+        // if (barrierVariants != null && barrierVariants.Length > 0 ||
+        //     lowVariants != null && lowVariants.Length > 0 ||
+        //     highVariants != null && highVariants.Length > 0)
+        // {
+        //     if (showDebugLogs)
+        //     {
+        //         Debug.LogWarning("[JSONSpawner] ⚠️ Using fallback obstacle variants (deprecated)");
+        //     }
+        // }
+        // else
+        // {
+        //     Debug.LogError("[JSONSpawner] ❌ No obstacle variants available!");
+        // }
     }
 
     #endregion
@@ -563,10 +561,10 @@ public class JSONSectionSpawner : MonoBehaviour
         bool isInSafeZone = distanceToHome <= homeSafeZoneDistance && distanceToHome > 0f;
         
         // Debug log when entering safe zone
-        if (isInSafeZone && showSafeZoneLogs)
-        {
-            Debug.Log($"[JSONSpawner] Position {zPosition:F0}m is in safe zone (distance to home: {distanceToHome:F0}m)");
-        }
+        // if (isInSafeZone && showSafeZoneLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] Position {zPosition:F0}m is in safe zone (distance to home: {distanceToHome:F0}m)");
+        // }
         
         return isInSafeZone;
     }
@@ -581,25 +579,25 @@ public class JSONSectionSpawner : MonoBehaviour
         bool wasInSafeZone = _isInHomeSafeZone;
         _isInHomeSafeZone = IsInHomeSafeZone(_nextSpawnZ);
 
-        if (!wasInSafeZone && _isInHomeSafeZone && showSafeZoneLogs)
-        {
-            Debug.Log($"[JSONSpawner] 🏠 ENTERING HOME SAFE ZONE at Z={_nextSpawnZ}");
-        }
+        // if (!wasInSafeZone && _isInHomeSafeZone && showSafeZoneLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] 🏠 ENTERING HOME SAFE ZONE at Z={_nextSpawnZ}");
+        // }
 
         SectionData sectionData = jsonLoader.GetRandomSection(_currentDifficulty);
 
         if (sectionData == null)
         {
-            Debug.LogError("[JSONSpawner] No section data available!");
+            //Debug.LogError("[JSONSpawner] No section data available!");
             return;
         }
 
         bool isSafeSection = ShouldBeSafeSection(sectionData);
 
-        if (isSafeSection && showSafeZoneLogs)
-        {
-            Debug.Log($"[JSONSpawner] 🛡️ SAFE SECTION: {sectionData.name} (Reason: {GetSafeReason(sectionData)})");
-        }
+        // if (isSafeSection && showSafeZoneLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] 🛡️ SAFE SECTION: {sectionData.name} (Reason: {GetSafeReason(sectionData)})");
+        // }
 
         
 
@@ -623,10 +621,10 @@ public class JSONSectionSpawner : MonoBehaviour
                 }
             }
         }
-        else if (isSafeSection && showSafeZoneLogs)
-        {
-            Debug.Log($"[JSONSpawner] ✓ Skipped {sectionData.obstacles?.Count ?? 0} obstacles (safe zone)");
-        }
+        // else if (isSafeSection && showSafeZoneLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ✓ Skipped {sectionData.obstacles?.Count ?? 0} obstacles (safe zone)");
+        // }
 
         // ═══ SPAWN COINS (conditional) ═══
     if (sectionData.coins != null && !(isSafeSection && clearCoinsInSafeZone))
@@ -660,16 +658,16 @@ public class JSONSectionSpawner : MonoBehaviour
         {
             _currentDifficulty = Mathf.Min(_currentDifficulty + 1, maxDifficulty);
 
-            if (showDebugLogs)
-            {
-                Debug.Log($"[JSONSpawner] Difficulty increased to {_currentDifficulty}");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] Difficulty increased to {_currentDifficulty}");
+            // }
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] Spawned section: {sectionData.name} at Z={section.startZ} (Safe: {isSafeSection})");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] Spawned section: {sectionData.name} at Z={section.startZ} (Safe: {isSafeSection})");
+        // }
     }
 
     private bool ShouldBeSafeSection(SectionData sectionData)
@@ -677,32 +675,32 @@ public class JSONSectionSpawner : MonoBehaviour
         // Check JSON flag
         if (sectionData.isSafeZone)
         {
-            if (showSafeZoneLogs)
-            {
-                Debug.Log($"[JSONSpawner] Section '{sectionData.name}' is safe (JSON flag)");
-            }
+            // if (showSafeZoneLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] Section '{sectionData.name}' is safe (JSON flag)");
+            // }
             return true;
         }
 
         // Check first section
         if (forceFirstSectionSafe && _sectionsSpawned == 0)
         {
-            if (showSafeZoneLogs)
-            {
-                Debug.Log($"[JSONSpawner] First section is safe (tutorial)");
-            }
+            // if (showSafeZoneLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] First section is safe (tutorial)");
+            // }
             return true;
         }
 
         // Check home safe zone
         if (_isInHomeSafeZone)
         {
-            if (showSafeZoneLogs)
-            {
-                Debug.Log($"[JSONSpawner] Section at Z={_nextSpawnZ:F0}m is in HOME SAFE ZONE");
-                Debug.Log($"[JSONSpawner] Game Mode: {GameModeManager.Instance?.CurrentMode}");
-                Debug.Log($"[JSONSpawner] Home Position: {_homePosition:F0}m");
-            }
+            // if (showSafeZoneLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] Section at Z={_nextSpawnZ:F0}m is in HOME SAFE ZONE");
+            //     Debug.Log($"[JSONSpawner] Game Mode: {GameModeManager.Instance?.CurrentMode}");
+            //     Debug.Log($"[JSONSpawner] Home Position: {_homePosition:F0}m");
+            // }
             return true;
         }
 
@@ -748,10 +746,10 @@ public class JSONSectionSpawner : MonoBehaviour
         // ═══ SKIP RECYCLE during floor change ═══
         if (_isFloorChanging)
         {
-            if (showDebugLogs)
-            {
-                Debug.Log($"[JSONSpawner] ⏸️ Skip recycle (floor changing): {section.data.name}");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] ⏸️ Skip recycle (floor changing): {section.data.name}");
+            // }
             return;
         }
 
@@ -763,10 +761,10 @@ public class JSONSectionSpawner : MonoBehaviour
             // Only recycle if player is AT LEAST 30m past section end
             if (playerZ < section.endZ + 30f)
             {
-                if (showDebugLogs)
-                {
-                    Debug.Log($"[JSONSpawner] ⏸️ Skip recycle (player too close): {section.data.name}");
-                }
+                // if (showDebugLogs)
+                // {
+                //     Debug.Log($"[JSONSpawner] ⏸️ Skip recycle (player too close): {section.data.name}");
+                // }
                 return;
             }
         }
@@ -783,10 +781,10 @@ public class JSONSectionSpawner : MonoBehaviour
 
         section.spawnedObjects.Clear();
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] Recycled section: {section.data.name}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] Recycled section: {section.data.name}");
+        // }
     }
 
     ActiveSection GetLastSection()
@@ -809,7 +807,7 @@ public class JSONSectionSpawner : MonoBehaviour
 
         if (prefab == null)
         {
-            Debug.LogError($"[JSONSpawner] No prefab found for type: {data.type}");
+            //Debug.LogError($"[JSONSpawner] No prefab found for type: {data.type}");
             return null;
         }
 
@@ -822,18 +820,18 @@ public class JSONSectionSpawner : MonoBehaviour
         if (!IsObstacleAllowedInLane(obstacleType, spawnLane))
         {
             // Option 1: Skip obstacle (don't spawn)
-            if (showDebugLogs)
-            {
-                Debug.LogWarning($"[JSONSpawner] ⚠ Skipped {obstacleType} at lane {spawnLane} (restricted)");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.LogWarning($"[JSONSpawner] ⚠ Skipped {obstacleType} at lane {spawnLane} (restricted)");
+            // }
             
             // Option 2: Relocate to valid lane
             int alternativeLane = GetAlternativeLane(spawnLane);
             
-            if (showDebugLogs)
-            {
-                Debug.Log($"[JSONSpawner] → Relocated {obstacleType} from lane {spawnLane} to lane {alternativeLane}");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] → Relocated {obstacleType} from lane {spawnLane} to lane {alternativeLane}");
+            // }
             
             spawnLane = alternativeLane; // ← Use alternative lane
             
@@ -845,7 +843,7 @@ public class JSONSectionSpawner : MonoBehaviour
 
         if (obstacle == null)
         {
-            Debug.LogError($"[JSONSpawner] Failed to get obstacle from pool for {prefab.name}");
+            //Debug.LogError($"[JSONSpawner] Failed to get obstacle from pool for {prefab.name}");
             return null;
         }
 
@@ -885,10 +883,10 @@ public class JSONSectionSpawner : MonoBehaviour
                 obsScript.SetDatabase(obstacleTypeDatabase);
             }
 
-            if (showDebugLogs)
-            {
-                Debug.Log($"[JSONSpawner] ✓ Spawned {prefab.name} as {correctType} at lane {spawnLane}, Z={z:F1}");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[JSONSpawner] ✓ Spawned {prefab.name} as {correctType} at lane {spawnLane}, Z={z:F1}");
+            // }
         }
 
         return obstacle;
@@ -902,18 +900,18 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (prefab == null)
         {
-            Debug.LogError("[JSONSpawner] Prefab is null!");
+            //Debug.LogError("[JSONSpawner] Prefab is null!");
             return ObstacleType.GenericBarrier;
         }
 
         string prefabName = prefab.name.ToLower().Replace("_pooled", "").Replace("(clone)", "").Trim();
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] ═══ DETECTING TYPE ═══");
-            Debug.Log($"[JSONSpawner] Prefab: '{prefab.name}'");
-            Debug.Log($"[JSONSpawner] Normalized: '{prefabName}'");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ═══ DETECTING TYPE ═══");
+        //     Debug.Log($"[JSONSpawner] Prefab: '{prefab.name}'");
+        //     Debug.Log($"[JSONSpawner] Normalized: '{prefabName}'");
+        // }
 
         // ═══════════════════════════════════════════════════════
         // PRIORITY ORDER (MOST SPECIFIC → LEAST SPECIFIC)
@@ -922,40 +920,40 @@ public class JSONSectionSpawner : MonoBehaviour
         // ═══ 1. ShoppingCart (CHECK BEFORE "cart" AND "car") ═══
         if (prefabName.Contains("shopping") || prefabName.Contains("shoppingcart"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → ShoppingCart (shopping keyword)");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → ShoppingCart (shopping keyword)");
             return ObstacleType.ShoppingCart;
         }
         
         // ═══ 2. Cart (WITHOUT "shopping") ═══
         if (prefabName.Contains("cart"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → ShoppingCart (cart keyword)");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → ShoppingCart (cart keyword)");
             return ObstacleType.ShoppingCart;
         }
         
         // ═══ 3. Car (AFTER cart check to avoid false positive) ═══
         if (prefabName.Contains("car"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → Car");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → Car");
             return ObstacleType.Car;
         }
         
         // ═══ 4. Motorcycle ═══
         if (prefabName.Contains("motorcycle") || prefabName.Contains("bike") || prefabName.Contains("motorbike"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → Motorcycle");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → Motorcycle");
             return ObstacleType.Motorcycle;
         }
         
         // ═══ 5. StreetVendor ═══
         if (prefabName.Contains("vendor") || prefabName.Contains("street"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → StreetVendor");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → StreetVendor");
             return ObstacleType.StreetVendor;
         }
         
@@ -963,37 +961,37 @@ public class JSONSectionSpawner : MonoBehaviour
         if (prefabName.Contains("barrier") || prefabName.Contains("roadbarrier"))
         {
             // ← FIX: Don't check "fence" here anymore
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → Barrier");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → Barrier");
             return ObstacleType.Barrier;
         }
         
         // ═══ 7. Fence (SEPARATE from Barrier) ═══
         if (prefabName.Contains("fence"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → Fence");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → Fence");
             return ObstacleType.Fence;
         }
         
         // ═══ 8. TrashCan ═══
         if (prefabName.Contains("trash") || prefabName.Contains("can") || prefabName.Contains("trashcan"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → TrashCan");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → TrashCan");
             return ObstacleType.TrashCan;
         }
         
         // ═══ 9. Human ═══
         if (prefabName.Contains("human") || prefabName.Contains("person") || prefabName.Contains("pedestrian"))
         {
-            if (showDebugLogs)
-                Debug.Log("[JSONSpawner] → Human");
+            // if (showDebugLogs)
+            //     Debug.Log("[JSONSpawner] → Human");
             return ObstacleType.Human;
         }
         
         // ═══ GENERIC FALLBACK ═══
-        Debug.LogWarning($"[JSONSpawner] ⚠ Unknown prefab '{prefabName}' → Using GenericBarrier");
+        //Debug.LogWarning($"[JSONSpawner] ⚠ Unknown prefab '{prefabName}' → Using GenericBarrier");
         return ObstacleType.GenericBarrier;
     }
 
@@ -1012,25 +1010,25 @@ public class JSONSectionSpawner : MonoBehaviour
             
             if (prefab != null)
             {
-                if (showDebugLogs)
-                {
-                    Debug.Log($"[JSONSpawner] ✓ Selected from set: {prefab.name} (type: {type})");
-                }
+                // if (showDebugLogs)
+                // {
+                //     Debug.Log($"[JSONSpawner] ✓ Selected from set: {prefab.name} (type: {type})");
+                // }
                 
                 return prefab;
             }
-            else
-            {
-                Debug.LogWarning($"[JSONSpawner] ⚠️ Current set '{currentObstacleSet.setName}' has no variants for type: {type}");
-            }
+            // else
+            // {
+            //     Debug.LogWarning($"[JSONSpawner] ⚠️ Current set '{currentObstacleSet.setName}' has no variants for type: {type}");
+            // }
         }
-        else
-        {
-            Debug.LogWarning($"[JSONSpawner] ⚠️ No current obstacle set!");
-        }
+        // else
+        // {
+        //     Debug.LogWarning($"[JSONSpawner] ⚠️ No current obstacle set!");
+        // }
         
         // ═══ METHOD 2: Legacy fallback (DEPRECATED) ═══
-        Debug.LogWarning($"[JSONSpawner] ⚠️ Falling back to legacy prefabs for type: {type}");
+        //Debug.LogWarning($"[JSONSpawner] ⚠️ Falling back to legacy prefabs for type: {type}");
         
         // Try map old generic types to specific prefabs
         string normalizedType = type.ToLower().Trim();
@@ -1068,7 +1066,7 @@ public class JSONSectionSpawner : MonoBehaviour
                 return obstacleLowPrefab; // Fallback
                 
             default:
-                Debug.LogError($"[JSONSpawner] ❌ No prefab available for type: {type}!");
+                //Debug.LogError($"[JSONSpawner] ❌ No prefab available for type: {type}!");
                 return obstacleBarrierPrefab; // Last resort
         }
     }
@@ -1081,7 +1079,7 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (prefab == null)
         {
-            Debug.LogError("[JSONSpawner] ❌ Cannot get from pool - prefab is null!");
+            //Debug.LogError("[JSONSpawner] ❌ Cannot get from pool - prefab is null!");
             return null;
         }
 
@@ -1090,8 +1088,8 @@ public class JSONSectionSpawner : MonoBehaviour
         // ═══ CRITICAL: Check if pool exists for THIS EXACT prefab ═══
         if (!_obstaclePools.ContainsKey(prefabID))
         {
-            Debug.LogWarning($"[JSONSpawner] ⚠️ No pool for {prefab.name} (ID: {prefabID})");
-            Debug.LogWarning($"[JSONSpawner] Creating pool on-demand...");
+            //Debug.LogWarning($"[JSONSpawner] ⚠️ No pool for {prefab.name} (ID: {prefabID})");
+            //Debug.LogWarning($"[JSONSpawner] Creating pool on-demand...");
             
             // Create pool on-the-fly
             CreatePoolForPrefab(prefab, "OnDemand");
@@ -1108,16 +1106,16 @@ public class JSONSectionSpawner : MonoBehaviour
             // ═══ VALIDATE: Check if object matches expected prefab ═══
             if (obj != null && obj.name.Contains(prefab.name))
             {
-                if (showDebugLogs)
-                {
-                    Debug.Log($"[JSONSpawner] ✓ Got from pool: {obj.name}");
-                }
+                // if (showDebugLogs)
+                // {
+                //     Debug.Log($"[JSONSpawner] ✓ Got from pool: {obj.name}");
+                // }
                 
                 return obj;
             }
             else
             {
-                Debug.LogWarning($"[JSONSpawner] ⚠️ Pool returned wrong object! Expected: {prefab.name}, Got: {obj?.name}");
+                //Debug.LogWarning($"[JSONSpawner] ⚠️ Pool returned wrong object! Expected: {prefab.name}, Got: {obj?.name}");
                 
                 // Return wrong object back to pool
                 if (obj != null)
@@ -1128,10 +1126,10 @@ public class JSONSectionSpawner : MonoBehaviour
         }
 
         // ═══ Pool empty or wrong object → Create new ═══
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] Creating new instance of: {prefab.name}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] Creating new instance of: {prefab.name}");
+        // }
         
         obj = Instantiate(prefab, transform);
         obj.name = $"{prefab.name}_Runtime_{Time.frameCount}";
@@ -1197,14 +1195,14 @@ public class JSONSectionSpawner : MonoBehaviour
             // Reload sections
             bool success = jsonLoader.LoadSections();
             
-            if (success)
-            {
-                Debug.Log($"[JSONSpawner] ✓ Loaded sections from: {fileName}.json");
-            }
-            else
-            {
-                Debug.LogError($"[JSONSpawner] ❌ Failed to load: {fileName}.json");
-            }
+            // if (success)
+            // {
+            //     Debug.Log($"[JSONSpawner] ✓ Loaded sections from: {fileName}.json");
+            // }
+            // else
+            // {
+            //     Debug.LogError($"[JSONSpawner] ❌ Failed to load: {fileName}.json");
+            // }
         }
     }
 
@@ -1220,7 +1218,7 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (prefab == null)
         {
-            Debug.LogWarning("[JSONSpawner] Cannot warmup null prefab!");
+            //Debug.LogWarning("[JSONSpawner] Cannot warmup null prefab!");
             return;
         }
         
@@ -1275,10 +1273,10 @@ public class JSONSectionSpawner : MonoBehaviour
         
         if (isRestricted && lane == 1)
         {
-            if (showDebugLogs)
-            {
-                Debug.LogWarning($"[JSONSpawner] ❌ {obstacleType} NOT allowed in lane {lane} (center)");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.LogWarning($"[JSONSpawner] ❌ {obstacleType} NOT allowed in lane {lane} (center)");
+            // }
             return false;
         }
         
@@ -1319,10 +1317,10 @@ public class JSONSectionSpawner : MonoBehaviour
             .Replace(" ", "")
             .Trim();
         
-        Debug.Log($"[JSONSpawner] ════════════════════════════════");
-        Debug.Log($"[JSONSpawner] DETECTING TYPE");
-        Debug.Log($"[JSONSpawner] Original: '{prefabName}'");
-        Debug.Log($"[JSONSpawner] Normalized: '{name}'");
+        // Debug.Log($"[JSONSpawner] ════════════════════════════════");
+        // Debug.Log($"[JSONSpawner] DETECTING TYPE");
+        // Debug.Log($"[JSONSpawner] Original: '{prefabName}'");
+        // Debug.Log($"[JSONSpawner] Normalized: '{name}'");
         
         ObstacleType detectedType;
         
@@ -1330,8 +1328,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("shopping") || name.Contains("shoppingcart"))
         {
             detectedType = ObstacleType.ShoppingCart;
-            Debug.Log($"[JSONSpawner] → Detected: ShoppingCart (shopping)");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: ShoppingCart (shopping)");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1339,8 +1337,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("cart"))
         {
             detectedType = ObstacleType.ShoppingCart;
-            Debug.Log($"[JSONSpawner] → Detected: ShoppingCart (cart)");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: ShoppingCart (cart)");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1348,8 +1346,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("car"))
         {
             detectedType = ObstacleType.Car;
-            Debug.Log($"[JSONSpawner] → Detected: Car");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: Car");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1357,8 +1355,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("motorcycle") || name.Contains("cub") || name.Contains("bike") || name.Contains("motorbike"))
         {
             detectedType = ObstacleType.Motorcycle;
-            Debug.Log($"[JSONSpawner] → Detected: Motorcycle");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: Motorcycle");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1366,8 +1364,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("vendor") || name.Contains("street") || name.Contains("streetvendor"))
         {
             detectedType = ObstacleType.StreetVendor;
-            Debug.Log($"[JSONSpawner] → Detected: StreetVendor");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: StreetVendor");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1375,8 +1373,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if ((name.Contains("barrier") || name.Contains("roadbarrier")) && !name.Contains("generic"))
         {
             detectedType = ObstacleType.Barrier;
-            Debug.Log($"[JSONSpawner] → Detected: Barrier");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: Barrier");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1384,8 +1382,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("fence"))
         {
             detectedType = ObstacleType.Fence;
-            Debug.Log($"[JSONSpawner] → Detected: Fence");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: Fence");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1393,8 +1391,8 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("trash") || name.Contains("can") || name.Contains("trashcan"))
         {
             detectedType = ObstacleType.TrashCan;
-            Debug.Log($"[JSONSpawner] → Detected: TrashCan");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: TrashCan");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
@@ -1402,15 +1400,15 @@ public class JSONSectionSpawner : MonoBehaviour
         if (name.Contains("human") || name.Contains("person") || name.Contains("pedestrian"))
         {
             detectedType = ObstacleType.Human;
-            Debug.Log($"[JSONSpawner] → Detected: Human");
-            Debug.Log($"[JSONSpawner] ════════════════════════════════");
+            // Debug.Log($"[JSONSpawner] → Detected: Human");
+            // Debug.Log($"[JSONSpawner] ════════════════════════════════");
             return detectedType;
         }
         
         // ═══ DEFAULT: Generic ═══
         detectedType = ObstacleType.GenericBarrier;
-        Debug.LogWarning($"[JSONSpawner] ⚠ Unknown prefab '{name}' → Using GenericBarrier");
-        Debug.Log($"[JSONSpawner] ════════════════════════════════");
+        // Debug.LogWarning($"[JSONSpawner] ⚠ Unknown prefab '{name}' → Using GenericBarrier");
+        // Debug.Log($"[JSONSpawner] ════════════════════════════════");
         
         return detectedType;
     }
@@ -1434,7 +1432,7 @@ public class JSONSectionSpawner : MonoBehaviour
             
             if (coinObj == null)
             {
-                Debug.LogError("[JSONSpawner] Failed to get coin from pool!");
+                //Debug.LogError("[JSONSpawner] Failed to get coin from pool!");
                 continue;
             }
 
@@ -1488,16 +1486,16 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (newSet == null)
         {
-            Debug.LogWarning("[JSONSpawner] Cannot set null obstacle set!");
+            //Debug.LogWarning("[JSONSpawner] Cannot set null obstacle set!");
             return;
         }
         
         currentObstacleSet = newSet;
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] ✓ Obstacle set changed to: {newSet.setName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ✓ Obstacle set changed to: {newSet.setName}");
+        // }
         
         // Rebuild obstacle pools với set mới
         RebuildObstaclePools();
@@ -1510,7 +1508,7 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (currentObstacleSet == null)
         {
-            Debug.LogWarning("[JSONSpawner] No obstacle set to rebuild!");
+            //Debug.LogWarning("[JSONSpawner] No obstacle set to rebuild!");
             return;
         }
         
@@ -1520,10 +1518,10 @@ public class JSONSectionSpawner : MonoBehaviour
         // Create new pools from current set
         CreatePoolsFromObstacleSet();
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] ✓ Obstacle pools rebuilt ({_obstaclePools.Count} pools)");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ✓ Obstacle pools rebuilt ({_obstaclePools.Count} pools)");
+        // }
     }
 
     #endregion
@@ -1540,14 +1538,14 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (newSet == null)
         {
-            Debug.LogWarning("[JSONSpawner] Cannot pre-load null obstacle set!");
+            //Debug.LogWarning("[JSONSpawner] Cannot pre-load null obstacle set!");
             return;
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] 📦 Pre-loading obstacle set: {newSet.setName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] 📦 Pre-loading obstacle set: {newSet.setName}");
+        // }
         
         // ═══ STORE for later activation ═══
         _preloadedObstacleSet = newSet;
@@ -1566,10 +1564,10 @@ public class JSONSectionSpawner : MonoBehaviour
             yield break;
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] Building pools for: {obstacleSet.setName}...");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] Building pools for: {obstacleSet.setName}...");
+        // }
         
         // ═══ BUILD POOLS TỪNG TÍ (spread across frames) ═══
         
@@ -1646,10 +1644,10 @@ public class JSONSectionSpawner : MonoBehaviour
             }
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] ✓ Pre-build complete: {obstacleSet.setName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ✓ Pre-build complete: {obstacleSet.setName}");
+        // }
     }
 
     /// <summary>
@@ -1663,10 +1661,10 @@ public class JSONSectionSpawner : MonoBehaviour
             return;
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] ✅ Activating pre-loaded set: {_preloadedObstacleSet.setName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ✅ Activating pre-loaded set: {_preloadedObstacleSet.setName}");
+        // }
         
         // ═══ SWAP to pre-loaded set (instant) ═══
         currentObstacleSet = _preloadedObstacleSet;
@@ -1675,10 +1673,10 @@ public class JSONSectionSpawner : MonoBehaviour
         // ═══ CLEAR pre-load state ═══
         _preloadedObstacleSet = null;
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] ✓ Now using: {currentObstacleSet.setName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ✓ Now using: {currentObstacleSet.setName}");
+        // }
     }
 
     #region Obstacle Set Swap - OPTIMIZED
@@ -1690,17 +1688,17 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (newSet == null)
         {
-            Debug.LogWarning("[JSONSpawner] Cannot set null obstacle set!");
+            //Debug.LogWarning("[JSONSpawner] Cannot set null obstacle set!");
             return;
         }
         
         // ═══ JUST SWAP REFERENCE (INSTANT) ═══
         currentObstacleSet = newSet;
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[JSONSpawner] ✓ Obstacle set reference changed to: {newSet.setName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] ✓ Obstacle set reference changed to: {newSet.setName}");
+        // }
         
         // NO pool creation - pools already exist from warmup!
     }
@@ -1728,7 +1726,7 @@ public class JSONSectionSpawner : MonoBehaviour
         
         if (prefab == null)
         {
-            Debug.LogWarning("[JSONSpawner] No support item prefab!");
+            //Debug.LogWarning("[JSONSpawner] No support item prefab!");
             return null;
         }
 
@@ -1736,7 +1734,7 @@ public class JSONSectionSpawner : MonoBehaviour
         
         if (itemObj == null)
         {
-            Debug.LogError("[JSONSpawner] Failed to get support item!");
+            //Debug.LogError("[JSONSpawner] Failed to get support item!");
             return null;
         }
 
@@ -1851,7 +1849,7 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (_homePosition <= 0f)
         {
-            Debug.LogWarning("[JSONSpawner] Home position not set - cannot clear safe zone");
+            //Debug.LogWarning("[JSONSpawner] Home position not set - cannot clear safe zone");
             return;
         }
 
@@ -1888,14 +1886,14 @@ public class JSONSectionSpawner : MonoBehaviour
             }
         }
 
-        if (showSafeZoneLogs && (obstaclesCleared > 0 || coinsCleared > 0 || powerUpsCleared > 0))
-        {
-            Debug.Log($"[JSONSpawner] 🧹 SAFE ZONE CLEARED:");
-            Debug.Log($"[JSONSpawner]   - Obstacles: {obstaclesCleared}");
-            Debug.Log($"[JSONSpawner]   - Coins: {coinsCleared}");
-            Debug.Log($"[JSONSpawner]   - PowerUps: {powerUpsCleared}");
-            Debug.Log($"[JSONSpawner]   - Total: {obstaclesCleared + coinsCleared + powerUpsCleared}");
-        }
+        // if (showSafeZoneLogs && (obstaclesCleared > 0 || coinsCleared > 0 || powerUpsCleared > 0))
+        // {
+        //     Debug.Log($"[JSONSpawner] 🧹 SAFE ZONE CLEARED:");
+        //     Debug.Log($"[JSONSpawner]   - Obstacles: {obstaclesCleared}");
+        //     Debug.Log($"[JSONSpawner]   - Coins: {coinsCleared}");
+        //     Debug.Log($"[JSONSpawner]   - PowerUps: {powerUpsCleared}");
+        //     Debug.Log($"[JSONSpawner]   - Total: {obstaclesCleared + coinsCleared + powerUpsCleared}");
+        // }
     }
 
     /// <summary>
@@ -1922,10 +1920,10 @@ public class JSONSectionSpawner : MonoBehaviour
             }
         }
 
-        if (showSafeZoneLogs && clearedCount > 0)
-        {
-            Debug.Log($"[JSONSpawner] 🧹 Cleared {clearedCount} {typeof(T).Name} objects in safe zone");
-        }
+        // if (showSafeZoneLogs && clearedCount > 0)
+        // {
+        //     Debug.Log($"[JSONSpawner] 🧹 Cleared {clearedCount} {typeof(T).Name} objects in safe zone");
+        // }
     }
 
     /// <summary>
@@ -1953,14 +1951,14 @@ public class JSONSectionSpawner : MonoBehaviour
     {
         if (_homePosition <= 0f)
         {
-            Debug.LogWarning("[JSONSpawner] Home position not set!");
+            //Debug.LogWarning("[JSONSpawner] Home position not set!");
             return;
         }
 
-        if (showSafeZoneLogs)
-        {
-            Debug.Log($"[JSONSpawner] 🧹 Clearing ENTIRE safe zone (distance: {homeSafeZoneDistance}m)");
-        }
+        // if (showSafeZoneLogs)
+        // {
+        //     Debug.Log($"[JSONSpawner] 🧹 Clearing ENTIRE safe zone (distance: {homeSafeZoneDistance}m)");
+        // }
 
         ClearSafeZoneObstacles();
         ClearSafeZoneCoins();
@@ -1999,7 +1997,7 @@ public class JSONSectionSpawner : MonoBehaviour
             // Rebuild
             CreatePoolsFromObstacleSet();
             
-            Debug.Log($"[JSONSpawner] ✓ Obstacle pools rebuilt for: {currentObstacleSet.setName}");
+            //Debug.Log($"[JSONSpawner] ✓ Obstacle pools rebuilt for: {currentObstacleSet.setName}");
         }
     }
 
@@ -2025,126 +2023,126 @@ public class JSONSectionSpawner : MonoBehaviour
 
     #endregion
 
-    #region Debug GUI
+//     #region Debug GUI
 
-    // private Texture2D MakeBackgroundTexture(Color color)
-    // {
-    //     Texture2D texture = new Texture2D(1, 1);
-    //     texture.SetPixel(0, 0, color);
-    //     texture.Apply();
-    //     return texture;
-    // }
+//     // private Texture2D MakeBackgroundTexture(Color color)
+//     // {
+//     //     Texture2D texture = new Texture2D(1, 1);
+//     //     texture.SetPixel(0, 0, color);
+//     //     texture.Apply();
+//     //     return texture;
+//     // }
 
-    #endregion
+//     #endregion
 
-    #region Editor Helper
+//     #region Editor Helper
 
-    #if UNITY_EDITOR
+//     #if UNITY_EDITOR
     
-    [ContextMenu("Show Pool Status")]
-    void ShowPoolStatus()
-    {
-        Debug.Log("═══ POOL STATUS ═══");
-        Debug.Log($"Coins: {_coinPool?.Count ?? 0}");
-        Debug.Log($"Support Items: {_supportItemPool?.Count ?? 0}");
-        Debug.Log($"Obstacle Pools: {_obstaclePools?.Count ?? 0}");
+//     [ContextMenu("Show Pool Status")]
+//     void ShowPoolStatus()
+//     {
+//         Debug.Log("═══ POOL STATUS ═══");
+//         Debug.Log($"Coins: {_coinPool?.Count ?? 0}");
+//         Debug.Log($"Support Items: {_supportItemPool?.Count ?? 0}");
+//         Debug.Log($"Obstacle Pools: {_obstaclePools?.Count ?? 0}");
         
-        if (_obstaclePools != null)
-        {
-            foreach (var kvp in _obstaclePools)
-            {
-                Debug.Log($"  Pool ID {kvp.Key}: {kvp.Value.Count} objects");
-            }
-        }
-    }
+//         if (_obstaclePools != null)
+//         {
+//             foreach (var kvp in _obstaclePools)
+//             {
+//                 Debug.Log($"  Pool ID {kvp.Key}: {kvp.Value.Count} objects");
+//             }
+//         }
+//     }
 
-    [ContextMenu("List All Variant Prefabs")]
-    void ListVariantPrefabs()
-    {
-        Debug.Log("═══ VARIANT PREFABS ASSIGNED ═══");
+//     [ContextMenu("List All Variant Prefabs")]
+//     void ListVariantPrefabs()
+//     {
+//         Debug.Log("═══ VARIANT PREFABS ASSIGNED ═══");
         
-        Debug.Log($"\n▼ BARRIER VARIANTS: {barrierVariants?.Length ?? 0}");
-        if (barrierVariants != null)
-        {
-            for (int i = 0; i < barrierVariants.Length; i++)
-            {
-                if (barrierVariants[i] != null)
-                {
-                    Debug.Log($"  ✓ [{i}] {barrierVariants[i].name} (ID: {barrierVariants[i].GetInstanceID()})");
-                }
-                else
-                {
-                    Debug.LogError($"  ✗ [{i}] NULL PREFAB!");
-                }
-            }
-        }
-        else
-        {
-            Debug.LogWarning("  Array is NULL!");
-        }
+//         Debug.Log($"\n▼ BARRIER VARIANTS: {barrierVariants?.Length ?? 0}");
+//         if (barrierVariants != null)
+//         {
+//             for (int i = 0; i < barrierVariants.Length; i++)
+//             {
+//                 if (barrierVariants[i] != null)
+//                 {
+//                     Debug.Log($"  ✓ [{i}] {barrierVariants[i].name} (ID: {barrierVariants[i].GetInstanceID()})");
+//                 }
+//                 else
+//                 {
+//                     Debug.LogError($"  ✗ [{i}] NULL PREFAB!");
+//                 }
+//             }
+//         }
+//         else
+//         {
+//             Debug.LogWarning("  Array is NULL!");
+//         }
         
-        Debug.Log($"\n▼ LOW VARIANTS: {lowVariants?.Length ?? 0}");
-        if (lowVariants != null)
-        {
-            for (int i = 0; i < lowVariants.Length; i++)
-            {
-                if (lowVariants[i] != null)
-                {
-                    Debug.Log($"  ✓ [{i}] {lowVariants[i].name} (ID: {lowVariants[i].GetInstanceID()})");
-                }
-                else
-                {
-                    Debug.LogError($"  ✗ [{i}] NULL PREFAB!");
-                }
-            }
-        }
-        else
-        {
-            Debug.LogWarning("  Array is NULL!");
-        }
+//         Debug.Log($"\n▼ LOW VARIANTS: {lowVariants?.Length ?? 0}");
+//         if (lowVariants != null)
+//         {
+//             for (int i = 0; i < lowVariants.Length; i++)
+//             {
+//                 if (lowVariants[i] != null)
+//                 {
+//                     Debug.Log($"  ✓ [{i}] {lowVariants[i].name} (ID: {lowVariants[i].GetInstanceID()})");
+//                 }
+//                 else
+//                 {
+//                     Debug.LogError($"  ✗ [{i}] NULL PREFAB!");
+//                 }
+//             }
+//         }
+//         else
+//         {
+//             Debug.LogWarning("  Array is NULL!");
+//         }
         
-        Debug.Log($"\n▼ HIGH VARIANTS: {highVariants?.Length ?? 0}");
-        if (highVariants != null)
-        {
-            for (int i = 0; i < highVariants.Length; i++)
-            {
-                if (highVariants[i] != null)
-                {
-                    Debug.Log($"  ✓ [{i}] {highVariants[i].name} (ID: {highVariants[i].GetInstanceID()})");
-                }
-                else
-                {
-                    Debug.LogError($"  ✗ [{i}] NULL PREFAB!");
-                }
-            }
-        }
-        else
-        {
-            Debug.LogWarning("  Array is NULL!");
-        }
+//         Debug.Log($"\n▼ HIGH VARIANTS: {highVariants?.Length ?? 0}");
+//         if (highVariants != null)
+//         {
+//             for (int i = 0; i < highVariants.Length; i++)
+//             {
+//                 if (highVariants[i] != null)
+//                 {
+//                     Debug.Log($"  ✓ [{i}] {highVariants[i].name} (ID: {highVariants[i].GetInstanceID()})");
+//                 }
+//                 else
+//                 {
+//                     Debug.LogError($"  ✗ [{i}] NULL PREFAB!");
+//                 }
+//             }
+//         }
+//         else
+//         {
+//             Debug.LogWarning("  Array is NULL!");
+//         }
         
-        Debug.Log("\n═══════════════════════════════════");
-    }
+//         Debug.Log("\n═══════════════════════════════════");
+//     }
 
-    [ContextMenu("Validate Spawn Rates")]
-    void ValidateSpawnRates()
-    {
-        float total = iceTeaRate + coldTowelRate + medicineRate;
+//     [ContextMenu("Validate Spawn Rates")]
+//     void ValidateSpawnRates()
+//     {
+//         float total = iceTeaRate + coldTowelRate + medicineRate;
 
-        if (Mathf.Abs(total - 1.0f) < 0.01f)
-        {
-            Debug.Log($"✓ Spawn rates valid: Ice Tea {iceTeaRate * 100:F0}%, " +
-                     $"Cold Towel {coldTowelRate * 100:F0}%, Medicine {medicineRate * 100:F0}%");
-        }
-        else
-        {
-            Debug.LogWarning($"⚠ Spawn rates sum to {total:F2}, should be 1.0. Will auto-normalize.");
-        }
-    }
+//         if (Mathf.Abs(total - 1.0f) < 0.01f)
+//         {
+//             Debug.Log($"✓ Spawn rates valid: Ice Tea {iceTeaRate * 100:F0}%, " +
+//                      $"Cold Towel {coldTowelRate * 100:F0}%, Medicine {medicineRate * 100:F0}%");
+//         }
+//         else
+//         {
+//             Debug.LogWarning($"⚠ Spawn rates sum to {total:F2}, should be 1.0. Will auto-normalize.");
+//         }
+//     }
 
-#endif
+// #endif
 
-    #endregion
+//     #endregion
 
     void OnDestroy()
     {

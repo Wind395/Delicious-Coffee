@@ -22,7 +22,7 @@
     {
         if (_player == null)
         {
-            Debug.LogError("[IceTea] Player is null!");
+            //Debug.LogError("[IceTea] Player is null!");
             return;
         }
 
@@ -31,7 +31,7 @@
         
         if (powerUpLayer == -1)
         {
-            Debug.LogError("[IceTea] PowerUp layer not found!");
+            //Debug.LogError("[IceTea] PowerUp layer not found!");
             return;
         }
         
@@ -46,14 +46,14 @@
         //DiarrheaMeter.Instance?.ApplyIceTea();
         AudioManager.Instance?.PlayIceTeaSound();
         
-        Debug.Log($"[IceTea] ✓ Activated | Layer: {LayerMask.LayerToName(_originalLayer)} → {POWERUP_LAYER}");
+        //Debug.Log($"[IceTea] ✓ Activated | Layer: {LayerMask.LayerToName(_originalLayer)} → {POWERUP_LAYER}");
     }
 
     protected override void OnDeactivate()
     {
         if (_player == null)
         {
-            Debug.LogWarning("[IceTea] Player is null on deactivate");
+            //Debug.LogWarning("[IceTea] Player is null on deactivate");
             return;
         }
 
@@ -61,7 +61,7 @@
         
         if (playerLayer == -1)
         {
-            Debug.LogError("[IceTea] Player layer not found!");
+            //Debug.LogError("[IceTea] Player layer not found!");
             _player.gameObject.layer = _originalLayer;
         }
         else
@@ -76,12 +76,12 @@
         // }
         
         string currentLayerName = LayerMask.LayerToName(_player.gameObject.layer);
-        Debug.Log($"[IceTea] ✓ Deactivated | Layer restored to: {currentLayerName}");
+        //Debug.Log($"[IceTea] ✓ Deactivated | Layer restored to: {currentLayerName}");
     }
 
     protected override void OnRefresh()
     {
-        Debug.Log("[IceTea] ⏱️ Timer refreshed!");
+        //Debug.Log("[IceTea] ⏱️ Timer refreshed!");
         
         //DiarrheaMeter.Instance?.ApplyIceTea();
         AudioManager.Instance?.PlayIceTeaSound();

@@ -11,21 +11,42 @@ public class PlayerDataManager : MonoBehaviour
     #region Singleton
     
     private static PlayerDataManager _instance;
+    private static bool _isQuitting = false;
     public static PlayerDataManager Instance
     {
         get
         {
+            if (_isQuitting)
+            {
+                return null;
+            }
             if (_instance == null)
             {
-                GameObject go = new GameObject("PlayerDataManager");
-                _instance = go.AddComponent<PlayerDataManager>();
-                DontDestroyOnLoad(go);
+                _instance = FindAnyObjectByType<PlayerDataManager>();
+                if (_instance == null && !_isQuitting)
+                {
+                    GameObject go = new GameObject("PlayerDataManager");
+                    _instance = go.AddComponent<PlayerDataManager>();
+                }
             }
             return _instance;
         }
     }
     
     #endregion
+
+    void OnApplicationQuit()
+    {
+        _isQuitting = true;
+    }
+
+    void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _isQuitting = true;
+        }
+    }
 
     #region Player Data
     
@@ -83,7 +104,7 @@ public class PlayerDataManager : MonoBehaviour
 
         if (_playerData == null)
         {
-            Debug.LogError("[PlayerData] Failed to load data!");
+            //Debug.LogError("[PlayerData] Failed to load data!");
             _playerData = new PlayerData();
         }
 
@@ -93,7 +114,7 @@ public class PlayerDataManager : MonoBehaviour
         OnGoldChanged?.Invoke(_playerData.gold);
         OnDataLoaded?.Invoke();
 
-        Debug.Log($"[PlayerData] ✓ Loaded - Gold: {_playerData.gold}, Games: {_playerData.totalGamesPlayed}");
+        //Debug.Log($"[PlayerData] ✓ Loaded - Gold: {_playerData.gold}, Games: {_playerData.totalGamesPlayed}");
     }
     
     /// <summary>
@@ -115,7 +136,7 @@ public class PlayerDataManager : MonoBehaviour
         {
             _playerData.purchasedHomes.Add("home_default");
             changed = true;
-            Debug.Log("[PlayerDataManager] Added default home");
+            //Debug.Log("[PlayerDataManager] Added default home");
         }
         
         // Ensure equipped IDs are valid
@@ -145,7 +166,7 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (_playerData == null)
         {
-            Debug.LogError("[PlayerData] No data to save!");
+            //Debug.LogError("[PlayerData] No data to save!");
             return;
         }
         
@@ -154,12 +175,12 @@ public class PlayerDataManager : MonoBehaviour
         if (success)
         {
             OnDataSaved?.Invoke();
-            Debug.Log("[PlayerData] ✓ Data saved");
+            //Debug.Log("[PlayerData] ✓ Data saved");
         }
-        else
-        {
-            Debug.LogError("[PlayerData] ❌ Save failed!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[PlayerData] ❌ Save failed!");
+        // }
     }
     
     #endregion
@@ -201,7 +222,7 @@ public class PlayerDataManager : MonoBehaviour
         // Auto-save
         SaveData();
         
-        Debug.Log($"[PlayerData] -{amount} gold. Remaining: {_playerData.gold}");
+        //Debug.Log($"[PlayerData] -{amount} gold. Remaining: {_playerData.gold}");
         return true;
     }
     
@@ -233,27 +254,27 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (_playerData == null || item == null)
         {
-            Debug.LogError("[PlayerDataManager] ❌ Cannot purchase - data or item is null!");
+            //Debug.LogError("[PlayerDataManager] ❌ Cannot purchase - data or item is null!");
             return false;
         }
         
-        Debug.Log($"[PlayerDataManager] ═══ PURCHASE ATTEMPT ═══");
-        Debug.Log($"[PlayerDataManager] Item: {item.itemName} (ID: {item.itemID})");
-        Debug.Log($"[PlayerDataManager] Type: {item.itemType}");
-        Debug.Log($"[PlayerDataManager] Price: {item.price}");
-        Debug.Log($"[PlayerDataManager] Your Gold: {_playerData.gold}");
+        // Debug.Log($"[PlayerDataManager] ═══ PURCHASE ATTEMPT ═══");
+        // Debug.Log($"[PlayerDataManager] Item: {item.itemName} (ID: {item.itemID})");
+        // Debug.Log($"[PlayerDataManager] Type: {item.itemType}");
+        // Debug.Log($"[PlayerDataManager] Price: {item.price}");
+        // Debug.Log($"[PlayerDataManager] Your Gold: {_playerData.gold}");
         
         // Check already purchased
         if (IsPurchased(item.itemID))
         {
-            Debug.LogWarning($"[PlayerDataManager] ⚠️ Item already purchased: {item.itemID}");
+            //Debug.LogWarning($"[PlayerDataManager] ⚠️ Item already purchased: {item.itemID}");
             return false;
         }
         
         // Check gold
         if (!SpendGold(item.price))
         {
-            Debug.LogWarning($"[PlayerDataManager] ❌ Not enough gold! Need {item.price}, have {_playerData.gold}");
+            //Debug.LogWarning($"[PlayerDataManager] ❌ Not enough gold! Need {item.price}, have {_playerData.gold}");
             return false;
         }
         
@@ -261,16 +282,16 @@ public class PlayerDataManager : MonoBehaviour
         if (item.itemType == ShopItemType.Character)
         {
             _playerData.purchasedCharacters.Add(item.itemID);
-            Debug.Log($"[PlayerDataManager] ✓ Added to purchasedCharacters");
+            //Debug.Log($"[PlayerDataManager] ✓ Added to purchasedCharacters");
         }
         else if (item.itemType == ShopItemType.Home)
         {
             _playerData.purchasedHomes.Add(item.itemID);
-            Debug.Log($"[PlayerDataManager] ✓ Added to purchasedHomes");
+            //Debug.Log($"[PlayerDataManager] ✓ Added to purchasedHomes");
         }
         else
         {
-            Debug.LogError($"[PlayerDataManager] ❌ Unknown item type: {item.itemType}");
+            //Debug.LogError($"[PlayerDataManager] ❌ Unknown item type: {item.itemType}");
             // Refund gold
             AddGold(item.price);
             return false;
@@ -279,9 +300,9 @@ public class PlayerDataManager : MonoBehaviour
         SaveData();
         OnItemPurchased?.Invoke(item.itemID);
         
-        Debug.Log($"[PlayerDataManager] ═══ PURCHASE SUCCESS ═══");
-        Debug.Log($"[PlayerDataManager] Item: {item.itemName} purchased!");
-        Debug.Log($"[PlayerDataManager] Remaining Gold: {_playerData.gold}");
+        // Debug.Log($"[PlayerDataManager] ═══ PURCHASE SUCCESS ═══");
+        // Debug.Log($"[PlayerDataManager] Item: {item.itemName} purchased!");
+        // Debug.Log($"[PlayerDataManager] Remaining Gold: {_playerData.gold}");
         
         return true;
     }
@@ -293,18 +314,18 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (_playerData == null || item == null)
         {
-            Debug.LogError("[PlayerDataManager] ❌ Cannot equip - data or item is null!");
+            //Debug.LogError("[PlayerDataManager] ❌ Cannot equip - data or item is null!");
             return;
         }
         
-        Debug.Log($"[PlayerDataManager] ═══ EQUIP ATTEMPT ═══");
-        Debug.Log($"[PlayerDataManager] Item: {item.itemName} (ID: {item.itemID})");
-        Debug.Log($"[PlayerDataManager] Type: {item.itemType}");
+        // Debug.Log($"[PlayerDataManager] ═══ EQUIP ATTEMPT ═══");
+        // Debug.Log($"[PlayerDataManager] Item: {item.itemName} (ID: {item.itemID})");
+        // Debug.Log($"[PlayerDataManager] Type: {item.itemType}");
         
         // Check purchased
         if (!IsPurchased(item.itemID))
         {
-            Debug.LogWarning($"[PlayerDataManager] ❌ Cannot equip unpurchased item: {item.itemID}");
+            //Debug.LogWarning($"[PlayerDataManager] ❌ Cannot equip unpurchased item: {item.itemID}");
             return;
         }
         
@@ -312,23 +333,23 @@ public class PlayerDataManager : MonoBehaviour
         if (item.itemType == ShopItemType.Character)
         {
             _playerData.equippedCharacter = item.itemID;
-            Debug.Log($"[PlayerDataManager] ✓ Equipped character: {item.itemID}");
+            //Debug.Log($"[PlayerDataManager] ✓ Equipped character: {item.itemID}");
         }
         else if (item.itemType == ShopItemType.Home)
         {
             _playerData.equippedHome = item.itemID;
-            Debug.Log($"[PlayerDataManager] ✓ Equipped home: {item.itemID}");
+            //Debug.Log($"[PlayerDataManager] ✓ Equipped home: {item.itemID}");
         }
         else
         {
-            Debug.LogError($"[PlayerDataManager] ❌ Unknown item type: {item.itemType}");
+            //Debug.LogError($"[PlayerDataManager] ❌ Unknown item type: {item.itemType}");
             return;
         }
         
         SaveData();
         OnItemEquipped?.Invoke(item.itemID, item.itemType);
         
-        Debug.Log($"[PlayerDataManager] ═══ EQUIP SUCCESS ═══");
+        //Debug.Log($"[PlayerDataManager] ═══ EQUIP SUCCESS ═══");
     }
 
     /// <summary>
@@ -387,14 +408,14 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (_playerData == null)
         {
-            Debug.LogError("[PlayerDataManager] PlayerData is null!");
+            //Debug.LogError("[PlayerDataManager] PlayerData is null!");
             return;
         }
         
         _playerData.MarkLevelCompleted(levelID);
         SaveData();
         
-        Debug.Log($"[PlayerDataManager] ✓ Level completed: {levelID}");
+        //Debug.Log($"[PlayerDataManager] ✓ Level completed: {levelID}");
     }
 
     /// <summary>
@@ -404,14 +425,14 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (_playerData == null)
         {
-            Debug.LogError("[PlayerDataManager] PlayerData is null!");
+            //Debug.LogError("[PlayerDataManager] PlayerData is null!");
             return;
         }
         
         _playerData.UnlockLevel(levelID);
         SaveData();
         
-        Debug.Log($"[PlayerDataManager] 🔓 Level unlocked: {levelID}");
+        //Debug.Log($"[PlayerDataManager] 🔓 Level unlocked: {levelID}");
     }
 
     /// <summary>
@@ -421,14 +442,14 @@ public class PlayerDataManager : MonoBehaviour
     {
         if (_playerData == null)
         {
-            Debug.LogError("[PlayerDataManager] PlayerData is null!");
+            //Debug.LogError("[PlayerDataManager] PlayerData is null!");
             return;
         }
         
         _playerData.MarkMapCompleted(mapID);
         SaveData();
         
-        Debug.Log($"[PlayerDataManager] ✓ Map completed: {mapID}");
+        //Debug.Log($"[PlayerDataManager] ✓ Map completed: {mapID}");
     }
 
     /// <summary>
@@ -441,7 +462,7 @@ public class PlayerDataManager : MonoBehaviour
         _playerData.UpdateLevelRecord(levelID, time, score);
         SaveData();
         
-        Debug.Log($"[PlayerDataManager] ✓ Level record updated: {levelID} - Time: {time:F1}s, Score: {score}");
+        //Debug.Log($"[PlayerDataManager] ✓ Level record updated: {levelID} - Time: {time:F1}s, Score: {score}");
     }
 
     /// <summary>
@@ -468,14 +489,14 @@ public class PlayerDataManager : MonoBehaviour
         _playerData.UpdateEndlessRecord(distance);
         SaveData();
         
-        if (distance > oldBest)
-        {
-            Debug.Log($"[PlayerDataManager] 🏆 NEW ENDLESS RECORD: {distance:F0}m (Old: {oldBest:F0}m)");
-        }
-        else
-        {
-            Debug.Log($"[PlayerDataManager] Endless run: {distance:F0}m (Best: {_playerData.bestEndlessDistance:F0}m)");
-        }
+        // if (distance > oldBest)
+        // {
+        //     Debug.Log($"[PlayerDataManager] 🏆 NEW ENDLESS RECORD: {distance:F0}m (Old: {oldBest:F0}m)");
+        // }
+        // else
+        // {
+        //     Debug.Log($"[PlayerDataManager] Endless run: {distance:F0}m (Best: {_playerData.bestEndlessDistance:F0}m)");
+        // }
     }
 
     /// <summary>
@@ -496,7 +517,7 @@ public class PlayerDataManager : MonoBehaviour
     public void RecordGamePlayed()
     {
         _playerData.totalGamesPlayed++;
-        Debug.Log($"[PlayerData] Games played: {_playerData.totalGamesPlayed}");
+        //Debug.Log($"[PlayerData] Games played: {_playerData.totalGamesPlayed}");
     }
 
     /// <summary>
@@ -511,13 +532,13 @@ public class PlayerDataManager : MonoBehaviour
         if (score > _playerData.highScore)
         {
             _playerData.highScore = score;
-            Debug.Log($"[PlayerData] 🏆 New High Score: {score}!");
+            //Debug.Log($"[PlayerData] 🏆 New High Score: {score}!");
         }
         
         // Auto-save
         SaveData();
         
-        Debug.Log($"[PlayerData] Victory recorded! Total wins: {_playerData.totalWins}");
+        //Debug.Log($"[PlayerData] Victory recorded! Total wins: {_playerData.totalWins}");
     }
 
     /// <summary>
@@ -531,7 +552,7 @@ public class PlayerDataManager : MonoBehaviour
         // Auto-save
         SaveData();
         
-        Debug.Log($"[PlayerData] Loss recorded. Total losses: {_playerData.totalLosses}");
+        //Debug.Log($"[PlayerData] Loss recorded. Total losses: {_playerData.totalLosses}");
     }
 
     /// <summary>
@@ -573,7 +594,7 @@ public class PlayerDataManager : MonoBehaviour
         
         OnGoldChanged?.Invoke(_playerData.gold);
         
-        Debug.Log("[PlayerData] ✓ All data reset!");
+        //Debug.Log("[PlayerData] ✓ All data reset!");
     }
     
     #endregion

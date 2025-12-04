@@ -68,13 +68,13 @@ public class RankingManager : MonoBehaviour
         // Try load from save
         if (LoadRankings())
         {
-            Debug.Log("[RankingManager] ✓ Loaded saved rankings");
+            //Debug.Log("[RankingManager] ✓ Loaded saved rankings");
         }
         else
         {
             // First time - Create default with NPCs + You
             CreateDefaultRankings();
-            Debug.Log("[RankingManager] ✓ Created default rankings");
+            //Debug.Log("[RankingManager] ✓ Created default rankings");
         }
         
         // Sort
@@ -101,7 +101,7 @@ public class RankingManager : MonoBehaviour
         float playerBest = PlayerPrefs.GetFloat(PLAYER_BEST_KEY, 0f);
         _rankings.Add(new RankingEntry("You", playerBest, true));
         
-        Debug.Log($"[RankingManager] Created {_rankings.Count} default entries");
+        //Debug.Log($"[RankingManager] Created {_rankings.Count} default entries");
     }
     
     #endregion
@@ -119,7 +119,7 @@ public class RankingManager : MonoBehaviour
         // Only update if new distance is better
         if (distance > currentBest)
         {
-            Debug.Log($"[RankingManager] 🏆 NEW RECORD: {distance:F0}m (Previous: {currentBest:F0}m)");
+            //Debug.Log($"[RankingManager] 🏆 NEW RECORD: {distance:F0}m (Previous: {currentBest:F0}m)");
             
             // Save new best
             PlayerPrefs.SetFloat(PLAYER_BEST_KEY, distance);
@@ -128,10 +128,10 @@ public class RankingManager : MonoBehaviour
             // Update ranking
             UpdatePlayerRanking(distance);
         }
-        else
-        {
-            Debug.Log($"[RankingManager] Distance {distance:F0}m (Best: {currentBest:F0}m)");
-        }
+        // else
+        // {
+        //     Debug.Log($"[RankingManager] Distance {distance:F0}m (Best: {currentBest:F0}m)");
+        // }
     }
     
     /// <summary>
@@ -226,7 +226,7 @@ public class RankingManager : MonoBehaviour
         PlayerPrefs.SetString(SAVE_KEY, json);
         PlayerPrefs.Save();
         
-        Debug.Log($"[RankingManager] ✓ Saved {_rankings.Count} entries");
+        //Debug.Log($"[RankingManager] ✓ Saved {_rankings.Count} entries");
     }
     
     /// <summary>
@@ -270,7 +270,7 @@ public class RankingManager : MonoBehaviour
         
         OnRankingsUpdated?.Invoke();
         
-        Debug.Log("[RankingManager] ✓ Reset to default");
+        //Debug.Log("[RankingManager] ✓ Reset to default");
     }
     
     #endregion
@@ -282,18 +282,18 @@ public class RankingManager : MonoBehaviour
     [ContextMenu("Print Rankings")]
     private void PrintRankings()
     {
-        Debug.Log("═══════════════════════════════════");
-        Debug.Log("CURRENT RANKINGS");
-        Debug.Log("═══════════════════════════════════");
+        // Debug.Log("═══════════════════════════════════");
+        // Debug.Log("CURRENT RANKINGS");
+        // Debug.Log("═══════════════════════════════════");
         
         for (int i = 0; i < _rankings.Count; i++)
         {
             RankingEntry entry = _rankings[i];
             string marker = entry.isPlayer ? " ← YOU" : "";
-            Debug.Log($"#{i + 1}: {entry.playerName} - {entry.GetFormattedDistance()}{marker}");
+            //Debug.Log($"#{i + 1}: {entry.playerName} - {entry.GetFormattedDistance()}{marker}");
         }
         
-        Debug.Log("═══════════════════════════════════");
+        //Debug.Log("═══════════════════════════════════");
     }
     
     [ContextMenu("Reset Rankings")]

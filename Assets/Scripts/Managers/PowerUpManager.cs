@@ -20,8 +20,8 @@ public class PowerUpManager : MonoBehaviour
     [SerializeField] private GameObject coldTowelPrefab;
     [SerializeField] private GameObject medicinePrefab;
     
-    [Header("Debug")]
-    [SerializeField] private bool debugMode = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool debugMode = true;
     
     #endregion
 
@@ -64,7 +64,7 @@ public class PowerUpManager : MonoBehaviour
         FindPlayer();
         
         // Validate prefabs
-        ValidatePrefabs();
+        //ValidatePrefabs();
     }
 
     private void FindPlayer()
@@ -83,27 +83,27 @@ public class PowerUpManager : MonoBehaviour
             }
         }
 
-        if (_player == null)
-        {
-            Debug.LogError("[PowerUpManager] ❌ Player not found!");
-        }
-        else
-        {
-            Debug.Log("[PowerUpManager] ✓ Player found");
-        }
+        // if (_player == null)
+        // {
+        //     Debug.LogError("[PowerUpManager] ❌ Player not found!");
+        // }
+        // else
+        // {
+        //     Debug.Log("[PowerUpManager] ✓ Player found");
+        // }
     }
 
-    private void ValidatePrefabs()
-    {
-        if (iceTeaPrefab == null)
-            Debug.LogWarning("[PowerUpManager] Ice Tea prefab not assigned!");
+    // private void ValidatePrefabs()
+    // {
+    //     if (iceTeaPrefab == null)
+    //         Debug.LogWarning("[PowerUpManager] Ice Tea prefab not assigned!");
         
-        if (coldTowelPrefab == null)
-            Debug.LogWarning("[PowerUpManager] Cold Towel prefab not assigned!");
+    //     if (coldTowelPrefab == null)
+    //         Debug.LogWarning("[PowerUpManager] Cold Towel prefab not assigned!");
         
-        if (medicinePrefab == null)
-            Debug.LogWarning("[PowerUpManager] Medicine prefab not assigned!");
-    }
+    //     if (medicinePrefab == null)
+    //         Debug.LogWarning("[PowerUpManager] Medicine prefab not assigned!");
+    // }
     
     #endregion
 
@@ -116,7 +116,7 @@ public class PowerUpManager : MonoBehaviour
     {
         if (_player == null)
         {
-            Debug.LogError("[PowerUpManager] ❌ Cannot activate - player is null!");
+            //Debug.LogError("[PowerUpManager] ❌ Cannot activate - player is null!");
             FindPlayer(); // Try to find again
             
             if (_player == null)
@@ -137,8 +137,8 @@ public class PowerUpManager : MonoBehaviour
                 // Refresh existing
                 existing.Activate(_player);
                 
-                if (debugMode)
-                    Debug.Log($"[PowerUpManager] ⏱️ Refreshed {type.Name}");
+                // if (debugMode)
+                //     Debug.Log($"[PowerUpManager] ⏱️ Refreshed {type.Name}");
                 
                 return;
             }
@@ -157,13 +157,13 @@ public class PowerUpManager : MonoBehaviour
             _activePowerUps[type] = powerUp;
             powerUp.Activate(_player);
             
-            if (debugMode)
-                Debug.Log($"[PowerUpManager] ✓ Activated {type.Name}");
+            // if (debugMode)
+            //     Debug.Log($"[PowerUpManager] ✓ Activated {type.Name}");
         }
-        else
-        {
-            Debug.LogError($"[PowerUpManager] ❌ Failed to create {type.Name}!");
-        }
+        // else
+        // {
+        //     Debug.LogError($"[PowerUpManager] ❌ Failed to create {type.Name}!");
+        // }
     }
 
     public void DeactivatePowerUp<T>() where T : PowerUpBase
@@ -186,8 +186,8 @@ public class PowerUpManager : MonoBehaviour
             
             _activePowerUps.Remove(type);
             
-            if (debugMode)
-                Debug.Log($"[PowerUpManager] ✓ Deactivated {type.Name}");
+            // if (debugMode)
+            //     Debug.Log($"[PowerUpManager] ✓ Deactivated {type.Name}");
         }
     }
 
@@ -235,8 +235,8 @@ public class PowerUpManager : MonoBehaviour
                 
                 _activePowerUps.Remove(type);
                 
-                if (debugMode)
-                    Debug.Log($"[PowerUpManager] 🗑️ Cleaned up {type.Name}");
+                // if (debugMode)
+                //     Debug.Log($"[PowerUpManager] 🗑️ Cleaned up {type.Name}");
             }
         }
     }
@@ -254,7 +254,7 @@ public class PowerUpManager : MonoBehaviour
         
         if (prefab == null)
         {
-            Debug.LogError($"[PowerUpManager] ❌ No prefab for {typeof(T).Name}!");
+            //Debug.LogError($"[PowerUpManager] ❌ No prefab for {typeof(T).Name}!");
             return null;
         }
 
@@ -267,13 +267,13 @@ public class PowerUpManager : MonoBehaviour
         
         if (component == null)
         {
-            Debug.LogError($"[PowerUpManager] ❌ Prefab missing {typeof(T).Name} component!");
+            //Debug.LogError($"[PowerUpManager] ❌ Prefab missing {typeof(T).Name} component!");
             Destroy(instance);
             return null;
         }
         
-        if (debugMode)
-            Debug.Log($"[PowerUpManager] ✓ Created {typeof(T).Name} instance");
+        // if (debugMode)
+        //     Debug.Log($"[PowerUpManager] ✓ Created {typeof(T).Name} instance");
         
         return component;
     }
@@ -320,18 +320,18 @@ public class PowerUpManager : MonoBehaviour
                 
                 _activePowerUps.Remove(type);
                 
-                Debug.Log($"[PowerUpManager] ❌ Cleared {type.Name} (removed by slow obstacle)");
+                //Debug.Log($"[PowerUpManager] ❌ Cleared {type.Name} (removed by slow obstacle)");
             }
             else
             {
                 _activePowerUps.Remove(type);
             }
         }
-        else
-        {
-            if (debugMode)
-                Debug.Log($"[PowerUpManager] No active {type.Name} to clear");
-        }
+        // else
+        // {
+        //     if (debugMode)
+        //         Debug.Log($"[PowerUpManager] No active {type.Name} to clear");
+        // }
     }
 
     #endregion
@@ -372,8 +372,8 @@ public class PowerUpManager : MonoBehaviour
         
         _activePowerUps.Clear();
         
-        if (debugMode)
-            Debug.Log("[PowerUpManager] All powerups cleared");
+        // if (debugMode)
+        //     Debug.Log("[PowerUpManager] All powerups cleared");
     }
     
     #endregion

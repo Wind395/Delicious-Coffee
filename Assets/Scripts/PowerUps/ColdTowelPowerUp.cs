@@ -18,7 +18,7 @@ public class ColdTowelPowerUp : PowerUpBase
     {
         if (_player == null)
         {
-            Debug.LogError("[ColdTowel] Player is null!");
+            //Debug.LogError("[ColdTowel] Player is null!");
             return;
         }
 
@@ -32,14 +32,14 @@ public class ColdTowelPowerUp : PowerUpBase
         
         AudioManager.Instance?.PlayColdTowelSound();
         
-        Debug.Log($"[ColdTowel] ✓ Speed boost activated! Multiplier: {speedMultiplier}x");
+        //Debug.Log($"[ColdTowel] ✓ Speed boost activated! Multiplier: {speedMultiplier}x");
     }
 
     protected override void OnDeactivate()
     {
         if (_player == null)
         {
-            Debug.LogWarning("[ColdTowel] Player is null on deactivate");
+            //Debug.LogWarning("[ColdTowel] Player is null on deactivate");
             return;
         }
 
@@ -51,12 +51,12 @@ public class ColdTowelPowerUp : PowerUpBase
         //     visualEffect.SetActive(false);
         // }
         
-        Debug.Log("[ColdTowel] ✓ Speed boost deactivated");
+        //Debug.Log("[ColdTowel] ✓ Speed boost deactivated");
     }
 
     protected override void OnRefresh()
     {
-        Debug.Log("[ColdTowel] ⏱️ Speed boost refreshed!");
+        //Debug.Log("[ColdTowel] ⏱️ Speed boost refreshed!");
         AudioManager.Instance?.PlayColdTowelSound();
     }
 }

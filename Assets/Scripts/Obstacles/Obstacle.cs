@@ -27,13 +27,9 @@ public class Obstacle : MonoBehaviour, IPoolable
     [Tooltip("Assign ObstacleTypeDatabase ScriptableObject here")]
     [SerializeField] private ObstacleTypeDatabase typeDatabase;
 
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
-
     private Transform playerTransform;
     private Renderer obstacleRenderer;
     private JSONSectionSpawner _spawner;
-    private bool isInitialized;
     private bool isDestroyed;
     private bool hasCollided = false;
 
@@ -43,7 +39,6 @@ public class Obstacle : MonoBehaviour, IPoolable
 
     public void OnSpawn()
     {
-        isInitialized = false;
         isDestroyed = false;
         hasCollided = false;
 
@@ -51,12 +46,11 @@ public class Obstacle : MonoBehaviour, IPoolable
         SetupRenderer();
 
         // ═══ FIX: Validate database on spawn ═══
-        ValidateDatabase();
+        //ValidateDatabase();
     }
 
     public void OnDespawn()
     {
-        isInitialized = false;
         isDestroyed = false;
         hasCollided = false;
     }
@@ -68,12 +62,11 @@ public class Obstacle : MonoBehaviour, IPoolable
     public void Initialize(JSONSectionSpawner spawner)
     {
         _spawner = spawner;
-        isInitialized = true;
         hasCollided = false;
         FindPlayerReference();
 
         // ═══ FIX: Validate database ═══
-        ValidateDatabase();
+        //ValidateDatabase();
     }
 
     private void FindPlayerReference()
@@ -108,22 +101,22 @@ public class Obstacle : MonoBehaviour, IPoolable
     /// <summary>
     /// Validate database - CRITICAL for Android builds
     /// </summary>
-    private void ValidateDatabase()
-    {
-        if (typeDatabase == null)
-        {
-            Debug.LogError($"[Obstacle] ❌ CRITICAL: ObstacleTypeDatabase is NULL on {gameObject.name}!");
-            Debug.LogError("[Obstacle] → Assign database in Inspector or prefab!");
-            Debug.LogError("[Obstacle] → All obstacles will default to DEADLY behavior!");
-        }
-        else
-        {
-            if (showDebugLogs)
-            {
-                Debug.Log($"[Obstacle] ✓ Database validated on {gameObject.name}");
-            }
-        }
-    }
+    // private void ValidateDatabase()
+    // {
+    //     if (typeDatabase == null)
+    //     {
+    //         Debug.LogError($"[Obstacle] ❌ CRITICAL: ObstacleTypeDatabase is NULL on {gameObject.name}!");
+    //         Debug.LogError("[Obstacle] → Assign database in Inspector or prefab!");
+    //         Debug.LogError("[Obstacle] → All obstacles will default to DEADLY behavior!");
+    //     }
+    //     else
+    //     {
+    //         if (showDebugLogs)
+    //         {
+    //             Debug.Log($"[Obstacle] ✓ Database validated on {gameObject.name}");
+    //         }
+    //     }
+    // }
 
     #endregion
 
@@ -153,10 +146,10 @@ public class Obstacle : MonoBehaviour, IPoolable
 
     void OnTriggerEnter(Collider other)
     {
-        if (showDebugLogs)
-        {
-            Debug.Log($"[Obstacle] OnTriggerEnter - {other.name}, Tag: {other.tag}, Type: {obstacleType}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[Obstacle] OnTriggerEnter - {other.name}, Tag: {other.tag}, Type: {obstacleType}");
+        // }
 
         if (hasCollided || isDestroyed)
         {
@@ -173,10 +166,10 @@ public class Obstacle : MonoBehaviour, IPoolable
 
     void OnCollisionEnter(Collision collision)
     {
-        if (showDebugLogs)
-        {
-            Debug.Log($"[Obstacle] OnCollisionEnter - {collision.gameObject.name}, Tag: {collision.gameObject.tag}, Type: {obstacleType}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[Obstacle] OnCollisionEnter - {collision.gameObject.name}, Tag: {collision.gameObject.tag}, Type: {obstacleType}");
+        // }
 
         if (hasCollided || isDestroyed)
         {
@@ -196,16 +189,16 @@ public class Obstacle : MonoBehaviour, IPoolable
     /// </summary>
     private void HandlePlayerCollision(GameObject playerObj)
     {
-        Debug.Log($"[Obstacle] ════════════════════════════════════════");
-        Debug.Log($"[Obstacle] COLLISION DETECTED");
-        Debug.Log($"[Obstacle] Name: {gameObject.name}");
-        Debug.Log($"[Obstacle] ObstacleType: {obstacleType}");
-        Debug.Log($"[Obstacle] Database: {(typeDatabase != null ? "✓ EXISTS" : "❌ NULL")}");
-        Debug.Log($"[Obstacle] Override: {overrideBehavior}");
+        // Debug.Log($"[Obstacle] ════════════════════════════════════════");
+        // Debug.Log($"[Obstacle] COLLISION DETECTED");
+        // Debug.Log($"[Obstacle] Name: {gameObject.name}");
+        // Debug.Log($"[Obstacle] ObstacleType: {obstacleType}");
+        // Debug.Log($"[Obstacle] Database: {(typeDatabase != null ? "✓ EXISTS" : "❌ NULL")}");
+        // Debug.Log($"[Obstacle] Override: {overrideBehavior}");
 
         if (hasCollided)
         {
-            Debug.LogWarning($"[Obstacle] Already collided, returning");
+            //Debug.LogWarning($"[Obstacle] Already collided, returning");
             return;
         }
 
@@ -215,21 +208,21 @@ public class Obstacle : MonoBehaviour, IPoolable
 
         if (player == null)
         {
-            Debug.LogError("[Obstacle] PlayerController component not found!");
+            //Debug.LogError("[Obstacle] PlayerController component not found!");
             hasCollided = false;
             return;
         }
 
         if (!player.IsAlive)
         {
-            Debug.Log($"[Obstacle] Player is dead, ignoring");
+            //Debug.Log($"[Obstacle] Player is dead, ignoring");
             return;
         }
 
         // 1. Check SHIELD (Medicine)
         if (player.HasShield)
         {
-            Debug.Log($"[Obstacle] 🛡️ Shield blocked!");
+            //Debug.Log($"[Obstacle] 🛡️ Shield blocked!");
             player.OnShieldHitObstacle(gameObject);
             isDestroyed = true;
             return;
@@ -241,7 +234,7 @@ public class Obstacle : MonoBehaviour, IPoolable
 
         if (hasIceTeaInvincibility)
         {
-            Debug.Log($"[Obstacle] 🧊 Ice Tea invincible!");
+            //Debug.Log($"[Obstacle] 🧊 Ice Tea invincible!");
             hasCollided = false;
             return;
         }
@@ -262,7 +255,7 @@ public class Obstacle : MonoBehaviour, IPoolable
             handler.HandleCollision(player, this);
         }
 
-        Debug.Log($"[Obstacle] ════════════════════════════════════════");
+        //Debug.Log($"[Obstacle] ════════════════════════════════════════");
     }
 
     #endregion
@@ -274,25 +267,25 @@ public class Obstacle : MonoBehaviour, IPoolable
     /// </summary>
     private IObstacleBehaviorHandler CreateBehaviorHandler(ObstacleBehavior behavior)
     {
-        Debug.Log($"[Obstacle] CreateBehaviorHandler - Behavior: {behavior}");
+        //Debug.Log($"[Obstacle] CreateBehaviorHandler - Behavior: {behavior}");
 
         switch (behavior)
         {
             case ObstacleBehavior.Deadly:
-                Debug.Log($"[Obstacle] → Creating DeadlyBehaviorHandler");
+                //Debug.Log($"[Obstacle] → Creating DeadlyBehaviorHandler");
                 return new DeadlyBehaviorHandler();
 
             case ObstacleBehavior.Slow:
                 float multiplier = GetSlowMultiplier();
                 float duration = GetSlowDuration();
 
-                Debug.Log($"[Obstacle] → Creating SlowBehaviorHandler");
-                Debug.Log($"[Obstacle]    Multiplier: {multiplier}, Duration: {duration}");
+                //Debug.Log($"[Obstacle] → Creating SlowBehaviorHandler");
+                //Debug.Log($"[Obstacle]    Multiplier: {multiplier}, Duration: {duration}");
 
                 return new SlowBehaviorHandler(multiplier, duration);
 
             default:
-                Debug.LogWarning($"[Obstacle] Unknown behavior, defaulting to Deadly");
+                //Debug.LogWarning($"[Obstacle] Unknown behavior, defaulting to Deadly");
                 return new DeadlyBehaviorHandler();
         }
     }
@@ -302,16 +295,16 @@ public class Obstacle : MonoBehaviour, IPoolable
     /// </summary>
     private ObstacleBehavior GetObstacleBehavior()
     {
-        Debug.Log($"[Obstacle] ═══════════════════════════════════════");
-        Debug.Log($"[Obstacle] GET BEHAVIOR for: {gameObject.name}");
-        Debug.Log($"[Obstacle] ObstacleType: {obstacleType}");
-        Debug.Log($"[Obstacle] Override: {overrideBehavior}");
-        Debug.Log($"[Obstacle] Database: {(typeDatabase != null ? "EXISTS" : "NULL")}");
+        // Debug.Log($"[Obstacle] ═══════════════════════════════════════");
+        // Debug.Log($"[Obstacle] GET BEHAVIOR for: {gameObject.name}");
+        // Debug.Log($"[Obstacle] ObstacleType: {obstacleType}");
+        // Debug.Log($"[Obstacle] Override: {overrideBehavior}");
+        // Debug.Log($"[Obstacle] Database: {(typeDatabase != null ? "EXISTS" : "NULL")}");
 
         // Priority 1: Override
         if (overrideBehavior)
         {
-            Debug.Log($"[Obstacle] Using override behavior: {customBehavior}");
+            //Debug.Log($"[Obstacle] Using override behavior: {customBehavior}");
             return customBehavior;
         }
 
@@ -320,25 +313,25 @@ public class Obstacle : MonoBehaviour, IPoolable
         {
             ObstacleTypeData typeData = typeDatabase.GetTypeData(obstacleType);
             
-            Debug.Log($"[Obstacle] Database lookup result:");
-            Debug.Log($"[Obstacle]   Type: {typeData.type}");
-            Debug.Log($"[Obstacle]   Behavior: {typeData.behavior}");
-            Debug.Log($"[Obstacle]   Display: {typeData.displayName}");
-            Debug.Log($"[Obstacle]   SlowMult: {typeData.slowMultiplier}");
-            Debug.Log($"[Obstacle]   SlowDur: {typeData.slowDuration}");
+            // Debug.Log($"[Obstacle] Database lookup result:");
+            // Debug.Log($"[Obstacle]   Type: {typeData.type}");
+            // Debug.Log($"[Obstacle]   Behavior: {typeData.behavior}");
+            // Debug.Log($"[Obstacle]   Display: {typeData.displayName}");
+            // Debug.Log($"[Obstacle]   SlowMult: {typeData.slowMultiplier}");
+            // Debug.Log($"[Obstacle]   SlowDur: {typeData.slowDuration}");
             
-            Debug.Log($"[Obstacle] → USING DATABASE BEHAVIOR: {typeData.behavior}");
-            Debug.Log($"[Obstacle] ═══════════════════════════════════════");
+            // Debug.Log($"[Obstacle] → USING DATABASE BEHAVIOR: {typeData.behavior}");
+            // Debug.Log($"[Obstacle] ═══════════════════════════════════════");
             
             return typeData.behavior;
         }
 
         // Priority 3: Hardcoded fallback
-        Debug.LogError($"[Obstacle] ❌ DATABASE IS NULL! Using hardcoded fallback");
+        //Debug.LogError($"[Obstacle] ❌ DATABASE IS NULL! Using hardcoded fallback");
         ObstacleBehavior fallback = GetHardcodedBehavior();
         
-        Debug.Log($"[Obstacle] → FALLBACK BEHAVIOR: {fallback}");
-        Debug.Log($"[Obstacle] ═══════════════════════════════════════");
+        //Debug.Log($"[Obstacle] → FALLBACK BEHAVIOR: {fallback}");
+        //Debug.Log($"[Obstacle] ═══════════════════════════════════════");
         
         return fallback;
     }
@@ -359,7 +352,7 @@ public class Obstacle : MonoBehaviour, IPoolable
             case ObstacleType.GenericBarrier:
             case ObstacleType.GenericLow:
             case ObstacleType.GenericHigh:
-                Debug.Log($"[Obstacle] Hardcoded: {obstacleType} → Deadly");
+                //Debug.Log($"[Obstacle] Hardcoded: {obstacleType} → Deadly");
                 return ObstacleBehavior.Deadly;
 
             // ═══ SLOW ═══
@@ -367,11 +360,11 @@ public class Obstacle : MonoBehaviour, IPoolable
             case ObstacleType.ShoppingCart: // ← NEW
             case ObstacleType.TrashCan:
             case ObstacleType.Human:
-                Debug.Log($"[Obstacle] Hardcoded: {obstacleType} → Slow");
+                //Debug.Log($"[Obstacle] Hardcoded: {obstacleType} → Slow");
                 return ObstacleBehavior.Slow;
 
             default:
-                Debug.LogWarning($"[Obstacle] Unknown type {obstacleType}, defaulting to Deadly");
+                //Debug.LogWarning($"[Obstacle] Unknown type {obstacleType}, defaulting to Deadly");
                 return ObstacleBehavior.Deadly;
         }
     }
@@ -448,10 +441,10 @@ public class Obstacle : MonoBehaviour, IPoolable
     {
         obstacleType = type;
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[Obstacle] SetObstacleType: {type}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[Obstacle] SetObstacleType: {type}");
+        // }
     }
 
     public ObstacleType GetObstacleType()
@@ -466,28 +459,28 @@ public class Obstacle : MonoBehaviour, IPoolable
     {
         typeDatabase = database;
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[Obstacle] Database assigned: {(database != null ? "✓" : "✗")}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[Obstacle] Database assigned: {(database != null ? "✓" : "✗")}");
+        // }
     }
 
     #endregion
 
-    #region Editor Validation
+//     #region Editor Validation
 
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
 
-    void OnValidate()
-    {
-        // Validate database assignment
-        if (typeDatabase == null)
-        {
-            Debug.LogWarning($"[Obstacle] {gameObject.name}: ObstacleTypeDatabase not assigned! Will use hardcoded fallback.", this);
-        }
-    }
+//     void OnValidate()
+//     {
+//         // Validate database assignment
+//         if (typeDatabase == null)
+//         {
+//             Debug.LogWarning($"[Obstacle] {gameObject.name}: ObstacleTypeDatabase not assigned! Will use hardcoded fallback.", this);
+//         }
+//     }
 
-#endif
+// #endif
 
-    #endregion
+//     #endregion
 }

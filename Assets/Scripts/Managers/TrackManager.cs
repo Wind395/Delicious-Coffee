@@ -14,8 +14,6 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private float trackLength = 50f;
 
     [Header("Safety Settings")]
-    [Tooltip("Minimum tracks ahead of player")]
-    [SerializeField] private int minTracksAhead = 3;
 
     [Tooltip("Distance ahead to start spawning (meters)")]
     [SerializeField] private float spawnAheadDistance = 150f;
@@ -31,8 +29,7 @@ public class TrackManager : MonoBehaviour
     [SerializeField] private bool usePooling = true;
     [SerializeField] private int poolSize = 10;
 
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
+
 
     #endregion
 
@@ -54,10 +51,10 @@ public class TrackManager : MonoBehaviour
     {
         _nextSpawnZ = 0f;
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[TrackManager] Awake - Reset spawn position to 0");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[TrackManager] Awake - Reset spawn position to 0");
+        // }
     }
 
     void Start()
@@ -153,10 +150,10 @@ public class TrackManager : MonoBehaviour
             }
         }
 
-        if (showDebugLogs && recycled > 0)
-        {
-            Debug.Log($"[TrackManager] Recycled {recycled} old tracks");
-        }
+        // if (showDebugLogs && recycled > 0)
+        // {
+        //     Debug.Log($"[TrackManager] Recycled {recycled} old tracks");
+        // }
     }
 
     #endregion
@@ -165,13 +162,13 @@ public class TrackManager : MonoBehaviour
 
     private void Initialize()
     {
-        Debug.Log("[TrackManager] ===== INITIALIZING =====");
+        //.Log("[TrackManager] ===== INITIALIZING =====");
 
         LoadFloorPrefabFromMap();
 
         if (currentFloorPrefab == null)
         {
-            Debug.LogError("[TrackManager] ❌ No floor prefab available!");
+            //Debug.LogError("[TrackManager] ❌ No floor prefab available!");
             return;
         }
 
@@ -188,22 +185,22 @@ public class TrackManager : MonoBehaviour
 
         SpawnInitialTracks();
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[TrackManager] ✓ Initialized with {_activeTracks.Count} tracks");
-            Debug.Log($"[TrackManager] ✓ Floor: {currentFloorPrefab.name}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[TrackManager] ✓ Initialized with {_activeTracks.Count} tracks");
+        //     Debug.Log($"[TrackManager] ✓ Floor: {currentFloorPrefab.name}");
+        // }
     }
 
     private void FindPlayer()
     {
-        CharacterSpawner spawner = FindObjectOfType<CharacterSpawner>();
+        CharacterSpawner spawner = FindAnyObjectByType<CharacterSpawner>();
         if (spawner != null && spawner.CurrentPlayer != null)
         {
             _playerTransform = spawner.CurrentPlayer.transform;
 
-            if (showDebugLogs)
-                Debug.Log("[TrackManager] ✓ Found player via CharacterSpawner");
+            // if (showDebugLogs)
+            //     Debug.Log("[TrackManager] ✓ Found player via CharacterSpawner");
             return;
         }
 
@@ -214,8 +211,8 @@ public class TrackManager : MonoBehaviour
             {
                 _playerTransform = player.transform;
 
-                if (showDebugLogs)
-                    Debug.Log("[TrackManager] ✓ Found player via GameManager");
+                // if (showDebugLogs)
+                //     Debug.Log("[TrackManager] ✓ Found player via GameManager");
                 return;
             }
         }
@@ -225,15 +222,15 @@ public class TrackManager : MonoBehaviour
         {
             _playerTransform = playerObj.transform;
 
-            if (showDebugLogs)
-                Debug.Log("[TrackManager] ✓ Found player via tag");
+            // if (showDebugLogs)
+            //     Debug.Log("[TrackManager] ✓ Found player via tag");
             return;
         }
 
-        if (showDebugLogs)
-        {
-            Debug.LogWarning("[TrackManager] ⚠ Player not found (will retry in Update)");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.LogWarning("[TrackManager] ⚠ Player not found (will retry in Update)");
+        // }
     }
 
     private void ClearAllTracks()
@@ -259,10 +256,10 @@ public class TrackManager : MonoBehaviour
         // ═══ NEW: Clear floor type tracking ═══
         _trackFloorTypes.Clear();
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[TrackManager] Cleared all existing tracks");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[TrackManager] Cleared all existing tracks");
+        // }
     }
 
     private void InitializePool()
@@ -274,10 +271,10 @@ public class TrackManager : MonoBehaviour
             _trackPool.Enqueue(track);
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[TrackManager] ✓ Pool initialized with {poolSize} tracks");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[TrackManager] ✓ Pool initialized with {poolSize} tracks");
+        // }
     }
 
     private void SpawnInitialTracks()
@@ -287,10 +284,10 @@ public class TrackManager : MonoBehaviour
             SpawnTrack();
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[TrackManager] ✓ Spawned {numberOfActiveTracks} initial tracks");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[TrackManager] ✓ Spawned {numberOfActiveTracks} initial tracks");
+        // }
     }
 
     #endregion
@@ -307,33 +304,33 @@ public class TrackManager : MonoBehaviour
             {
                 currentFloorPrefab = currentMap.floorPrefab;
                 
-                if (showDebugLogs)
-                {
-                    Debug.Log($"[TrackManager] ✓ Loaded floor from MapData: {currentFloorPrefab.name}");
-                    Debug.Log($"[TrackManager]   Map: {currentMap.mapName}");
-                }
+                // if (showDebugLogs)
+                // {
+                //     Debug.Log($"[TrackManager] ✓ Loaded floor from MapData: {currentFloorPrefab.name}");
+                //     Debug.Log($"[TrackManager]   Map: {currentMap.mapName}");
+                // }
                 
                 return;
             }
-            else if (currentMap != null)
-            {
-                Debug.LogWarning($"[TrackManager] ⚠️ Map '{currentMap.mapName}' has no floor prefab!");
-            }
+            // else if (currentMap != null)
+            // {
+            //     Debug.LogWarning($"[TrackManager] ⚠️ Map '{currentMap.mapName}' has no floor prefab!");
+            // }
         }
 
         if (trackPrefab != null)
         {
             currentFloorPrefab = trackPrefab;
             
-            if (showDebugLogs)
-            {
-                Debug.LogWarning("[TrackManager] ⚠️ Using fallback floor prefab");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.LogWarning("[TrackManager] ⚠️ Using fallback floor prefab");
+            // }
         }
-        else
-        {
-            Debug.LogError("[TrackManager] ❌ No floor prefab assigned!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[TrackManager] ❌ No floor prefab assigned!");
+        // }
     }
 
     #endregion
@@ -355,10 +352,10 @@ public class TrackManager : MonoBehaviour
 
         _nextSpawnZ += trackLength;
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[TrackManager] Spawned track at Z={position.z}, next: {_nextSpawnZ}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[TrackManager] Spawned track at Z={position.z}, next: {_nextSpawnZ}");
+        // }
     }
 
     #endregion
@@ -372,24 +369,24 @@ public class TrackManager : MonoBehaviour
     {
         if (newFloorPrefab == null)
         {
-            Debug.LogError("[TrackManager] Cannot set null floor prefab!");
+            //Debug.LogError("[TrackManager] Cannot set null floor prefab!");
             return;
         }
 
         if (currentFloorPrefab == newFloorPrefab)
         {
-            if (showDebugLogs)
-            {
-                Debug.Log("[TrackManager] Same floor prefab - skipping");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[TrackManager] Same floor prefab - skipping");
+            // }
             return;
         }
 
-        Debug.Log($"[TrackManager] ═══════════════════════════════");
-        Debug.Log($"[TrackManager] 🔄 SMOOTH FLOOR CHANGE");
-        Debug.Log($"[TrackManager] Old: {currentFloorPrefab?.name}");
-        Debug.Log($"[TrackManager] New: {newFloorPrefab.name}");
-        Debug.Log($"[TrackManager] ═══════════════════════════════");
+        // Debug.Log($"[TrackManager] ═══════════════════════════════");
+        // Debug.Log($"[TrackManager] 🔄 SMOOTH FLOOR CHANGE");
+        // Debug.Log($"[TrackManager] Old: {currentFloorPrefab?.name}");
+        // Debug.Log($"[TrackManager] New: {newFloorPrefab.name}");
+        // Debug.Log($"[TrackManager] ═══════════════════════════════");
 
         // ═══ JUST SWAP REFERENCE (NO REBUILD) ═══
         currentFloorPrefab = newFloorPrefab;
@@ -397,8 +394,8 @@ public class TrackManager : MonoBehaviour
         // ═══ OPTIONAL: Force spawn new tracks ahead ═══
         EnsureTracksAhead();
 
-        Debug.Log($"[TrackManager] ✓ Floor changed - old tracks will recycle naturally");
-        Debug.Log($"[TrackManager] ✓ New tracks will use: {newFloorPrefab.name}");
+        // Debug.Log($"[TrackManager] ✓ Floor changed - old tracks will recycle naturally");
+        // Debug.Log($"[TrackManager] ✓ New tracks will use: {newFloorPrefab.name}");
     }
 
     /// <summary>
@@ -413,7 +410,7 @@ public class TrackManager : MonoBehaviour
 
         if (_playerTransform == null)
         {
-            Debug.LogWarning("[TrackManager] No player - cannot ensure tracks");
+            //Debug.LogWarning("[TrackManager] No player - cannot ensure tracks");
             return;
         }
 
@@ -425,10 +422,10 @@ public class TrackManager : MonoBehaviour
             spawned++;
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[TrackManager] ✓ Ensured tracks ahead: spawned {spawned}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[TrackManager] ✓ Ensured tracks ahead: spawned {spawned}");
+        // }
     }
 
     /// <summary>
@@ -459,7 +456,7 @@ public class TrackManager : MonoBehaviour
     {
         if (currentFloorPrefab == null)
         {
-            Debug.LogError("[TrackManager] Cannot create track - no floor prefab!");
+            //Debug.LogError("[TrackManager] Cannot create track - no floor prefab!");
             return null;
         }
 
@@ -475,10 +472,10 @@ public class TrackManager : MonoBehaviour
 
     public void ResetTracks()
     {
-        if (showDebugLogs)
-        {
-            Debug.Log("[TrackManager] === RESETTING TRACKS ===");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[TrackManager] === RESETTING TRACKS ===");
+        // }
 
         _nextSpawnZ = 0f;
 
@@ -486,10 +483,10 @@ public class TrackManager : MonoBehaviour
 
         SpawnInitialTracks();
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[TrackManager] ✓ Reset complete");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[TrackManager] ✓ Reset complete");
+        // }
     }
 
     public void SetTrackColor(Color color)
