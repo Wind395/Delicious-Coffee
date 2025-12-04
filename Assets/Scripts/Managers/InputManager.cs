@@ -10,20 +10,38 @@ public class InputManager : MonoBehaviour
     #region Singleton
     
     private static InputManager _instance;
+    private static bool _isQuitting;
     public static InputManager Instance
     {
         get
         {
+            if (_isQuitting)
+            {
+                return null;
+            }
             if (_instance == null)
             {
-                _instance = FindObjectOfType<InputManager>();
-                if (_instance == null)
+                _instance = FindAnyObjectByType<InputManager>();
+                if (_instance == null && !_isQuitting)
                 {
                     GameObject go = new GameObject("InputManager");
                     _instance = go.AddComponent<InputManager>();
                 }
             }
             return _instance;
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        _isQuitting = true;
+    }
+
+    void OnDestroy()
+    {
+        if (_instance == this)
+        {
+            _isQuitting = true;
         }
     }
     
@@ -59,13 +77,9 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float tapPositionThreshold = 10f;
 
     [Header("=== SENSITIVITY ===")]
-    [Tooltip("Swipe angle tolerance (degrees)")]
-    [Range(0f, 45f)]
-    [SerializeField] private float angleTolerance = 30f;
 
     [Header("=== DEBUG ===")]
     [SerializeField] private bool showDebugGizmos = true;
-    [SerializeField] private bool showSwipeLines = true;
     
     #endregion
 
@@ -118,7 +132,7 @@ public class InputManager : MonoBehaviour
         _isEnabled = true;
         ClearInputState();
         
-        Debug.Log("[InputManager] Started - Input enabled by default");
+        //Debug.Log("[InputManager] Started - Input enabled by default");
     }
 
     void Update()
@@ -290,10 +304,10 @@ public class InputManager : MonoBehaviour
         {
             OnTap?.Invoke();
             
-            if (showDebugGizmos)
-            {
-                Debug.Log("[Input] Tap detected");
-            }
+            // if (showDebugGizmos)
+            // {
+            //     Debug.Log("[Input] Tap detected");
+            // }
             return;
         }
 
@@ -377,10 +391,10 @@ public class InputManager : MonoBehaviour
     /// </summary>
     private void LogSwipe(string direction, float angle, float magnitude)
     {
-        if (showDebugGizmos)
-        {
-            Debug.Log($"[Input] Swipe {direction} | Angle: {angle:F1}° | Distance: {magnitude:F1}px");
-        }
+        // if (showDebugGizmos)
+        // {
+        //     Debug.Log($"[Input] Swipe {direction} | Angle: {angle:F1}° | Distance: {magnitude:F1}px");
+        // }
     }
 
     #endregion
@@ -402,10 +416,10 @@ public class InputManager : MonoBehaviour
             ClearInputState();
         }
         
-        if (showDebugGizmos)
-        {
-            Debug.Log($"[InputManager] Input {(enabled ? "ENABLED" : "DISABLED")}");
-        }
+        // if (showDebugGizmos)
+        // {
+        //     Debug.Log($"[InputManager] Input {(enabled ? "ENABLED" : "DISABLED")}");
+        // }
     }
 
     /// <summary>
@@ -419,10 +433,10 @@ public class InputManager : MonoBehaviour
         _touchCurrentPos = Vector2.zero;
         _touchStartTime = 0f;
         
-        if (showDebugGizmos)
-        {
-            Debug.Log("[InputManager] Input state cleared");
-        }
+        // if (showDebugGizmos)
+        // {
+        //     Debug.Log("[InputManager] Input state cleared");
+        // }
     }
 
     /// <summary>
@@ -445,7 +459,7 @@ public class InputManager : MonoBehaviour
     public void SetInputType(InputType type)
     {
         inputType = type;
-        Debug.Log($"[InputManager] Input type: {type}");
+        //Debug.Log($"[InputManager] Input type: {type}");
     }
 
     /// <summary>

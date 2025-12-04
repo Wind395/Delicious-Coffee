@@ -59,7 +59,7 @@ public class PowerUpCollectible : CollectibleBase
     /// </summary>
     protected override void OnCollected(PlayerController player)
     {
-        Debug.Log($"[PowerUp] Collected {powerUpType} at {transform.position}");
+        //Debug.Log($"[PowerUp] Collected {powerUpType} at {transform.position}");
         
         // Activate powerup
         bool activated = ActivatePowerUp();
@@ -72,10 +72,10 @@ public class PowerUpCollectible : CollectibleBase
             // Spawn VFX
             SpawnCollectionVFX();
         }
-        else
-        {
-            Debug.LogError($"[PowerUp] Failed to activate {powerUpType}!");
-        }
+        // else
+        // {
+        //     Debug.LogError($"[PowerUp] Failed to activate {powerUpType}!");
+        // }
     }
 
     /// <summary>
@@ -88,10 +88,10 @@ public class PowerUpCollectible : CollectibleBase
         {
             _settings.ApplySettings(transform);
             
-            Debug.Log($"[PowerUp] ✓ Applied settings: " +
-                     $"Offset={_settings.PositionOffset}, " +
-                     $"Float={_settings.EnableFloating}, " +
-                     $"Rotate={_settings.EnableRotation}");
+            // Debug.Log($"[PowerUp] ✓ Applied settings: " +
+            //          $"Offset={_settings.PositionOffset}, " +
+            //          $"Float={_settings.EnableFloating}, " +
+            //          $"Rotate={_settings.EnableRotation}");
         }
         
         // Reset bobbing timer with random offset
@@ -125,7 +125,7 @@ public class PowerUpCollectible : CollectibleBase
     {
         if (PowerUpManager.Instance == null)
         {
-            Debug.LogError("[PowerUp] PowerUpManager not found!");
+            //Debug.LogError("[PowerUp] PowerUpManager not found!");
             return false;
         }
 
@@ -144,7 +144,7 @@ public class PowerUpCollectible : CollectibleBase
                 return true;
 
             default:
-                Debug.LogWarning($"[PowerUp] Unknown type: {powerUpType}");
+                //Debug.LogWarning($"[PowerUp] Unknown type: {powerUpType}");
                 return false;
         }
     }

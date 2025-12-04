@@ -30,7 +30,7 @@ public class JSONSectionLoader : MonoBehaviour
 
             if (jsonFile == null)
             {
-                Debug.LogError($"[JSONLoader] Cannot find JSON file: Resources/SectionData/{jsonFileName}.json");
+                //Debug.LogError($"[JSONLoader] Cannot find JSON file: Resources/SectionData/{jsonFileName}.json");
                 return false;
             }
 
@@ -39,7 +39,7 @@ public class JSONSectionLoader : MonoBehaviour
 
             if (wrapper == null || wrapper.sectionLibrary == null)
             {
-                Debug.LogError("[JSONLoader] Failed to parse JSON!");
+                //Debug.LogError("[JSONLoader] Failed to parse JSON!");
                 return false;
             }
 
@@ -48,14 +48,14 @@ public class JSONSectionLoader : MonoBehaviour
             // Index by difficulty
             IndexSectionsByDifficulty();
 
-            Debug.Log($"[JSONLoader] ✓ Loaded {loadedLibrary.sections.Count} sections from JSON");
-            Debug.Log($"[JSONLoader] Version: {loadedLibrary.metadata.version}");
+            //Debug.Log($"[JSONLoader] ✓ Loaded {loadedLibrary.sections.Count} sections from JSON");
+            //Debug.Log($"[JSONLoader] Version: {loadedLibrary.metadata.version}");
 
             return true;
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError($"[JSONLoader] Error loading JSON: {e.Message}");
+            //Debug.LogError($"[JSONLoader] Error loading JSON: {e.Message}");
             return false;
         }
     }
@@ -69,7 +69,7 @@ public class JSONSectionLoader : MonoBehaviour
         {
             if (!File.Exists(path))
             {
-                Debug.LogError($"[JSONLoader] File not found: {path}");
+                //Debug.LogError($"[JSONLoader] File not found: {path}");
                 return false;
             }
 
@@ -78,19 +78,19 @@ public class JSONSectionLoader : MonoBehaviour
 
             if (wrapper == null || wrapper.sectionLibrary == null)
             {
-                Debug.LogError("[JSONLoader] Failed to parse JSON!");
+                //Debug.LogError("[JSONLoader] Failed to parse JSON!");
                 return false;
             }
 
             loadedLibrary = wrapper.sectionLibrary;
             IndexSectionsByDifficulty();
 
-            Debug.Log($"[JSONLoader] ✓ Loaded from file: {path}");
+            //Debug.Log($"[JSONLoader] ✓ Loaded from file: {path}");
             return true;
         }
-        catch (System.Exception e)
+        catch (System.Exception)
         {
-            Debug.LogError($"[JSONLoader] Error: {e.Message}");
+            //Debug.LogError($"[JSONLoader] Error: {e.Message}");
             return false;
         }
     }
@@ -114,11 +114,11 @@ public class JSONSectionLoader : MonoBehaviour
             sectionsByDifficulty[diff].Add(section);
         }
 
-        Debug.Log($"[JSONLoader] Indexed sections:");
-        foreach (var kvp in sectionsByDifficulty)
-        {
-            Debug.Log($"  Difficulty {kvp.Key}: {kvp.Value.Count} sections");
-        }
+       // Debug.Log($"[JSONLoader] Indexed sections:");
+        // foreach (var kvp in sectionsByDifficulty)
+        // {
+        //     Debug.Log($"  Difficulty {kvp.Key}: {kvp.Value.Count} sections");
+        // }
     }
 
     #endregion
@@ -132,7 +132,7 @@ public class JSONSectionLoader : MonoBehaviour
     {
         if (loadedLibrary == null || loadedLibrary.sections.Count == 0)
         {
-            Debug.LogError("[JSONLoader] No sections loaded!");
+            //Debug.LogError("[JSONLoader] No sections loaded!");
             return null;
         }
 
@@ -149,7 +149,7 @@ public class JSONSectionLoader : MonoBehaviour
 
         if (validSections.Count == 0)
         {
-            Debug.LogWarning($"[JSONLoader] No sections found for difficulty <= {maxDifficulty}");
+            //Debug.LogWarning($"[JSONLoader] No sections found for difficulty <= {maxDifficulty}");
             return loadedLibrary.sections[Random.Range(0, loadedLibrary.sections.Count)];
         }
 
@@ -194,101 +194,101 @@ public class JSONSectionLoader : MonoBehaviour
     /// <summary>
     /// Validate loaded data
     /// </summary>
-    public bool ValidateSections()
-    {
-        if (loadedLibrary == null || loadedLibrary.sections == null)
-        {
-            Debug.LogError("[JSONLoader] No data to validate!");
-            return false;
-        }
+    // public bool ValidateSections()
+    // {
+    //     if (loadedLibrary == null || loadedLibrary.sections == null)
+    //     {
+    //         //Debug.LogError("[JSONLoader] No data to validate!");
+    //         return false;
+    //     }
 
-        bool isValid = true;
+    //     bool isValid = true;
 
-        foreach (var section in loadedLibrary.sections)
-        {
-            // Check required fields
-            if (string.IsNullOrEmpty(section.id))
-            {
-                Debug.LogError($"[JSONLoader] Section missing ID!");
-                isValid = false;
-            }
+    //     foreach (var section in loadedLibrary.sections)
+    //     {
+    //         // Check required fields
+    //         if (string.IsNullOrEmpty(section.id))
+    //         {
+    //             //Debug.LogError($"[JSONLoader] Section missing ID!");
+    //             isValid = false;
+    //         }
 
-            if (section.length <= 0)
-            {
-                Debug.LogError($"[JSONLoader] Section {section.id} has invalid length: {section.length}");
-                isValid = false;
-            }
+    //         if (section.length <= 0)
+    //         {
+    //             //Debug.LogError($"[JSONLoader] Section {section.id} has invalid length: {section.length}");
+    //             isValid = false;
+    //         }
 
-            // Check obstacles
-            if (section.obstacles != null)
-            {
-                foreach (var obs in section.obstacles)
-                {
-                    if (obs.lane < 0 || obs.lane > 2)
-                    {
-                        Debug.LogWarning($"[JSONLoader] Section {section.id}: Invalid lane {obs.lane}");
-                    }
+    //         // Check obstacles
+    //         if (section.obstacles != null)
+    //         {
+    //             foreach (var obs in section.obstacles)
+    //             {
+    //                 if (obs.lane < 0 || obs.lane > 2)
+    //                 {
+    //                     Debug.LogWarning($"[JSONLoader] Section {section.id}: Invalid lane {obs.lane}");
+    //                 }
 
-                    if (obs.zPosition < 0 || obs.zPosition > section.length)
-                    {
-                        Debug.LogWarning($"[JSONLoader] Section {section.id}: Obstacle Z position out of bounds: {obs.zPosition}");
-                    }
-                }
-            }
+    //                 if (obs.zPosition < 0 || obs.zPosition > section.length)
+    //                 {
+    //                     Debug.LogWarning($"[JSONLoader] Section {section.id}: Obstacle Z position out of bounds: {obs.zPosition}");
+    //                 }
+    //             }
+    //         }
 
-            // Check coins
-            if (section.coins != null)
-            {
-                foreach (var coin in section.coins)
-                {
-                    if (coin.count <= 0)
-                    {
-                        Debug.LogWarning($"[JSONLoader] Section {section.id}: Invalid coin count: {coin.count}");
-                    }
-                }
-            }
-        }
+    //         // Check coins
+    //         if (section.coins != null)
+    //         {
+    //             foreach (var coin in section.coins)
+    //             {
+    //                 if (coin.count <= 0)
+    //                 {
+    //                     Debug.LogWarning($"[JSONLoader] Section {section.id}: Invalid coin count: {coin.count}");
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        if (isValid)
-        {
-            Debug.Log("[JSONLoader] ✓ All sections validated successfully");
-        }
+    //     if (isValid)
+    //     {
+    //         Debug.Log("[JSONLoader] ✓ All sections validated successfully");
+    //     }
 
-        return isValid;
-    }
-
-    #endregion
-
-    #region Debug
-
-    [ContextMenu("Load JSON")]
-    public void LoadJSON()
-    {
-        LoadSections();
-    }
-
-    [ContextMenu("Validate JSON")]
-    public void ValidateJSON()
-    {
-        ValidateSections();
-    }
-
-    [ContextMenu("Print All Sections")]
-    public void PrintAllSections()
-    {
-        if (loadedLibrary == null)
-        {
-            Debug.Log("[JSONLoader] No data loaded");
-            return;
-        }
-
-        Debug.Log("===== ALL SECTIONS =====");
-        foreach (var section in loadedLibrary.sections)
-        {
-            Debug.Log($"ID: {section.id}, Name: {section.name}, Difficulty: {section.difficulty}, " +
-                     $"Obstacles: {section.obstacles?.Count ?? 0}, Coins: {section.coins?.Count ?? 0}");
-        }
-    }
+    //     return isValid;
+    // }
 
     #endregion
+
+    // #region Debug
+
+    // [ContextMenu("Load JSON")]
+    // public void LoadJSON()
+    // {
+    //     LoadSections();
+    // }
+
+    // [ContextMenu("Validate JSON")]
+    // public void ValidateJSON()
+    // {
+    //     //ValidateSections();
+    // }
+
+    // [ContextMenu("Print All Sections")]
+    // public void PrintAllSections()
+    // {
+    //     if (loadedLibrary == null)
+    //     {
+    //         Debug.Log("[JSONLoader] No data loaded");
+    //         return;
+    //     }
+
+    //     Debug.Log("===== ALL SECTIONS =====");
+    //     foreach (var section in loadedLibrary.sections)
+    //     {
+    //         Debug.Log($"ID: {section.id}, Name: {section.name}, Difficulty: {section.difficulty}, " +
+    //                  $"Obstacles: {section.obstacles?.Count ?? 0}, Coins: {section.coins?.Count ?? 0}");
+    //     }
+    // }
+
+    // #endregion
 }

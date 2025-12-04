@@ -58,12 +58,12 @@ public abstract class PowerUpBase : MonoBehaviour
                 ShowVFX();
             }
             
-            Debug.Log($"[PowerUp] {GetType().Name} activated for {duration}s");
+            //Debug.Log($"[PowerUp] {GetType().Name} activated for {duration}s");
         }
         else
         {
             OnRefresh();
-            Debug.Log($"[PowerUp] {GetType().Name} refreshed! Timer reset to {duration}s");
+            //Debug.Log($"[PowerUp] {GetType().Name} refreshed! Timer reset to {duration}s");
         }
     }
 
@@ -74,7 +74,7 @@ public abstract class PowerUpBase : MonoBehaviour
     {
         if (!_isActive)
         {
-            Debug.LogWarning($"[PowerUp] {GetType().Name} already inactive");
+            //Debug.LogWarning($"[PowerUp] {GetType().Name} already inactive");
             return;
         }
         
@@ -89,7 +89,7 @@ public abstract class PowerUpBase : MonoBehaviour
             HideVFX();
         }
         
-        Debug.Log($"[PowerUp] {GetType().Name} deactivated");
+        //Debug.Log($"[PowerUp] {GetType().Name} deactivated");
         
         // Notify manager to remove
         if (PowerUpManager.Instance != null)
@@ -125,11 +125,11 @@ public abstract class PowerUpBase : MonoBehaviour
         if (PowerUpVFXController.Instance != null)
         {
             PowerUpVFXController.Instance.ShowVFX(vfxType);
-            Debug.Log($"[PowerUp] ✨ VFX shown: {vfxType}");
+            //Debug.Log($"[PowerUp] ✨ VFX shown: {vfxType}");
         }
         else
         {
-            Debug.LogWarning($"[PowerUp] PowerUpVFXController not found!");
+            //Debug.LogWarning($"[PowerUp] PowerUpVFXController not found!");
             
             // Fallback to old visual effect
             if (visualEffect != null)
@@ -147,7 +147,7 @@ public abstract class PowerUpBase : MonoBehaviour
         if (PowerUpVFXController.Instance != null)
         {
             PowerUpVFXController.Instance.HideVFX(vfxType);
-            Debug.Log($"[PowerUp] ⚫ VFX hidden: {vfxType}");
+            //Debug.Log($"[PowerUp] ⚫ VFX hidden: {vfxType}");
         }
         else
         {

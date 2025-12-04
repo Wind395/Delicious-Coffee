@@ -192,7 +192,7 @@ public class ObstacleTypeDatabase : ScriptableObject
             }
         };
         
-        Debug.Log("[ObstacleTypeDatabase] ✓ Initialized with default types (including ShoppingCart & Barrier)");
+        //Debug.Log("[ObstacleTypeDatabase] ✓ Initialized with default types (including ShoppingCart & Barrier)");
     }
     
     /// <summary>
@@ -202,37 +202,37 @@ public class ObstacleTypeDatabase : ScriptableObject
     {
         if (obstacleTypes == null || obstacleTypes.Length == 0)
         {
-            Debug.LogError("[ObstacleTypeDatabase] ❌ Database is EMPTY! Call 'Initialize Default Types'");
+            //Debug.LogError("[ObstacleTypeDatabase] ❌ Database is EMPTY! Call 'Initialize Default Types'");
             InitializeDefaultTypes(); // Auto-fix
         }
 
         // Debug: Show all available types
-        Debug.Log($"[ObstacleTypeDatabase] Looking for: {type}");
-        Debug.Log($"[ObstacleTypeDatabase] Available types: {obstacleTypes.Length}");
+        // Debug.Log($"[ObstacleTypeDatabase] Looking for: {type}");
+        // Debug.Log($"[ObstacleTypeDatabase] Available types: {obstacleTypes.Length}");
         
         foreach (var data in obstacleTypes)
         {
             if (data.type == type)
             {
-                Debug.Log($"[ObstacleTypeDatabase] ✓ FOUND: {type}");
-                Debug.Log($"[ObstacleTypeDatabase]   → Behavior: {data.behavior}");
-                Debug.Log($"[ObstacleTypeDatabase]   → Display: {data.displayName}");
-                Debug.Log($"[ObstacleTypeDatabase]   → Slow: {data.slowMultiplier}x for {data.slowDuration}s");
+                // Debug.Log($"[ObstacleTypeDatabase] ✓ FOUND: {type}");
+                // Debug.Log($"[ObstacleTypeDatabase]   → Behavior: {data.behavior}");
+                // Debug.Log($"[ObstacleTypeDatabase]   → Display: {data.displayName}");
+                // Debug.Log($"[ObstacleTypeDatabase]   → Slow: {data.slowMultiplier}x for {data.slowDuration}s");
                 
                 return data;
             }
         }
         
         // NOT FOUND - Return default
-        Debug.LogError($"[ObstacleTypeDatabase] ❌ Type {type} NOT FOUND in database!");
-        Debug.LogError($"[ObstacleTypeDatabase] Available types:");
+        // Debug.LogError($"[ObstacleTypeDatabase] ❌ Type {type} NOT FOUND in database!");
+        // Debug.LogError($"[ObstacleTypeDatabase] Available types:");
         
-        foreach (var data in obstacleTypes)
-        {
-            Debug.LogError($"  - {data.type} ({data.displayName})");
-        }
+        // foreach (var data in obstacleTypes)
+        // {
+        //     Debug.LogError($"  - {data.type} ({data.displayName})");
+        // }
         
-        Debug.LogError($"[ObstacleTypeDatabase] → Returning default DEADLY behavior");
+        //Debug.LogError($"[ObstacleTypeDatabase] → Returning default DEADLY behavior");
         
         return new ObstacleTypeData 
         { 
@@ -268,25 +268,25 @@ public class ObstacleTypeDatabase : ScriptableObject
     {
         if (obstacleTypes == null || obstacleTypes.Length == 0)
         {
-            Debug.LogWarning("[ObstacleTypeDatabase] Database is empty!");
+            //Debug.LogWarning("[ObstacleTypeDatabase] Database is empty!");
             return;
         }
 
-        Debug.Log("═══════════════════════════════════════════");
-        Debug.Log("OBSTACLE TYPE DATABASE");
-        Debug.Log("═══════════════════════════════════════════");
+        // Debug.Log("═══════════════════════════════════════════");
+        // Debug.Log("OBSTACLE TYPE DATABASE");
+        // Debug.Log("═══════════════════════════════════════════");
         
         foreach (var data in obstacleTypes)
         {
             string behaviorStr = data.behavior == ObstacleBehavior.Deadly ? "💀 DEADLY" : "🐌 SLOW";
-            Debug.Log($"{behaviorStr} | {data.type} ({data.displayName})");
+            //Debug.Log($"{behaviorStr} | {data.type} ({data.displayName})");
             
-            if (data.behavior == ObstacleBehavior.Slow)
-            {
-                Debug.Log($"   → Speed: {data.slowMultiplier * 100:F0}%, Duration: {data.slowDuration}s");
-            }
+            // if (data.behavior == ObstacleBehavior.Slow)
+            // {
+            //     Debug.Log($"   → Speed: {data.slowMultiplier * 100:F0}%, Duration: {data.slowDuration}s");
+            // }
         }
         
-        Debug.Log("═══════════════════════════════════════════");
+        //Debug.Log("═══════════════════════════════════════════");
     }
 }

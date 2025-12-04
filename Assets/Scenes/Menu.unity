@@ -1648,7 +1648,6 @@ GameObject:
   m_Component:
   - component: {fileID: 381284499}
   - component: {fileID: 381284498}
-  - component: {fileID: 381284497}
   - component: {fileID: 381284496}
   m_Layer: 0
   m_Name: Camera House 1
@@ -1701,14 +1700,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &381284497
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 381284495}
-  m_Enabled: 1
 --- !u!20 &381284498
 Camera:
   m_ObjectHideFlags: 0
@@ -1872,7 +1863,6 @@ MonoBehaviour:
   backButton: {fileID: 508768048}
   levelSelectionUI: {fileID: 456467320}
   modeUI: {fileID: 342876712}
-  showDebugLogs: 0
 --- !u!1 &390983369
 GameObject:
   m_ObjectHideFlags: 0
@@ -2361,7 +2351,6 @@ MonoBehaviour:
   levelContainer: {fileID: 1095386735}
   backButton: {fileID: 707205962}
   mapUI: {fileID: 386772403}
-  showDebugLogs: 0
 --- !u!1 &468467970
 GameObject:
   m_ObjectHideFlags: 0
@@ -4176,7 +4165,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bd893eb283883274fbb522eb4382215c, type: 2}
   - {fileID: 11400000, guid: f5b03e6c267552d4780f0a496b505733, type: 2}
   - {fileID: 11400000, guid: ea818d6c6d2846144aee4cd385b028fd, type: 2}
-  showDebugLogs: 1
 --- !u!114 &729341515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4552,7 +4540,6 @@ GameObject:
   m_Component:
   - component: {fileID: 924354818}
   - component: {fileID: 924354821}
-  - component: {fileID: 924354820}
   - component: {fileID: 924354819}
   m_Layer: 0
   m_Name: Camera House 2
@@ -4620,14 +4607,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &924354820
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 924354817}
-  m_Enabled: 1
 --- !u!20 &924354821
 Camera:
   m_ObjectHideFlags: 0
@@ -4944,7 +4923,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1012013161}
   - component: {fileID: 1012013164}
-  - component: {fileID: 1012013163}
   - component: {fileID: 1012013162}
   m_Layer: 0
   m_Name: Camera Shark Gank
@@ -5012,14 +4990,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1012013163
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012013160}
-  m_Enabled: 1
 --- !u!20 &1012013164
 Camera:
   m_ObjectHideFlags: 0
@@ -5081,7 +5051,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1020161425}
   - component: {fileID: 1020161424}
-  - component: {fileID: 1020161423}
   - component: {fileID: 1020161422}
   m_Layer: 0
   m_Name: Camera Box Head
@@ -5134,14 +5103,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1020161423
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020161421}
-  m_Enabled: 1
 --- !u!20 &1020161424
 Camera:
   m_ObjectHideFlags: 0
@@ -5614,7 +5575,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1094432002}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
   m_Name: 
@@ -9646,7 +9607,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1726439095}
   - component: {fileID: 1726439098}
-  - component: {fileID: 1726439097}
   - component: {fileID: 1726439096}
   m_Layer: 0
   m_Name: Camera House 3
@@ -9714,14 +9674,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1726439097
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726439094}
-  m_Enabled: 1
 --- !u!20 &1726439098
 Camera:
   m_ObjectHideFlags: 0
@@ -9971,6 +9923,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825535205}
   m_CullTransparentMesh: 1
+--- !u!1 &1833253861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833253863}
+  - component: {fileID: 1833253862}
+  m_Layer: 0
+  m_Name: GameModeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1833253862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833253861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc1aed18e23ad0a4893e384c01715308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelDatabase: {fileID: 11400000, guid: f62df47a31c6c6a42a8625a0fced3b11, type: 2}
+--- !u!4 &1833253863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833253861}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 798.26654, y: 1363.2045, z: -15.122812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1932019059
 GameObject:
   m_ObjectHideFlags: 0
@@ -10303,7 +10300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2002151441}
   - component: {fileID: 2002151444}
-  - component: {fileID: 2002151443}
   - component: {fileID: 2002151442}
   m_Layer: 0
   m_Name: Camera Bunny Girl
@@ -10371,14 +10367,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &2002151443
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2002151440}
-  m_Enabled: 1
 --- !u!20 &2002151444
 Camera:
   m_ObjectHideFlags: 0
@@ -10900,7 +10888,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068887560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a4db7a114972834c8e4117be1d82ba3, type: 3}
   m_Name: 
@@ -84455,3 +84443,4 @@ SceneRoots:
   - {fileID: 1652760137}
   - {fileID: 930131289}
   - {fileID: 1479641786}
+  - {fileID: 1833253863}

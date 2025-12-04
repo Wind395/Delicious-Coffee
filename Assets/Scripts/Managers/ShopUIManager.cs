@@ -163,7 +163,7 @@ public class ShopUIManager : MonoBehaviour
         
         if (container == null)
         {
-            Debug.LogError("[ShopUI] Container is null!");
+            //Debug.LogError("[ShopUI] Container is null!");
             return;
         }
         
@@ -173,7 +173,7 @@ public class ShopUIManager : MonoBehaviour
             SpawnShopItemUI(item, container);
         }
         
-        Debug.Log($"[ShopUI] Populated {items.Count} {type} items");
+        //Debug.Log($"[ShopUI] Populated {items.Count} {type} items");
     }
 
     /// <summary>
@@ -183,7 +183,7 @@ public class ShopUIManager : MonoBehaviour
     {
         if (shopItemPrefab == null)
         {
-            Debug.LogError("[ShopUI] Shop item prefab not assigned!");
+            //Debug.LogError("[ShopUI] Shop item prefab not assigned!");
             return;
         }
         
@@ -226,14 +226,14 @@ public class ShopUIManager : MonoBehaviour
         
         if (success)
         {
-            Debug.Log($"[ShopUI] Purchased: {item.itemName}");
+            //Debug.Log($"[ShopUI] Purchased: {item.itemName}");
             AudioManager.Instance?.PlayCoinSound();
         }
-        else
-        {
-            Debug.LogWarning($"[ShopUI] Failed to purchase: {item.itemName}");
-            // TODO: Show "Not enough gold" popup
-        }
+        // else
+        // {
+        //     Debug.LogWarning($"[ShopUI] Failed to purchase: {item.itemName}");
+        //     // TODO: Show "Not enough gold" popup
+        // }
     }
 
     /// <summary>
@@ -243,7 +243,7 @@ public class ShopUIManager : MonoBehaviour
     {
         PlayerDataManager.Instance.EquipItem(item);
         
-        Debug.Log($"[ShopUI] Equipped: {item.itemName}");
+        //Debug.Log($"[ShopUI] Equipped: {item.itemName}");
         AudioManager.Instance?.PlayButtonClickSound();
     }
     

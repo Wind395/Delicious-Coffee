@@ -16,7 +16,7 @@ public class ShopManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<ShopManager>();
+                _instance = FindAnyObjectByType<ShopManager>();
             }
             return _instance;
         }
@@ -29,8 +29,8 @@ public class ShopManager : MonoBehaviour
     [Header("Shop Items")]
     [SerializeField] private List<ShopItemData> allShopItems = new List<ShopItemData>();
     
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = true;
     
     #endregion
 
@@ -71,7 +71,7 @@ public class ShopManager : MonoBehaviour
         {
             if (item == null)
             {
-                Debug.LogWarning("[ShopManager] ⚠️ NULL item in list!");
+                //Debug.LogWarning("[ShopManager] ⚠️ NULL item in list!");
                 continue;
             }
             
@@ -84,17 +84,17 @@ public class ShopManager : MonoBehaviour
                 homeCount++;
             }
             
-            if (showDebugLogs)
-            {
-                Debug.Log($"[ShopManager] Item: {item.itemName} (ID: {item.itemID}, Type: {item.itemType})");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[ShopManager] Item: {item.itemName} (ID: {item.itemID}, Type: {item.itemType})");
+            // }
         }
         
-        Debug.Log($"[ShopManager] ═══ SHOP ITEMS LOADED ═══");
-        Debug.Log($"[ShopManager] Total: {allShopItems.Count}");
-        Debug.Log($"[ShopManager] Characters: {characterCount}");
-        Debug.Log($"[ShopManager] Homes: {homeCount}");
-        Debug.Log($"[ShopManager] ════════════════════════════");
+        // Debug.Log($"[ShopManager] ═══ SHOP ITEMS LOADED ═══");
+        // Debug.Log($"[ShopManager] Total: {allShopItems.Count}");
+        // Debug.Log($"[ShopManager] Characters: {characterCount}");
+        // Debug.Log($"[ShopManager] Homes: {homeCount}");
+        // Debug.Log($"[ShopManager] ════════════════════════════");
         
         // Validate default items exist
         ValidateDefaultItems();
@@ -108,19 +108,19 @@ public class ShopManager : MonoBehaviour
         bool hasDefaultChar = GetItemByID("char_default") != null;
         bool hasDefaultHome = GetItemByID("home_default") != null;
         
-        if (!hasDefaultChar)
-        {
-            Debug.LogError("[ShopManager] ❌ Missing 'char_default' item!");
-        }
+        // if (!hasDefaultChar)
+        // {
+        //     Debug.LogError("[ShopManager] ❌ Missing 'char_default' item!");
+        // }
         
-        if (!hasDefaultHome)
-        {
-            Debug.LogError("[ShopManager] ❌ Missing 'home_default' item!");
-            Debug.LogError("[ShopManager] → Create a ShopItemData with:");
-            Debug.LogError("[ShopManager]    - itemID = 'home_default'");
-            Debug.LogError("[ShopManager]    - itemType = Home");
-            Debug.LogError("[ShopManager]    - price = 0");
-        }
+        // if (!hasDefaultHome)
+        // {
+        //     Debug.LogError("[ShopManager] ❌ Missing 'home_default' item!");
+        //     Debug.LogError("[ShopManager] → Create a ShopItemData with:");
+        //     Debug.LogError("[ShopManager]    - itemID = 'home_default'");
+        //     Debug.LogError("[ShopManager]    - itemType = Home");
+        //     Debug.LogError("[ShopManager]    - price = 0");
+        // }
     }
     
     #endregion
@@ -139,10 +139,10 @@ public class ShopManager : MonoBehaviour
     {
         var items = allShopItems.Where(item => item != null && item.itemType == type).ToList();
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[ShopManager] GetItemsByType({type}): Found {items.Count} items");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[ShopManager] GetItemsByType({type}): Found {items.Count} items");
+        // }
         
         return items;
     }
@@ -154,17 +154,17 @@ public class ShopManager : MonoBehaviour
     {
         var item = allShopItems.Find(i => i != null && i.itemID == itemID);
         
-        if (showDebugLogs)
-        {
-            if (item != null)
-            {
-                Debug.Log($"[ShopManager] GetItemByID('{itemID}'): ✓ Found '{item.itemName}'");
-            }
-            else
-            {
-                Debug.LogWarning($"[ShopManager] GetItemByID('{itemID}'): ✗ NOT FOUND");
-            }
-        }
+        // if (showDebugLogs)
+        // {
+        //     if (item != null)
+        //     {
+        //         Debug.Log($"[ShopManager] GetItemByID('{itemID}'): ✓ Found '{item.itemName}'");
+        //     }
+        //     else
+        //     {
+        //         Debug.LogWarning($"[ShopManager] GetItemByID('{itemID}'): ✗ NOT FOUND");
+        //     }
+        // }
         
         return item;
     }
@@ -190,13 +190,13 @@ public class ShopManager : MonoBehaviour
     [ContextMenu("Debug: Print All Items")]
     private void DebugPrintAllItems()
     {
-        Debug.Log("═══════════════════════════════════");
-        Debug.Log("SHOP ITEMS LIST");
-        Debug.Log("═══════════════════════════════════");
+        // Debug.Log("═══════════════════════════════════");
+        // Debug.Log("SHOP ITEMS LIST");
+        // Debug.Log("═══════════════════════════════════");
         
         if (allShopItems == null || allShopItems.Count == 0)
         {
-            Debug.LogWarning("NO ITEMS!");
+            //Debug.LogWarning("NO ITEMS!");
             return;
         }
         
@@ -210,33 +210,33 @@ public class ShopManager : MonoBehaviour
                 continue;
             }
             
-            Debug.Log($"[{i}] {item.itemName}");
-            Debug.Log($"     ID: {item.itemID}");
-            Debug.Log($"     Type: {item.itemType}");
-            Debug.Log($"     Price: {item.price}");
-            Debug.Log($"     Prefab: {(item.prefab != null ? item.prefab.name : "NULL")}");
+            // Debug.Log($"[{i}] {item.itemName}");
+            // Debug.Log($"     ID: {item.itemID}");
+            // Debug.Log($"     Type: {item.itemType}");
+            // Debug.Log($"     Price: {item.price}");
+            // Debug.Log($"     Prefab: {(item.prefab != null ? item.prefab.name : "NULL")}");
         }
         
-        Debug.Log("═══════════════════════════════════");
+        //Debug.Log("═══════════════════════════════════");
     }
     
     [ContextMenu("Debug: Check Default Items")]
     private void DebugCheckDefaults()
     {
-        Debug.Log("═══ CHECKING DEFAULT ITEMS ═══");
+        //Debug.Log("═══ CHECKING DEFAULT ITEMS ═══");
         
         var defaultChar = GetItemByID("char_default");
         var defaultHome = GetItemByID("home_default");
         
-        Debug.Log($"char_default: {(defaultChar != null ? "✓ EXISTS" : "✗ MISSING")}");
-        Debug.Log($"home_default: {(defaultHome != null ? "✓ EXISTS" : "✗ MISSING")}");
+        //Debug.Log($"char_default: {(defaultChar != null ? "✓ EXISTS" : "✗ MISSING")}");
+        //Debug.Log($"home_default: {(defaultHome != null ? "✓ EXISTS" : "✗ MISSING")}");
         
-        if (defaultHome != null)
-        {
-            Debug.Log($"  Name: {defaultHome.itemName}");
-            Debug.Log($"  Type: {defaultHome.itemType}");
-            Debug.Log($"  Price: {defaultHome.price}");
-        }
+        // if (defaultHome != null)
+        // {
+        //     Debug.Log($"  Name: {defaultHome.itemName}");
+        //     Debug.Log($"  Type: {defaultHome.itemType}");
+        //     Debug.Log($"  Price: {defaultHome.price}");
+        // }
     }
     
     #endif

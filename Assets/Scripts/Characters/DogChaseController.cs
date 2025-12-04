@@ -76,8 +76,8 @@ public class DogChaseController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip barkSound;
 
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = false;
 
     #endregion
 
@@ -186,13 +186,13 @@ public class DogChaseController : MonoBehaviour
     {
         if (dogPrefab == null)
         {
-            Debug.LogError("[DogChase] Dog prefab not assigned!");
+            //Debug.LogError("[DogChase] Dog prefab not assigned!");
             return;
         }
 
         if (_dogInstance != null)
         {
-            Debug.LogWarning("[DogChase] Dog already exists!");
+            //Debug.LogWarning("[DogChase] Dog already exists!");
             return;
         }
 
@@ -206,10 +206,10 @@ public class DogChaseController : MonoBehaviour
         
         _currentDogDistance = dogStartDistance;
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] 🐕 Dog spawned at distance {dogStartDistance}m (Y={dogGroundY})");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] 🐕 Dog spawned at distance {dogStartDistance}m (Y={dogGroundY})");
+        // }
     }
 
     private void RemoveDog()
@@ -230,8 +230,8 @@ public class DogChaseController : MonoBehaviour
     {
         if (_isChasing && !_isTemporaryChase)
         {
-            if (showDebugLogs)
-                Debug.Log("[DogChase] Already in permanent chase");
+            // if (showDebugLogs)
+            //     Debug.Log("[DogChase] Already in permanent chase");
             return;
         }
 
@@ -253,19 +253,19 @@ public class DogChaseController : MonoBehaviour
         if (_dogAnimator != null)
         {
             _dogAnimator.SetBool(PARAM_IS_RUNNING, true);
-            Debug.Log("[DogChase] ✓ Dog animation: RUNNING");
+            //Debug.Log("[DogChase] ✓ Dog animation: RUNNING");
         }
-        else
-        {
-            Debug.LogWarning("[DogChase] ⚠ Dog Animator is NULL!");
-        }
+        // else
+        // {
+        //     Debug.LogWarning("[DogChase] ⚠ Dog Animator is NULL!");
+        // }
 
         PlayBark();
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 🐕 PERMANENT chase started!");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 🐕 PERMANENT chase started!");
+        // }
     }
 
     public void StopChase()
@@ -278,10 +278,10 @@ public class DogChaseController : MonoBehaviour
 
         OnDogDisappear?.Invoke();
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 🐕 Dog disappeared");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 🐕 Dog disappeared");
+        // }
     }
 
     #endregion
@@ -290,7 +290,7 @@ public class DogChaseController : MonoBehaviour
 
     public void StopChaseOnVictory()
     {
-        Debug.Log("[DogChase] 🏠 Player reached home - stopping chase");
+        //Debug.Log("[DogChase] 🏠 Player reached home - stopping chase");
 
         _isChasing = false;
         _isTemporaryChase = false;
@@ -300,12 +300,12 @@ public class DogChaseController : MonoBehaviour
             _dogAnimator.SetBool("IsRunning", false);
             _dogAnimator.SetBool("IsIdle", true);
             
-            Debug.Log("[DogChase] 🐕 Dog animations stopped");
+            //Debug.Log("[DogChase] 🐕 Dog animations stopped");
         }
 
         OnDogDisappear?.Invoke();
 
-        Debug.Log("[DogChase] ✓ Chase stopped on victory");
+        //Debug.Log("[DogChase] ✓ Chase stopped on victory");
     }
 
     #endregion
@@ -316,11 +316,11 @@ public class DogChaseController : MonoBehaviour
     {
         if (_dogInstance == null || _playerTransform == null)
         {
-            Debug.LogWarning("[DogChase] Cannot retreat - dog or player missing");
+            //Debug.LogWarning("[DogChase] Cannot retreat - dog or player missing");
             yield break;
         }
 
-        Debug.Log("[DogChase] 🐕 Dog retreating off screen...");
+        //Debug.Log("[DogChase] 🐕 Dog retreating off screen...");
 
         float currentSpeed = retreatStartSpeed;
         Vector3 retreatDirection = -_playerTransform.forward;
@@ -333,15 +333,15 @@ public class DogChaseController : MonoBehaviour
         }
 
         Camera mainCamera = Camera.main;
-        if (mainCamera == null)
-        {
-            Debug.LogWarning("[DogChase] No main camera - using distance fallback");
-        }
+        // if (mainCamera == null)
+        // {
+        //     Debug.LogWarning("[DogChase] No main camera - using distance fallback");
+        // }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] Retreat start - Speed: {currentSpeed} m/s, Direction: {retreatDirection}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] Retreat start - Speed: {currentSpeed} m/s, Direction: {retreatDirection}");
+        // }
 
         float retreatTime = 0f;
         bool isOffScreen = false;
@@ -350,7 +350,7 @@ public class DogChaseController : MonoBehaviour
         {
             if (_dogInstance == null)
             {
-                Debug.LogWarning("[DogChase] Dog destroyed during retreat!");
+                //Debug.LogWarning("[DogChase] Dog destroyed during retreat!");
                 yield break;
             }
 
@@ -380,7 +380,7 @@ public class DogChaseController : MonoBehaviour
 
             if (retreatTime > 10f)
             {
-                Debug.LogWarning("[DogChase] Retreat timeout - forcing off screen");
+                //Debug.LogWarning("[DogChase] Retreat timeout - forcing off screen");
                 break;
             }
 
@@ -392,10 +392,10 @@ public class DogChaseController : MonoBehaviour
             _dogAnimator.SetBool(PARAM_IS_RUNNING, false);
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] ✓ Dog off screen after {retreatTime:F1}s at speed {currentSpeed:F1} m/s");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] ✓ Dog off screen after {retreatTime:F1}s at speed {currentSpeed:F1} m/s");
+        // }
 
         yield return new WaitForSeconds(0.2f);
 
@@ -407,10 +407,10 @@ public class DogChaseController : MonoBehaviour
 
         OnDogDisappear?.Invoke();
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 🐕 Dog removed from scene");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 🐕 Dog removed from scene");
+        // }
     }
 
     private bool IsOffScreen(Vector3 worldPosition, Camera camera)
@@ -425,10 +425,10 @@ public class DogChaseController : MonoBehaviour
 
         bool offScreen = isOutsideX || isOutsideY || isBehindCamera;
 
-        if (showDebugLogs && offScreen)
-        {
-            Debug.Log($"[DogChase] Off screen check: VP=({viewportPos.x:F2}, {viewportPos.y:F2}, {viewportPos.z:F2})");
-        }
+        // if (showDebugLogs && offScreen)
+        // {
+        //     Debug.Log($"[DogChase] Off screen check: VP=({viewportPos.x:F2}, {viewportPos.y:F2}, {viewportPos.z:F2})");
+        // }
 
         return offScreen;
     }
@@ -458,7 +458,7 @@ public class DogChaseController : MonoBehaviour
 
     private IEnumerator TemporaryChaseSequence()
     {
-        Debug.Log("[DogChase] ▶️ Starting TEMPORARY chase (dog will run to player)...");
+        //Debug.Log("[DogChase] ▶️ Starting TEMPORARY chase (dog will run to player)...");
 
         _isTemporaryChase = true;
         _isChasing = true;
@@ -475,7 +475,7 @@ public class DogChaseController : MonoBehaviour
 
         yield return StartCoroutine(RunDogToPosition());
 
-        Debug.Log($"[DogChase] Dog reached position - staying for {temporaryChaseDisplayDuration}s");
+        //Debug.Log($"[DogChase] Dog reached position - staying for {temporaryChaseDisplayDuration}s");
 
         if (_dogAnimator != null)
         {
@@ -496,14 +496,14 @@ public class DogChaseController : MonoBehaviour
 
         yield return StartCoroutine(RetreatDogOffScreen());
 
-        Debug.Log("[DogChase] ✓ Temporary chase ended - dog off screen");
+        //Debug.Log("[DogChase] ✓ Temporary chase ended - dog off screen");
     }
 
     private void SpawnDogForTemporaryChase()
     {
         if (dogPrefab == null || _playerTransform == null)
         {
-            Debug.LogError("[DogChase] Cannot spawn dog - missing prefab or player!");
+            //Debug.LogError("[DogChase] Cannot spawn dog - missing prefab or player!");
             return;
         }
 
@@ -522,11 +522,11 @@ public class DogChaseController : MonoBehaviour
             _dogInstance.transform.rotation = Quaternion.LookRotation(directionToPlayer);
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] 🐕 Dog spawned at {temporaryChaseSpawnDistance}m behind player (Y={dogGroundY})");
-            Debug.Log($"[DogChase] Spawn position: {spawnPos}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] 🐕 Dog spawned at {temporaryChaseSpawnDistance}m behind player (Y={dogGroundY})");
+        //     Debug.Log($"[DogChase] Spawn position: {spawnPos}");
+        // }
     }
 
     private void RepositionDogFarBehind()
@@ -545,29 +545,29 @@ public class DogChaseController : MonoBehaviour
             _dogInstance.transform.rotation = Quaternion.LookRotation(directionToPlayer);
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] 🐕 Dog repositioned to {temporaryChaseSpawnDistance}m behind (Y={dogGroundY})");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] 🐕 Dog repositioned to {temporaryChaseSpawnDistance}m behind (Y={dogGroundY})");
+        // }
     }
 
     private IEnumerator RunDogToPosition()
     {
         if (_dogInstance == null || _playerTransform == null)
         {
-            Debug.LogError("[DogChase] Cannot run - dog or player missing!");
+            //Debug.LogError("[DogChase] Cannot run - dog or player missing!");
             yield break;
         }
 
-        Debug.Log("[DogChase] 🐕 Dog running to player...");
+        //Debug.Log("[DogChase] 🐕 Dog running to player...");
 
         if (_dogAnimator != null)
         {
             _dogAnimator.SetBool(PARAM_IS_RUNNING, true);
-            if (showDebugLogs)
-            {
-                Debug.Log("[DogChase] ✓ Dog animation: RUNNING");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[DogChase] ✓ Dog animation: RUNNING");
+            // }
         }
 
         float targetDistance = temporaryChaseStopDistance;
@@ -577,7 +577,7 @@ public class DogChaseController : MonoBehaviour
         {
             if (_dogInstance == null || _playerTransform == null)
             {
-                Debug.LogWarning("[DogChase] Dog or player destroyed during run!");
+                //Debug.LogWarning("[DogChase] Dog or player destroyed during run!");
                 yield break;
             }
 
@@ -599,10 +599,10 @@ public class DogChaseController : MonoBehaviour
             yield return null;
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] ✓ Dog reached position ({currentDistance:F1}m from player)");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] ✓ Dog reached position ({currentDistance:F1}m from player)");
+        // }
 
         _currentDogDistance = temporaryChaseStopDistance;
     }
@@ -646,10 +646,10 @@ public class DogChaseController : MonoBehaviour
 
         OnDogDisappear?.Invoke();
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 🐕 Temporary chase stopped (emergency cleanup)");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 🐕 Temporary chase stopped (emergency cleanup)");
+        // }
     }
 
     #endregion
@@ -661,7 +661,7 @@ public class DogChaseController : MonoBehaviour
     /// </summary>
     public void CatchPlayer()
     {
-        Debug.Log("[DogChase] ⚠ CatchPlayer() deprecated - use CatchPlayerParallel()");
+        //Debug.Log("[DogChase] ⚠ CatchPlayer() deprecated - use CatchPlayerParallel()");
         CatchPlayerParallel();
     }
 
@@ -671,10 +671,10 @@ public class DogChaseController : MonoBehaviour
     /// </summary>
     public void CatchPlayerParallel()
     {
-        Debug.Log("[DogChase] ═══════════════════════════════");
-        Debug.Log("[DogChase] 🐕 DOG CATCH (PARALLEL MODE)");
-        Debug.Log("[DogChase] Visual only - does not block game over");
-        Debug.Log("[DogChase] ═══════════════════════════════");
+        // Debug.Log("[DogChase] ═══════════════════════════════");
+        // Debug.Log("[DogChase] 🐕 DOG CATCH (PARALLEL MODE)");
+        // Debug.Log("[DogChase] Visual only - does not block game over");
+        // Debug.Log("[DogChase] ═══════════════════════════════");
 
         if (_temporaryChaseCoroutine != null)
         {
@@ -690,12 +690,12 @@ public class DogChaseController : MonoBehaviour
     /// </summary>
     private IEnumerator DogCatchSequenceParallel()
     {
-        Debug.Log("[DogChase] Starting parallel catch sequence with offset...");
+        //Debug.Log("[DogChase] Starting parallel catch sequence with offset...");
 
         // ═══ VALIDATION ═══
         if (_playerTransform == null || dogPrefab == null)
         {
-            Debug.LogWarning("[DogChase] Cannot catch - missing references");
+            //Debug.LogWarning("[DogChase] Cannot catch - missing references");
             yield break;
         }
 
@@ -718,17 +718,17 @@ public class DogChaseController : MonoBehaviour
 
         if (_dogInstance == null)
         {
-            Debug.LogWarning("[DogChase] Failed to spawn dog");
+            //Debug.LogWarning("[DogChase] Failed to spawn dog");
             yield break;
         }
 
         // ═══ GET ANIMATOR ═══
         _dogAnimator = _dogInstance.GetComponent<Animator>();
 
-        if (_dogAnimator == null)
-        {
-            Debug.LogWarning("[DogChase] Dog has no Animator component!");
-        }
+        // if (_dogAnimator == null)
+        // {
+        //     Debug.LogWarning("[DogChase] Dog has no Animator component!");
+        // }
 
         // ═══ FACE PLAYER ═══
         Vector3 directionToPlayer = (_playerTransform.position - _dogInstance.transform.position).normalized;
@@ -738,12 +738,12 @@ public class DogChaseController : MonoBehaviour
         {
             _dogInstance.transform.rotation = Quaternion.LookRotation(directionToPlayer);
             
-            if (showDebugLogs)
-            {
-                Debug.Log($"[DogChase] Dog spawned at: {spawnPos} (Y={dogGroundY})");
-                Debug.Log($"[DogChase] Player at: {_playerTransform.position}");
-                Debug.Log($"[DogChase] Direction: {directionToPlayer}");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[DogChase] Dog spawned at: {spawnPos} (Y={dogGroundY})");
+            //     Debug.Log($"[DogChase] Player at: {_playerTransform.position}");
+            //     Debug.Log($"[DogChase] Direction: {directionToPlayer}");
+            // }
         }
 
         // ═══ START RUNNING ANIMATION ═══
@@ -751,22 +751,22 @@ public class DogChaseController : MonoBehaviour
         {
             _dogAnimator.SetBool(PARAM_IS_RUNNING, true);
             
-            if (showDebugLogs)
-            {
-                Debug.Log("[DogChase] ✓ Dog animation: RUNNING");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[DogChase] ✓ Dog animation: RUNNING");
+            // }
         }
 
-        Debug.Log($"[DogChase] Dog running to player (will stop at {deathCatchStopDistance}m with offset {deathCatchPositionOffset})...");
+        //Debug.Log($"[DogChase] Dog running to player (will stop at {deathCatchStopDistance}m with offset {deathCatchPositionOffset})...");
 
         // ═══ CALCULATE TARGET POSITION WITH OFFSET ═══
         Vector3 targetPosition = CalculateDeathCatchTargetPosition();
 
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] Target position: {targetPosition}");
-            Debug.Log($"[DogChase] Distance from player: {Vector3.Distance(targetPosition, _playerTransform.position):F2}m");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] Target position: {targetPosition}");
+        //     Debug.Log($"[DogChase] Distance from player: {Vector3.Distance(targetPosition, _playerTransform.position):F2}m");
+        // }
 
         // ═══ RUN TO TARGET POSITION ═══
         float elapsed = 0f;
@@ -833,8 +833,8 @@ public class DogChaseController : MonoBehaviour
 
         if (_dogAnimator != null)
         {
-            Debug.Log("[DogChase] ═══ DOG REACHED TARGET ═══");
-            Debug.Log("[DogChase] Transitioning to IDLE animation...");
+            // Debug.Log("[DogChase] ═══ DOG REACHED TARGET ═══");
+            // Debug.Log("[DogChase] Transitioning to IDLE animation...");
 
             // ═══ STEP 1: Stop running (set bool to false) ═══
             _dogAnimator.SetBool(PARAM_IS_RUNNING, false);
@@ -845,15 +845,15 @@ public class DogChaseController : MonoBehaviour
             // ═══ STEP 2: Trigger idle animation ═══
             _dogAnimator.SetTrigger(TRIGGER_IDLE);
 
-            if (showDebugLogs)
-            {
-                Debug.Log("[DogChase] ✓ Dog animation: IDLE");
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[DogChase] ✓ Dog animation: IDLE");
                 
-                // Debug animator state
-                AnimatorStateInfo currentState = _dogAnimator.GetCurrentAnimatorStateInfo(0);
-                Debug.Log($"[DogChase] Animator state: {currentState.shortNameHash}");
-                Debug.Log($"[DogChase] IsRunning param: {_dogAnimator.GetBool(PARAM_IS_RUNNING)}");
-            }
+            //     // Debug animator state
+            //     AnimatorStateInfo currentState = _dogAnimator.GetCurrentAnimatorStateInfo(0);
+            //     Debug.Log($"[DogChase] Animator state: {currentState.shortNameHash}");
+            //     Debug.Log($"[DogChase] IsRunning param: {_dogAnimator.GetBool(PARAM_IS_RUNNING)}");
+            // }
 
             // ═══ OPTIONAL: Play bark or growl sound ═══
             PlayBark();
@@ -861,14 +861,14 @@ public class DogChaseController : MonoBehaviour
             // ═══ OPTIONAL: Small wait to ensure animation started ═══
             yield return new WaitForSeconds(0.2f);
         }
-        else
-        {
-            Debug.LogWarning("[DogChase] Cannot set idle - Animator is null!");
-        }
+        // else
+        // {
+        //     Debug.LogWarning("[DogChase] Cannot set idle - Animator is null!");
+        // }
 
-        Debug.Log($"[DogChase] ✓ Dog catch complete (parallel) - reached: {reached}, time: {elapsed:F1}s");
-        Debug.Log($"[DogChase] Final distance from player: {Vector3.Distance(_dogInstance.transform.position, _playerTransform.position):F2}m");
-        Debug.Log($"[DogChase] Dog is now IDLE at position");
+        // Debug.Log($"[DogChase] ✓ Dog catch complete (parallel) - reached: {reached}, time: {elapsed:F1}s");
+        // Debug.Log($"[DogChase] Final distance from player: {Vector3.Distance(_dogInstance.transform.position, _playerTransform.position):F2}m");
+        // Debug.Log($"[DogChase] Dog is now IDLE at position");
 
         _isChasing = false;
         _isActive = false;
@@ -882,7 +882,7 @@ public class DogChaseController : MonoBehaviour
     {
         if (_playerTransform == null)
         {
-            Debug.LogError("[DogChase] Cannot calculate target - player missing!");
+            //Debug.LogError("[DogChase] Cannot calculate target - player missing!");
             return Vector3.zero;
         }
 
@@ -910,10 +910,10 @@ public class DogChaseController : MonoBehaviour
             _currentDogDistance = Mathf.Max(0, _currentDogDistance - chaseAccelerationOnHit);
             _safeTimer = 0f;
 
-            if (showDebugLogs)
-            {
-                Debug.Log($"[DogChase] 🐕 Dog speeds up! Distance: {_currentDogDistance:F1}m");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log($"[DogChase] 🐕 Dog speeds up! Distance: {_currentDogDistance:F1}m");
+            // }
             return;
         }
 
@@ -932,7 +932,7 @@ public class DogChaseController : MonoBehaviour
         if (_dogAnimator != null && !_dogAnimator.GetBool(PARAM_IS_RUNNING))
         {
             _dogAnimator.SetBool(PARAM_IS_RUNNING, true);
-            Debug.LogWarning("[DogChase] ⚠ Re-enabled running animation!");
+            //Debug.LogWarning("[DogChase] ⚠ Re-enabled running animation!");
         }
 
         Vector3 targetPos = _playerTransform.position + (Vector3.back * _currentDogDistance);
@@ -976,18 +976,18 @@ public class DogChaseController : MonoBehaviour
     {
         _safeTimer += Time.deltaTime;
 
-        if (showDebugLogs && Mathf.FloorToInt(_safeTimer) % 1 == 0)
-        {
-            Debug.Log($"[DogChase] Safe time: {_safeTimer:F1}s / {safeDuration}s");
-        }
+        // if (showDebugLogs && Mathf.FloorToInt(_safeTimer) % 1 == 0)
+        // {
+        //     Debug.Log($"[DogChase] Safe time: {_safeTimer:F1}s / {safeDuration}s");
+        // }
     }
 
     private void OnDogCatchesPlayer()
     {
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 🐕 DOG CAUGHT PLAYER!");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 🐕 DOG CAUGHT PLAYER!");
+        // }
 
         _isChasing = false;
         _isActive = false;
@@ -1027,10 +1027,10 @@ public class DogChaseController : MonoBehaviour
             AudioManager.Instance?.PlayDogBarkSound();
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 🐕 BARK!");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 🐕 BARK!");
+        // }
     }
 
     #endregion
@@ -1041,11 +1041,11 @@ public class DogChaseController : MonoBehaviour
     {
         if (dogInstance == null)
         {
-            Debug.LogError("[DogChase] Cannot take null dog from intro!");
+            //Debug.LogError("[DogChase] Cannot take null dog from intro!");
             return;
         }
 
-        Debug.Log("[DogChase] ═══ TAKING DOG FROM INTRO ═══");
+        //Debug.Log("[DogChase] ═══ TAKING DOG FROM INTRO ═══");
 
         _dogInstance = dogInstance;
         _dogInstance.name = "ChasingDog_Active";
@@ -1062,16 +1062,16 @@ public class DogChaseController : MonoBehaviour
         if (_dogAnimator != null)
         {
             _dogAnimator.SetBool(PARAM_IS_RUNNING, true);
-            Debug.Log("[DogChase] ✓ Dog animation: RUNNING (permanent chase)");
+            //Debug.Log("[DogChase] ✓ Dog animation: RUNNING (permanent chase)");
         }
-        else
-        {
-            Debug.LogError("[DogChase] ❌ Dog Animator is NULL!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[DogChase] ❌ Dog Animator is NULL!");
+        // }
 
-        Debug.Log($"[DogChase] ✓ Dog taken from intro - PERMANENT chase started");
-        Debug.Log($"[DogChase]   Distance: {_currentDogDistance:F1}m");
-        Debug.Log($"[DogChase]   Animation: {(_dogAnimator != null ? "✓ Ready" : "✗ Missing")}");
+        // Debug.Log($"[DogChase] ✓ Dog taken from intro - PERMANENT chase started");
+        // Debug.Log($"[DogChase]   Distance: {_currentDogDistance:F1}m");
+        // Debug.Log($"[DogChase]   Animation: {(_dogAnimator != null ? "✓ Ready" : "✗ Missing")}");
     }
     
     #endregion
@@ -1084,7 +1084,7 @@ public class DogChaseController : MonoBehaviour
         {
             if (dogPrefab == null)
             {
-                Debug.LogError("[DogChase] Cannot position dog - no prefab!");
+                //Debug.LogError("[DogChase] Cannot position dog - no prefab!");
                 return;
             }
             
@@ -1092,20 +1092,20 @@ public class DogChaseController : MonoBehaviour
             _dogInstance.name = "ChasingDog_Victory";
             _dogAnimator = _dogInstance.GetComponent<Animator>();
             
-            if (showDebugLogs)
-            {
-                Debug.Log("[DogChase] 🐕 Dog spawned for victory");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[DogChase] 🐕 Dog spawned for victory");
+            // }
         }
         else
         {
             _dogInstance.transform.position = position;
             _dogInstance.transform.rotation = rotation;
             
-            if (showDebugLogs)
-            {
-                Debug.Log("[DogChase] 🐕 Dog repositioned for victory");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[DogChase] 🐕 Dog repositioned for victory");
+            // }
         }
         
         _isChasing = false;
@@ -1118,18 +1118,18 @@ public class DogChaseController : MonoBehaviour
             _dogAnimator.SetTrigger(TRIGGER_IDLE);
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogChase] ✓ Dog at home: {position}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogChase] ✓ Dog at home: {position}");
+        // }
     }
     
     public void StopChaseOnDeath()
     {
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 💀 Player died - stopping permanent chase");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 💀 Player died - stopping permanent chase");
+        // }
         
         _isActive = false;
         _isChasing = false;
@@ -1139,10 +1139,10 @@ public class DogChaseController : MonoBehaviour
             _dogAnimator.SetBool(PARAM_IS_RUNNING, false);
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] ✓ Chase stopped - dog frozen in place");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] ✓ Chase stopped - dog frozen in place");
+        // }
     }
     
     public void SetDogIdle()
@@ -1157,10 +1157,10 @@ public class DogChaseController : MonoBehaviour
             _dogAnimator.SetTrigger(TRIGGER_IDLE);
         }
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] 🐕 Dog set to idle");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] 🐕 Dog set to idle");
+        // }
     }
 
     public Vector3 GetDogPosition()
@@ -1174,10 +1174,10 @@ public class DogChaseController : MonoBehaviour
     
     private void OnGameStarted()
     {
-        if (showDebugLogs)
-        {
-            Debug.Log("[DogChase] Game started - waiting for trigger");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[DogChase] Game started - waiting for trigger");
+        // }
     }
 
     private void OnGameOver()
@@ -1207,7 +1207,7 @@ public class DogChaseController : MonoBehaviour
     #if UNITY_EDITOR
     void OnDrawGizmos()
     {
-        if (!showDebugLogs || _playerTransform == null) return;
+        //if (!showDebugLogs || _playerTransform == null) return;
 
         if (_dogInstance != null)
         {

@@ -26,8 +26,8 @@ public class MapSelectionUI : MonoBehaviour
     [SerializeField] private LevelSelectionUI levelSelectionUI;
     [SerializeField] private ModeSelectionUI modeUI;
     
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = false;
     
     #endregion
 
@@ -79,7 +79,7 @@ public class MapSelectionUI : MonoBehaviour
         // Get maps from database
         if (GameModeManager.Instance.Database == null)
         {
-            Debug.LogError("[MapSelectionUI] LevelDatabase not found!");
+            //Debug.LogError("[MapSelectionUI] LevelDatabase not found!");
             return;
         }
         
@@ -87,7 +87,7 @@ public class MapSelectionUI : MonoBehaviour
         
         if (maps == null || maps.Count == 0)
         {
-            Debug.LogWarning("[MapSelectionUI] No maps found!");
+            //Debug.LogWarning("[MapSelectionUI] No maps found!");
             return;
         }
         
@@ -97,10 +97,10 @@ public class MapSelectionUI : MonoBehaviour
             SpawnMapItem(map);
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[MapSelectionUI] Populated {maps.Count} maps");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[MapSelectionUI] Populated {maps.Count} maps");
+        // }
     }
     
     /// <summary>
@@ -110,7 +110,7 @@ public class MapSelectionUI : MonoBehaviour
     {
         if (mapItemPrefab == null)
         {
-            Debug.LogError("[MapSelectionUI] Map item prefab not assigned!");
+            //Debug.LogError("[MapSelectionUI] Map item prefab not assigned!");
             return;
         }
         
@@ -151,14 +151,14 @@ public class MapSelectionUI : MonoBehaviour
     {
         if (mapData == null)
         {
-            Debug.LogError("[MapSelectionUI] Map data is null!");
+            //Debug.LogError("[MapSelectionUI] Map data is null!");
             return;
         }
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[MapSelectionUI] Map selected: {mapData.mapName}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[MapSelectionUI] Map selected: {mapData.mapName}");
+        // }
         
         AudioManager.Instance?.PlayButtonClickSound();
         
@@ -171,10 +171,10 @@ public class MapSelectionUI : MonoBehaviour
             mapSelectionPanel?.SetActive(false);
             levelSelectionUI.OpenLevelSelection(mapData);
         }
-        else
-        {
-            Debug.LogError("[MapSelectionUI] LevelSelectionUI not assigned!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[MapSelectionUI] LevelSelectionUI not assigned!");
+        // }
     }
     
     #endregion
@@ -190,13 +190,13 @@ public class MapSelectionUI : MonoBehaviour
         // Back to mode selection
         if (modeUI != null)
         {
-            Debug.Log("[MapSelectionUI] Back to Mode Selection");
+            //Debug.Log("[MapSelectionUI] Back to Mode Selection");
             modeUI.OpenModeSelection();
         }
-        else
-        {
-            Debug.LogError("[MapSelectionUI] ModeSelectionUI not found!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[MapSelectionUI] ModeSelectionUI not found!");
+        // }
     }
     
     #endregion

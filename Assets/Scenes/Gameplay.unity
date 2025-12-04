@@ -2257,7 +2257,6 @@ MonoBehaviour:
   retreatMinSpeed: 1
   retreatExtraDistance: 10
   barkSound: {fileID: 8300000, guid: 80aff077af273424f9a2ad4b3d1f9cfd, type: 3}
-  showDebugLogs: 0
 --- !u!4 &554903054
 Transform:
   m_ObjectHideFlags: 0
@@ -5137,7 +5136,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1239598837}
   - component: {fileID: 1239598836}
-  - component: {fileID: 1239598835}
   - component: {fileID: 1239598834}
   m_Layer: 0
   m_Name: Camera
@@ -5190,14 +5188,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1239598835
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239598833}
-  m_Enabled: 1
 --- !u!20 &1239598836
 Camera:
   m_ObjectHideFlags: 0
@@ -6012,7 +6002,6 @@ MonoBehaviour:
   iceTeaPrefab: {fileID: 1848254411187211893, guid: f154bbacb9c6e21438fb7a9280c27162, type: 3}
   coldTowelPrefab: {fileID: 9189545231843835624, guid: 551ddccd5b97715419d2ed8bbfc93e73, type: 3}
   medicinePrefab: {fileID: 9121105804707910104, guid: 4c587a23e671ac247abc95ca7e84c1d4, type: 3}
-  debugMode: 0
 --- !u!114 &1539170727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6579,7 +6568,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1709961102}
   - component: {fileID: 1709961101}
-  - component: {fileID: 1709961100}
   - component: {fileID: 1709961099}
   m_Layer: 0
   m_Name: Camera (2)
@@ -6632,14 +6620,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1709961100
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709961098}
-  m_Enabled: 1
 --- !u!20 &1709961101
 Camera:
   m_ObjectHideFlags: 0
@@ -6791,7 +6771,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1783767638}
   - component: {fileID: 1783767637}
-  - component: {fileID: 1783767636}
   - component: {fileID: 1783767635}
   m_Layer: 0
   m_Name: Camera (1)
@@ -6844,14 +6823,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &1783767636
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1783767634}
-  m_Enabled: 1
 --- !u!20 &1783767637
 Camera:
   m_ObjectHideFlags: 0
@@ -6960,7 +6931,6 @@ MonoBehaviour:
   victoryCameraOffset: {x: 0, y: 6, z: -25}
   victorySound: {fileID: 8300000, guid: d21a6ab9f017e5c4e9bb8e5aa4db5747, type: 3}
   confettiEffect: {fileID: 0}
-  debugMode: 0
 --- !u!4 &1887317209
 Transform:
   m_ObjectHideFlags: 0
@@ -7343,7 +7313,6 @@ MonoBehaviour:
   startDifficulty: 1
   maxDifficulty: 5
   sectionsPerDifficultyIncrease: 5
-  showDebugLogs: 0
   showSafeZoneLogs: 0
   obstacleTypeDatabase: {fileID: 11400000, guid: 13533e054317a974f99655bb9957f233, type: 2}
   homeSafeZoneDistance: 100
@@ -7728,7 +7697,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDatabase: {fileID: 11400000, guid: f62df47a31c6c6a42a8625a0fced3b11, type: 2}
-  showDebugLogs: 0
 --- !u!4 &2032321298
 Transform:
   m_ObjectHideFlags: 0
@@ -7856,7 +7824,6 @@ MonoBehaviour:
   barkDelay: 0.3
   lookBehindDelay: 0.2
   dogBarkSound: {fileID: 8300000, guid: d174531a551d2cf4ab3f19d6be519e0e, type: 3}
-  showDebugLogs: 1
   showGizmos: 1
   delayBeforeRunning: 0
   resetRotationBeforeRunning: 1

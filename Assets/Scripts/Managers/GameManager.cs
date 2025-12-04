@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         // Find CharacterSpawner
         if (characterSpawner == null)
         {
-            characterSpawner = FindObjectOfType<CharacterSpawner>();
+            characterSpawner = FindAnyObjectByType<CharacterSpawner>();
         }
         
         // Get player from spawner
@@ -119,10 +119,10 @@ public class GameManager : MonoBehaviour
 
         // Validate references
         if (playerController == null)
-            playerController = FindObjectOfType<PlayerController>();
+            playerController = FindAnyObjectByType<PlayerController>();
         
         if (jsonSpawner == null)
-            jsonSpawner = FindObjectOfType<JSONSectionSpawner>();
+            jsonSpawner = FindAnyObjectByType<JSONSectionSpawner>();
 
         _currentState = GameState.MainMenu;
         _score = 0;
@@ -193,7 +193,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void NotifyCamera()
     {
-        CameraFollowController camera = FindObjectOfType<CameraFollowController>();
+        CameraFollowController camera = FindAnyObjectByType<CameraFollowController>();
         
         if (camera != null && playerController != null)
         {
@@ -470,7 +470,7 @@ public class GameManager : MonoBehaviour
                 float finalDistance = DistanceTracker.Instance.CurrentDistance;
                 RankingManager.Instance.SubmitPlayerDistance(finalDistance);
                 
-                Debug.Log($"[GameManager] Submitted distance to ranking: {finalDistance:F0}m");
+                //Debug.Log($"[GameManager] Submitted distance to ranking: {finalDistance:F0}m");
             }
         }
     }

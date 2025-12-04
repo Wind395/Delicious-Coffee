@@ -37,8 +37,8 @@ public class DogIntroSequenceController : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioClip dogBarkSound;
     
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = true;
     [SerializeField] private bool showGizmos = true;
 
     [Tooltip("Delay AFTER look behind, BEFORE running")]
@@ -104,7 +104,7 @@ public class DogIntroSequenceController : MonoBehaviour
     {
         if (exclamationVFX == null)
         {
-            exclamationVFX = FindObjectOfType<ExclamationVFXController>();
+            exclamationVFX = FindAnyObjectByType<ExclamationVFXController>();
         }
         
         if (EventManager.Instance != null)
@@ -112,7 +112,7 @@ public class DogIntroSequenceController : MonoBehaviour
             EventManager.Instance.StartListening(GameEvents.GAME_STARTED, OnGameStarted);
         }
         
-        Debug.Log("[DogIntro] ✓ Initialized");
+        //Debug.Log("[DogIntro] ✓ Initialized");
     }
     
     #endregion
@@ -126,7 +126,7 @@ public class DogIntroSequenceController : MonoBehaviour
     {
         if (_sequenceStarted)
         {
-            Debug.LogWarning("[DogIntro] Sequence already started!");
+            //Debug.LogWarning("[DogIntro] Sequence already started!");
             return;
         }
         
@@ -134,9 +134,9 @@ public class DogIntroSequenceController : MonoBehaviour
         _playerTransform = player.transform;
         _playerAnimController = player.GetComponent<PlayerAnimationController>();
         
-        Debug.Log("[DogIntro] ═══════════════════════════════════");
-        Debug.Log("[DogIntro] 🎬 STARTING NEW INTRO SEQUENCE");
-        Debug.Log("[DogIntro] ═══════════════════════════════════");
+        // Debug.Log("[DogIntro] ═══════════════════════════════════");
+        // Debug.Log("[DogIntro] 🎬 STARTING NEW INTRO SEQUENCE");
+        // Debug.Log("[DogIntro] ═══════════════════════════════════");
         
         _sequenceStarted = true;
         
@@ -169,9 +169,9 @@ public class DogIntroSequenceController : MonoBehaviour
         // ═══ COMPLETE ═══
         _sequenceComplete = true;
         
-        Debug.Log("[DogIntro] ═══════════════════════════════════");
-        Debug.Log("[DogIntro] ✅ INTRO SEQUENCE COMPLETE!");
-        Debug.Log("[DogIntro] ═══════════════════════════════════");
+        // Debug.Log("[DogIntro] ═══════════════════════════════════");
+        // Debug.Log("[DogIntro] ✅ INTRO SEQUENCE COMPLETE!");
+        // Debug.Log("[DogIntro] ═══════════════════════════════════");
         
         OnSequenceComplete?.Invoke();
     }
@@ -185,7 +185,7 @@ public class DogIntroSequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator Step1_PlayerIdle()
     {
-        Debug.Log("[DogIntro] ▶ Step 1: Player Idle...");
+        //Debug.Log("[DogIntro] ▶ Step 1: Player Idle...");
         
         if (_playerController != null)
         {
@@ -197,7 +197,7 @@ public class DogIntroSequenceController : MonoBehaviour
             _playerAnimController.SetIdleState(); // Set to idle animation
         }
         
-        Debug.Log("[DogIntro] ✓ Player is idle and waiting");
+        //Debug.Log("[DogIntro] ✓ Player is idle and waiting");
         
         yield return new WaitForSeconds(0.5f);
     }
@@ -207,11 +207,11 @@ public class DogIntroSequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator Step2_SpawnDog()
     {
-        Debug.Log("[DogIntro] ▶ Step 2: Spawning Dog behind player...");
+        //Debug.Log("[DogIntro] ▶ Step 2: Spawning Dog behind player...");
         
         if (dogPrefab == null)
         {
-            Debug.LogError("[DogIntro] ❌ Dog prefab not assigned!");
+            //Debug.LogError("[DogIntro] ❌ Dog prefab not assigned!");
             yield break;
         }
         
@@ -234,7 +234,7 @@ public class DogIntroSequenceController : MonoBehaviour
         // Get animator
         _dogAnimator = _dogInstance.GetComponent<Animator>();
         
-        Debug.Log($"[DogIntro] ✓ Dog spawned at {spawnPos} (distance: {dogStartDistance}m)");
+        //Debug.Log($"[DogIntro] ✓ Dog spawned at {spawnPos} (distance: {dogStartDistance}m)");
         
         yield return new WaitForSeconds(0.3f);
     }
@@ -244,7 +244,7 @@ public class DogIntroSequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator Step3_DogRunToPlayer()
     {
-        Debug.Log("[DogIntro] ▶ Step 3: Dog running to player...");
+        //Debug.Log("[DogIntro] ▶ Step 3: Dog running to player...");
         
         if (_dogAnimator != null)
         {
@@ -279,7 +279,7 @@ public class DogIntroSequenceController : MonoBehaviour
             _dogAnimator.SetBool(ANIM_IS_RUNNING, false);
         }
         
-        Debug.Log($"[DogIntro] ✓ Dog stopped at {currentDistance:F1}m from player");
+        //Debug.Log($"[DogIntro] ✓ Dog stopped at {currentDistance:F1}m from player");
         
         yield return new WaitForSeconds(0.2f);
     }
@@ -289,7 +289,7 @@ public class DogIntroSequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator Step4_DogBark()
     {
-        Debug.Log("[DogIntro] ▶ Step 4: Dog barking...");
+        //Debug.Log("[DogIntro] ▶ Step 4: Dog barking...");
         
         yield return new WaitForSeconds(barkDelay);
         
@@ -297,7 +297,7 @@ public class DogIntroSequenceController : MonoBehaviour
         if (_dogAnimator != null)
         {
             _dogAnimator.SetTrigger(ANIM_BARK);
-            Debug.Log("[DogIntro] ✓ Dog: Bark animation started");
+            //Debug.Log("[DogIntro] ✓ Dog: Bark animation started");
         }
         
         // Bark sound
@@ -310,7 +310,7 @@ public class DogIntroSequenceController : MonoBehaviour
             AudioManager.Instance?.PlayDogBarkSound();
         }
         
-        Debug.Log("[DogIntro] 🐕 BARK!");
+        //Debug.Log("[DogIntro] 🐕 BARK!");
         
         // Wait for bark animation to finish
         yield return new WaitForSeconds(1f);
@@ -322,7 +322,7 @@ public class DogIntroSequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator Step5_PlayerLookBehindWithShock()
     {
-        Debug.Log("[DogIntro] ▶ Step 5: Player look behind + shock...");
+        //Debug.Log("[DogIntro] ▶ Step 5: Player look behind + shock...");
         
         yield return new WaitForSeconds(lookBehindDelay);
         
@@ -330,19 +330,19 @@ public class DogIntroSequenceController : MonoBehaviour
         if (_playerAnimController != null)
         {
             _playerAnimController.OnDogCollision();
-            Debug.Log("[DogIntro] ✓ Player: LookBehind animation started");
+            //Debug.Log("[DogIntro] ✓ Player: LookBehind animation started");
         }
         
         // ═══ SPAWN "!" SHOCK PARTICLE ═══
         if (exclamationVFX != null)
         {
             exclamationVFX.PlayExclamation(_playerTransform);
-            Debug.Log("[DogIntro] ✓ '!' shock particle spawned");
+            //Debug.Log("[DogIntro] ✓ '!' shock particle spawned");
         }
-        else
-        {
-            Debug.LogWarning("[DogIntro] ⚠ ExclamationVFX not found!");
-        }
+        // else
+        // {
+        //     Debug.LogWarning("[DogIntro] ⚠ ExclamationVFX not found!");
+        // }
         
         // ═══ WAIT FOR LOOKBEHIND ANIMATION DURATION ═══
         float lookBehindDuration = _playerAnimController != null ? 
@@ -350,7 +350,7 @@ public class DogIntroSequenceController : MonoBehaviour
         
         yield return new WaitForSeconds(lookBehindDuration);
         
-        Debug.Log("[DogIntro] ✓ LookBehind animation complete");
+        //Debug.Log("[DogIntro] ✓ LookBehind animation complete");
         
         // ═══ RESET PLAYER ROTATION ═══
         if (resetRotationBeforeRunning)
@@ -361,9 +361,9 @@ public class DogIntroSequenceController : MonoBehaviour
         // ═══ DELAY BEFORE RUNNING ═══
         if (delayBeforeRunning > 0f)
         {
-            Debug.Log($"[DogIntro] ⏱️ Waiting {delayBeforeRunning}s before running...");
+            //Debug.Log($"[DogIntro] ⏱️ Waiting {delayBeforeRunning}s before running...");
             yield return new WaitForSeconds(delayBeforeRunning);
-            Debug.Log("[DogIntro] ✓ Delay complete - ready to run");
+            //Debug.Log("[DogIntro] ✓ Delay complete - ready to run");
         }
     }
 
@@ -372,20 +372,20 @@ public class DogIntroSequenceController : MonoBehaviour
     /// </summary>
     private IEnumerator Step6_StartChase()
     {
-        Debug.Log("[DogIntro] ▶ Step 6: Starting chase...");
+        //Debug.Log("[DogIntro] ▶ Step 6: Starting chase...");
 
         // ═══ PLAYER: Start Running ═══
-        if (_playerAnimController != null)
-        {
-            // OnDogCollision() already triggers running after LookBehind
-            Debug.Log("[DogIntro] ✓ Player: Running");
-        }
+        // if (_playerAnimController != null)
+        // {
+        //     // OnDogCollision() already triggers running after LookBehind
+        //     Debug.Log("[DogIntro] ✓ Player: Running");
+        // }
 
         // Enable player control
         if (_playerController != null)
         {
             _playerController.EnableMovement();
-            Debug.Log("[DogIntro] ✓ Player control ENABLED");
+            //Debug.Log("[DogIntro] ✓ Player control ENABLED");
         }
 
         // ═══ DOG: Start Chase ═══
@@ -395,12 +395,12 @@ public class DogIntroSequenceController : MonoBehaviour
             DogChaseController.Instance.TakeDogFromIntro(_dogInstance);
             _dogInstance = null; // Transfer ownership
 
-            Debug.Log("[DogIntro] ✓ Dog transferred to DogChaseController");
+            //Debug.Log("[DogIntro] ✓ Dog transferred to DogChaseController");
         }
-        else
-        {
-            Debug.LogError("[DogIntro] ❌ DogChaseController not found!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[DogIntro] ❌ DogChaseController not found!");
+        // }
 
         yield return new WaitForSeconds(0.2f);
     }
@@ -416,27 +416,27 @@ public class DogIntroSequenceController : MonoBehaviour
     {
         if (_playerTransform == null)
         {
-            Debug.LogWarning("[DogIntro] Player transform is null!");
+            //Debug.LogWarning("[DogIntro] Player transform is null!");
             yield break;
         }
         
         Quaternion targetRot = Quaternion.Euler(targetRotation);
         Quaternion startRot = _playerTransform.rotation;
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogIntro] 🔄 Resetting rotation from {startRot.eulerAngles} to {targetRotation}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogIntro] 🔄 Resetting rotation from {startRot.eulerAngles} to {targetRotation}");
+        // }
         
         // ═══ INSTANT RESET ═══
         if (rotationTransitionDuration <= 0f)
         {
             _playerTransform.rotation = targetRot;
             
-            if (showDebugLogs)
-            {
-                Debug.Log("[DogIntro] ✓ Rotation reset (instant)");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[DogIntro] ✓ Rotation reset (instant)");
+            // }
             
             yield break;
         }
@@ -458,10 +458,10 @@ public class DogIntroSequenceController : MonoBehaviour
         // Ensure final rotation
         _playerTransform.rotation = targetRot;
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[DogIntro] ✓ Rotation reset complete (smooth {rotationTransitionDuration}s)");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[DogIntro] ✓ Rotation reset complete (smooth {rotationTransitionDuration}s)");
+        // }
     }
 
     #endregion
@@ -574,19 +574,19 @@ public class DogIntroSequenceController : MonoBehaviour
     [ContextMenu("Print Sequence Info")]
     public void PrintSequenceInfo()
     {
-        Debug.Log("═══════════════════════════════════");
-        Debug.Log("DOG INTRO SEQUENCE INFO (NEW FLOW)");
-        Debug.Log("═══════════════════════════════════");
-        Debug.Log($"Dog Prefab: {(dogPrefab != null ? dogPrefab.name : "NULL")}");
-        Debug.Log($"Dog Start Distance (behind): {dogStartDistance}m");
-        Debug.Log($"Dog Run Speed: {dogRunSpeed} m/s");
-        Debug.Log($"Dog Stop Distance: {dogStopDistance}m");
-        Debug.Log($"Bark Delay: {barkDelay}s");
-        Debug.Log($"LookBehind Delay: {lookBehindDelay}s");
-        Debug.Log($"Exclamation VFX: {(exclamationVFX != null ? "✓" : "✗")}");
-        Debug.Log($"Sequence Started: {_sequenceStarted}");
-        Debug.Log($"Sequence Complete: {_sequenceComplete}");
-        Debug.Log("═══════════════════════════════════");
+        // Debug.Log("═══════════════════════════════════");
+        // Debug.Log("DOG INTRO SEQUENCE INFO (NEW FLOW)");
+        // Debug.Log("═══════════════════════════════════");
+        // Debug.Log($"Dog Prefab: {(dogPrefab != null ? dogPrefab.name : "NULL")}");
+        // Debug.Log($"Dog Start Distance (behind): {dogStartDistance}m");
+        // Debug.Log($"Dog Run Speed: {dogRunSpeed} m/s");
+        // Debug.Log($"Dog Stop Distance: {dogStopDistance}m");
+        // Debug.Log($"Bark Delay: {barkDelay}s");
+        // Debug.Log($"LookBehind Delay: {lookBehindDelay}s");
+        // Debug.Log($"Exclamation VFX: {(exclamationVFX != null ? "✓" : "✗")}");
+        // Debug.Log($"Sequence Started: {_sequenceStarted}");
+        // Debug.Log($"Sequence Complete: {_sequenceComplete}");
+        // Debug.Log("═══════════════════════════════════");
     }
     
     #endif

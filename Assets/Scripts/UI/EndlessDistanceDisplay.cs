@@ -13,7 +13,6 @@ public class EndlessDistanceDisplay : MonoBehaviour
     [SerializeField] private bool showBestDistance = true;
     [SerializeField] private string format = "{0:F0}m"; // Example: "1234m"
 
-    private float _bestDistance = 0f;
 
     void Start()
     {

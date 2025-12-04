@@ -156,7 +156,7 @@ public class MenuUIManager : MonoBehaviour
 
     private void OnPlayButtonClicked()
     {
-        Debug.Log("[MenuUI] Play button clicked");
+        //Debug.Log("[MenuUI] Play button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
 
         if (modeSelectionUI != null)
@@ -165,7 +165,7 @@ public class MenuUIManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("[MenuUI] ModeSelectionUI not assigned!");
+            //Debug.LogError("[MenuUI] ModeSelectionUI not assigned!");
             GameModeManager.Instance.SetEndlessMode();
             SceneController.Instance.LoadGameplayScene();
         }
@@ -173,36 +173,36 @@ public class MenuUIManager : MonoBehaviour
 
     private void OnShopButtonClicked()
     {
-        Debug.Log("[MenuUI] Shop button clicked");
+        //Debug.Log("[MenuUI] Shop button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
 
         if (shopUIManager != null)
         {
             shopUIManager.OpenShop();
         }
-        else
-        {
-            Debug.LogError("[MenuUI] ShopUIManager not assigned!");
-        }
+        // else
+        // {
+        //     Debug.LogError("[MenuUI] ShopUIManager not assigned!");
+        // }
     }
 
     private void OnSettingsButtonClicked()
     {
-        Debug.Log("[MenuUI] Settings button clicked");
+        //Debug.Log("[MenuUI] Settings button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
         ShowSettings();
     }
 
     private void OnCreditsButtonClicked()
     {
-        Debug.Log("[MenuUI] Credits button clicked");
+        //Debug.Log("[MenuUI] Credits button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
         ShowCredits();
     }
 
     private void OnHowToPlayButtonClicked()
     {
-        Debug.Log("[MenuUI] How To Play button clicked");
+        //Debug.Log("[MenuUI] How To Play button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
         ShowHowToPlay();
     }
@@ -221,7 +221,7 @@ public class MenuUIManager : MonoBehaviour
 
     private void OnQuitButtonClicked()
     {
-        Debug.Log("[MenuUI] Quit button clicked");
+        //Debug.Log("[MenuUI] Quit button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
         SceneController.Instance.QuitGame();
     }

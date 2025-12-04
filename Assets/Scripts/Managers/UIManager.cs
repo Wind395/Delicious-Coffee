@@ -166,7 +166,7 @@ public class UIManager : MonoBehaviour
         SubscribeToEvents();
         SubscribeToMeterEvents();
         SetupButtons();
-        ValidateReferences();
+        //ValidateReferences();
     }
 
     private void SubscribeToEvents()
@@ -227,14 +227,14 @@ public class UIManager : MonoBehaviour
         victoryMainMenuButton?.onClick.AddListener(OnMainMenuButtonClicked);
     }
 
-    private void ValidateReferences()
-    {
-        if (distanceSlider == null)
-            Debug.LogWarning("[UIManager] Distance Slider not assigned!");
+    // private void ValidateReferences()
+    // {
+    //     if (distanceSlider == null)
+    //         Debug.LogWarning("[UIManager] Distance Slider not assigned!");
 
-        if (dogDistanceSlider == null)
-            Debug.LogWarning("[UIManager] Dog Distance Slider not assigned!");
-    }
+    //     if (dogDistanceSlider == null)
+    //         Debug.LogWarning("[UIManager] Dog Distance Slider not assigned!");
+    // }
 
     #endregion
 
@@ -260,7 +260,7 @@ public class UIManager : MonoBehaviour
                         characterIcon.texture = characterRenderTexture[2];
                         break;
                     default:
-                        Debug.LogWarning("[UIManager] Unknown character ID for icon!");
+                        //Debug.LogWarning("[UIManager] Unknown character ID for icon!");
                         break;
                 }
             }
@@ -277,13 +277,13 @@ public class UIManager : MonoBehaviour
     {
         if (GameModeManager.Instance == null)
         {
-            Debug.LogError("[UIManager] GameModeManager not found!");
+            //Debug.LogError("[UIManager] GameModeManager not found!");
             return;
         }
         
         GameMode currentMode = GameModeManager.Instance.CurrentMode;
         
-        Debug.Log($"[UIManager] ═══ INITIALIZING UI FOR MODE: {currentMode} ═══");
+        //Debug.Log($"[UIManager] ═══ INITIALIZING UI FOR MODE: {currentMode} ═══");
         
         if (currentMode == GameMode.Level)
         {
@@ -293,10 +293,10 @@ public class UIManager : MonoBehaviour
         {
             InitializeEndlessModeUI();
         }
-        else
-        {
-            Debug.LogWarning("[UIManager] Unknown game mode!");
-        }
+        // else
+        // {
+        //     Debug.LogWarning("[UIManager] Unknown game mode!");
+        // }
         
         // ═══ NEW: Initialize PowerUp UI ═══
         InitializePowerUpUI();
@@ -310,7 +310,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void InitializeLevelModeUI()
     {
-        Debug.Log("[UIManager] Initializing LEVEL MODE UI");
+        //Debug.Log("[UIManager] Initializing LEVEL MODE UI");
         
         // ═══ SHOW: Distance slider (progress to home) ═══
         if (distanceSlider != null)
@@ -324,7 +324,7 @@ public class UIManager : MonoBehaviour
             distanceText.color = Color.white;
         }
         
-        Debug.Log("[UIManager] ✓ Level mode UI initialized");
+        //Debug.Log("[UIManager] ✓ Level mode UI initialized");
     }
 
     /// <summary>
@@ -332,7 +332,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void InitializeEndlessModeUI()
     {
-        Debug.Log("[UIManager] Initializing ENDLESS MODE UI");
+        //Debug.Log("[UIManager] Initializing ENDLESS MODE UI");
         
         // ═══ HIDE: Distance slider (no target in endless) ═══
         if (distanceSlider != null)
@@ -347,7 +347,7 @@ public class UIManager : MonoBehaviour
             distanceText.color = Color.white;
         }
         
-        Debug.Log("[UIManager] ✓ Endless mode UI initialized");
+        //Debug.Log("[UIManager] ✓ Endless mode UI initialized");
     }
 
     /// <summary>
@@ -355,7 +355,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void InitializePowerUpUI()
     {
-        Debug.Log("[UIManager] Initializing PowerUp UI");
+        //Debug.Log("[UIManager] Initializing PowerUp UI");
         
         // ═══ SHOW: PowerUp Panel ═══
         if (powerUpPanel != null)
@@ -366,7 +366,7 @@ public class UIManager : MonoBehaviour
         // ═══ HIDE: All powerup icons initially ═══
         HideAllPowerUpIcons();
         
-        Debug.Log("[UIManager] ✓ PowerUp UI initialized");
+        //Debug.Log("[UIManager] ✓ PowerUp UI initialized");
     }
 
     /// <summary>
@@ -432,7 +432,7 @@ public class UIManager : MonoBehaviour
     {
         ShowPanel(gamePlayPanel);
         
-        Debug.Log("[UIManager] Game UI panel shown");
+        //Debug.Log("[UIManager] Game UI panel shown");
     }
 
     public void ShowPauseMenu()
@@ -614,7 +614,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnDogCatchPlayer()
     {
-        Debug.Log("[UIManager] 🐕 Dog caught player!");
+        //Debug.Log("[UIManager] 🐕 Dog caught player!");
         // Game Over will be triggered by PlayerController
     }
 
@@ -623,7 +623,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnDogDisappear()
     {
-        Debug.Log("[UIManager] 🐕 Dog disappeared - player is safe!");
+        //Debug.Log("[UIManager] 🐕 Dog disappeared - player is safe!");
 
         // Hide dog distance meter
         if (dogDistanceSlider != null)
@@ -896,7 +896,7 @@ public class UIManager : MonoBehaviour
         if (GameModeManager.Instance.CurrentMode != GameMode.Level)
         {
             victoryNextLevelButton.gameObject.SetActive(false);
-            Debug.Log("[UIManager] Hiding Next Level button (not Level mode)");
+            //Debug.Log("[UIManager] Hiding Next Level button (not Level mode)");
             return;
         }
         
@@ -905,7 +905,7 @@ public class UIManager : MonoBehaviour
         
         victoryNextLevelButton.gameObject.SetActive(hasNextLevel);
         victoryNextLevelButton.interactable = hasNextLevel;
-        Debug.Log("[UIManager] Has Next Level");
+        //Debug.Log("[UIManager] Has Next Level");
         
         // Update button text
         TextMeshProUGUI buttonText = victoryNextLevelButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -928,7 +928,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnNextLevelButtonClicked()
     {
-        Debug.Log("[UIManager] Next Level button clicked");
+        //Debug.Log("[UIManager] Next Level button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
         
         // Reset timeScale
@@ -941,13 +941,13 @@ public class UIManager : MonoBehaviour
             
             if (success)
             {
-                Debug.Log("[UIManager] Loading next level...");
+                //Debug.Log("[UIManager] Loading next level...");
                 GameManager.Instance?.RestartGame();
             }
-            else
-            {
-                Debug.LogError("[UIManager] No next level available!");
-            }
+            // else
+            // {
+            //     Debug.LogError("[UIManager] No next level available!");
+            // }
         }
     }
 
@@ -1064,7 +1064,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnPauseButtonClicked()
     {
-        Debug.Log("[UIManager] Pause button clicked");
+        //Debug.Log("[UIManager] Pause button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
 
         // Disable input when pausing
@@ -1078,7 +1078,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnResumeButtonClicked()
     {
-        Debug.Log("[UIManager] Resume button clicked");
+        //Debug.Log("[UIManager] Resume button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
 
         // ← FIX: Clear input state BEFORE resuming
@@ -1100,14 +1100,14 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnRestartButtonClicked()
     {
-        Debug.Log("[UIManager] Restart button clicked");
+        //Debug.Log("[UIManager] Restart button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
 
         // Reset timeScale
         Time.timeScale = 1f;
 
         // Note: Input will be auto-enabled by SceneController after scene loads
-        Debug.Log("[UIManager] Restarting game... (Input will be enabled after load)");
+        //Debug.Log("[UIManager] Restarting game... (Input will be enabled after load)");
 
         GameManager.Instance?.RestartGame();
     }
@@ -1117,7 +1117,7 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnMainMenuButtonClicked()
     {
-        Debug.Log("[UIManager] Main Menu button clicked");
+        //Debug.Log("[UIManager] Main Menu button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
 
         // Reset timeScale
@@ -1129,7 +1129,7 @@ public class UIManager : MonoBehaviour
             InputManager.Instance.SetEnabled(false);
         }
 
-        Debug.Log($"[UIManager] Going to menu... (TimeScale: {Time.timeScale})");
+        //Debug.Log($"[UIManager] Going to menu... (TimeScale: {Time.timeScale})");
 
         if (SceneController.Instance != null)
         {
@@ -1142,14 +1142,14 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private void OnPlayAgainButtonClicked()
     {
-        Debug.Log("[UIManager] Play Again button clicked");
+        //Debug.Log("[UIManager] Play Again button clicked");
         AudioManager.Instance?.PlayButtonClickSound();
 
         // Reset timeScale
         Time.timeScale = 1f;
 
         // Note: Input will be auto-enabled by SceneController after scene loads
-        Debug.Log("[UIManager] Restarting game... (Input will be enabled after load)");
+        //Debug.Log("[UIManager] Restarting game... (Input will be enabled after load)");
 
         GameManager.Instance?.RestartGame();
     }
@@ -1230,7 +1230,7 @@ public class UIManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.SetEnabled(false);
-            Debug.Log("[UIManager] Input disabled");
+            //Debug.Log("[UIManager] Input disabled");
         }
     }
 
@@ -1242,7 +1242,7 @@ public class UIManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.SetEnabled(true);
-            Debug.Log("[UIManager] Input enabled");
+            //Debug.Log("[UIManager] Input enabled");
         }
     }
 
@@ -1254,7 +1254,7 @@ public class UIManager : MonoBehaviour
         if (InputManager.Instance != null)
         {
             InputManager.Instance.ClearInputState();
-            Debug.Log("[UIManager] Input state cleared");
+            //Debug.Log("[UIManager] Input state cleared");
         }
     }
 

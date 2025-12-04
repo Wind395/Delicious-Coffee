@@ -107,14 +107,14 @@ public class DistanceTracker : MonoBehaviour
                 _player = playerObj.transform;
         }
 
-        if (_player == null)
-        {
-            Debug.LogError("[DistanceTracker] ❌ Player not found!");
-        }
-        else
-        {
-            Debug.Log("[DistanceTracker] ✓ Player found");
-        }
+        // if (_player == null)
+        // {
+        //     Debug.LogError("[DistanceTracker] ❌ Player not found!");
+        // }
+        // else
+        // {
+        //     Debug.Log("[DistanceTracker] ✓ Player found");
+        // }
     }
 
     #endregion
@@ -151,9 +151,9 @@ public class DistanceTracker : MonoBehaviour
     /// </summary>
     private void TriggerHomeSafeZone()
     {
-        Debug.Log($"[DistanceTracker] 🏠 Entering home safe zone! Distance: {_currentDistance:F0}m");
+        //Debug.Log($"[DistanceTracker] 🏠 Entering home safe zone! Distance: {_currentDistance:F0}m");
 
-        JSONSectionSpawner spawner = FindObjectOfType<JSONSectionSpawner>();
+        JSONSectionSpawner spawner = FindAnyObjectByType<JSONSectionSpawner>();
         if (spawner != null)
         {
             spawner.ClearObstaclesNearHome(); // ← Updated method clears all
@@ -178,7 +178,7 @@ public class DistanceTracker : MonoBehaviour
         _currentDistance = 0f;
         OnDistanceChanged?.Invoke(_currentDistance, targetDistance, Progress);
         
-        Debug.Log($"[DistanceTracker] Started tracking. Target: {targetDistance}m to Home"); // CHANGED text
+        //Debug.Log($"[DistanceTracker] Started tracking. Target: {targetDistance}m to Home"); // CHANGED text
     }
 
     /// <summary>
@@ -201,7 +201,7 @@ public class DistanceTracker : MonoBehaviour
             _hasReachedGoal = true;
             _isTracking = false;
             
-            Debug.Log($"[DistanceTracker] ✓ Reached home: {_currentDistance:F0}m (waiting for home trigger)");
+            //Debug.Log($"[DistanceTracker] ✓ Reached home: {_currentDistance:F0}m (waiting for home trigger)");
             
             EventManager.Instance?.TriggerEvent("OnDistanceComplete");
         }
@@ -223,7 +223,7 @@ public class DistanceTracker : MonoBehaviour
     {
         targetDistance = Mathf.Max(100f, distance);
         
-        Debug.Log($"[DistanceTracker] 🎯 Target distance set to: {targetDistance}m");
+        //Debug.Log($"[DistanceTracker] 🎯 Target distance set to: {targetDistance}m");
     }
     
     #endregion

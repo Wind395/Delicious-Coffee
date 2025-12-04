@@ -18,8 +18,6 @@ public class MapItemUI : MonoBehaviour
     [SerializeField] private GameObject lockedOverlay;
     [SerializeField] private Image backgroundImage;
     
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
     
     #endregion
 

@@ -209,13 +209,13 @@ public class EndlessMapRotationManager : MonoBehaviour
     /// </summary>
     private void CacheComponentReferences()
     {
-        _trackManager = FindObjectOfType<TrackManager>();
+        _trackManager = FindAnyObjectByType<TrackManager>();
         if (_trackManager == null)
         {
             Debug.LogWarning("[EndlessMapRotation] TrackManager not found!");
         }
         
-        _jsonSectionSpawner = FindObjectOfType<JSONSectionSpawner>();
+        _jsonSectionSpawner = FindAnyObjectByType<JSONSectionSpawner>();
         if (_jsonSectionSpawner == null)
         {
             Debug.LogWarning("[EndlessMapRotation] JSONSectionSpawner not found!");

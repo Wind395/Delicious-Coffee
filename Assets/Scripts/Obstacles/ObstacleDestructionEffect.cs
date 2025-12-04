@@ -10,7 +10,6 @@ public class ObstacleDestructionEffect : MonoBehaviour
     
     [Header("Settings")]
     [SerializeField] private float effectDuration = 1f;
-    [SerializeField] private bool useObjectPool = true;
     
     private static ObstacleDestructionEffect _instance;
     public static ObstacleDestructionEffect Instance => _instance;

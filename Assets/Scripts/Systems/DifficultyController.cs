@@ -248,8 +248,6 @@ public class DifficultyController : MonoBehaviour
     
     #if UNITY_EDITOR
     
-    [Header("Debug")]
-    [SerializeField] private bool showDebugGUI = true;
 
     // void OnGUI()
     // {

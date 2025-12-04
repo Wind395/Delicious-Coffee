@@ -7,8 +7,6 @@ public class MedicinePowerUp : PowerUpBase
 {
     [Header("Shield Settings")]
     [SerializeField] private GameObject shieldVisual; // ← Can remove if using VFX Controller
-    
-    private bool _hasBlockedHit;
 
     void Awake()
     {
@@ -20,11 +18,9 @@ public class MedicinePowerUp : PowerUpBase
     {
         if (_player == null)
         {
-            Debug.LogError("[Medicine] Player is null!");
+            //Debug.LogError("[Medicine] Player is null!");
             return;
         }
-
-        _hasBlockedHit = false;
         _player.EnableShield(this);
         
         // ═══ REMOVED: Manual visual effect ═══
@@ -36,14 +32,14 @@ public class MedicinePowerUp : PowerUpBase
         //DiarrheaMeter.Instance?.ApplyMedicine();
         AudioManager.Instance?.PlayMedicineSound();
         
-        Debug.Log("[Medicine] ✓ Shield activated!");
+        //Debug.Log("[Medicine] ✓ Shield activated!");
     }
 
     protected override void OnDeactivate()
     {
         if (_player == null)
         {
-            Debug.LogWarning("[Medicine] Player is null on deactivate");
+            //Debug.LogWarning("[Medicine] Player is null on deactivate");
             return;
         }
 
@@ -55,14 +51,12 @@ public class MedicinePowerUp : PowerUpBase
         //     shieldVisual.SetActive(false);
         // }
         
-        Debug.Log("[Medicine] Shield deactivated");
+        //Debug.Log("[Medicine] Shield deactivated");
     }
 
     protected override void OnRefresh()
     {
-        Debug.Log("[Medicine] ⏱️ Shield refreshed!");
-        
-        _hasBlockedHit = false;
+        //Debug.Log("[Medicine] ⏱️ Shield refreshed!");
         //DiarrheaMeter.Instance?.ApplyMedicine();
         AudioManager.Instance?.PlayMedicineSound();
     }
@@ -70,10 +64,8 @@ public class MedicinePowerUp : PowerUpBase
     public void OnObstacleDestroyed(GameObject obstacle)
     {
         if (obstacle == null) return;
-
-        _hasBlockedHit = true;
         
-        Debug.Log($"[Medicine] Shield destroyed obstacle: {obstacle.name}");
+        //Debug.Log($"[Medicine] Shield destroyed obstacle: {obstacle.name}");
         
         // Play effects
         AudioManager.Instance?.PlayShieldBreakSound();

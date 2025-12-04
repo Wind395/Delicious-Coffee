@@ -48,8 +48,8 @@ public class PlayerAnimationController : MonoBehaviour
     [SerializeField] private float sittingDuration = 2f;
     */
 
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = true;
 
     /* ═══ COMMENTED OUT: FART SYSTEM ═══
     [Header("Fart System")]
@@ -115,10 +115,10 @@ public class PlayerAnimationController : MonoBehaviour
 
         _playerController = GetComponent<PlayerController>();
 
-        if (_animator == null)
-        {
-            Debug.LogError("[PlayerAnim] Animator component not found!");
-        }
+        // if (_animator == null)
+        // {
+        //     Debug.LogError("[PlayerAnim] Animator component not found!");
+        // }
         
         // if (fartVFXController == null)
         // {
@@ -132,10 +132,10 @@ public class PlayerAnimationController : MonoBehaviour
         {
             _animator = GetComponentInChildren<Animator>();
 
-            if (_animator != null && showDebugLogs)
-            {
-                Debug.Log("[PlayerAnim] ✓ Found animator in children");
-            }
+            // if (_animator != null && showDebugLogs)
+            // {
+            //     Debug.Log("[PlayerAnim] ✓ Found animator in children");
+            // }
         }
 
         _playerController = GetComponent<PlayerController>();
@@ -168,10 +168,10 @@ public class PlayerAnimationController : MonoBehaviour
         if (_currentState == newState)
             return;
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[PlayerAnim] State: {_currentState} → {newState}");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[PlayerAnim] State: {_currentState} → {newState}");
+        // }
         
         _currentState = newState;
     }
@@ -200,10 +200,10 @@ public class PlayerAnimationController : MonoBehaviour
         {
             ChangeState(PlayerAnimationState.Running);
             
-            if (showDebugLogs)
-            {
-                Debug.Log("[PlayerAnim] ✓ Landed → Running");
-            }
+            // if (showDebugLogs)
+            // {
+            //     Debug.Log("[PlayerAnim] ✓ Landed → Running");
+            // }
         }
 
         // Update sliding state
@@ -241,10 +241,10 @@ public class PlayerAnimationController : MonoBehaviour
         
         _animator.SetTrigger(TRIGGER_WALK);
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[PlayerAnim] 🚶 Walk animation started ({walkDuration}s)");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[PlayerAnim] 🚶 Walk animation started ({walkDuration}s)");
+        // }
         
         StartCoroutine(WalkSequence());
     }
@@ -260,10 +260,10 @@ public class PlayerAnimationController : MonoBehaviour
     private void OnWalkFinished()
     {
         // Walk complete → Wait for dog collision
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] ✓ Walk finished → Waiting for dog collision");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] ✓ Walk finished → Waiting for dog collision");
+        // }
         
         OnWalkComplete?.Invoke();
     }
@@ -281,10 +281,10 @@ public class PlayerAnimationController : MonoBehaviour
         
         _animator.SetTrigger(TRIGGER_LOOK_BEHIND);
         
-        if (showDebugLogs)
-        {
-            Debug.Log($"[PlayerAnim] 😱 Look Behind animation started ({lookBehindDuration}s)");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log($"[PlayerAnim] 😱 Look Behind animation started ({lookBehindDuration}s)");
+        // }
 
         StartCoroutine(LookBehindSequence());
     }
@@ -304,10 +304,10 @@ public class PlayerAnimationController : MonoBehaviour
 
         _animator.SetTrigger(TRIGGER_RUNNING);
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] ✓ Look Behind finished → RUNNING!");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] ✓ Look Behind finished → RUNNING!");
+        // }
 
         OnLookBehindComplete?.Invoke();
 
@@ -337,10 +337,10 @@ public class PlayerAnimationController : MonoBehaviour
         _animator.SetBool(PARAM_IS_SLIDING, false);
         _animator.SetBool(PARAM_IS_INJURED, false);
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] ⏸️ Set to Idle state");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] ⏸️ Set to Idle state");
+        // }
     }
     
     /// <summary>
@@ -355,10 +355,10 @@ public class PlayerAnimationController : MonoBehaviour
 
         _animator.SetTrigger(TRIGGER_JUMP);
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] 🦘 Jump");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] 🦘 Jump");
+        // }
     }
 
     /// <summary>
@@ -374,10 +374,10 @@ public class PlayerAnimationController : MonoBehaviour
         
         ChangeState(PlayerAnimationState.Sliding);
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] 🏃 Slide started");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] 🏃 Slide started");
+        // }
     }
 
     /// <summary>
@@ -388,10 +388,10 @@ public class PlayerAnimationController : MonoBehaviour
         _isSliding = false;
         ChangeState(PlayerAnimationState.Running);
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] ✓ Slide ended");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] ✓ Slide ended");
+        // }
     }
 
     /// <summary>
@@ -420,10 +420,10 @@ public class PlayerAnimationController : MonoBehaviour
         
         ChangeState(PlayerAnimationState.Injured);
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] 🤕 Injured Walking started");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] 🤕 Injured Walking started");
+        // }
     }
 
     /// <summary>
@@ -438,10 +438,10 @@ public class PlayerAnimationController : MonoBehaviour
         
         ChangeState(PlayerAnimationState.Running);
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] ✓ Recovered → Running");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] ✓ Recovered → Running");
+        // }
     }
 
     #endregion
@@ -458,12 +458,12 @@ public class PlayerAnimationController : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[PlayerAnim] OnDie() called - Reason: {reason}, Current State: {_currentState}");
+        //Debug.Log($"[PlayerAnim] OnDie() called - Reason: {reason}, Current State: {_currentState}");
 
         // ═══ CHECK: If currently injured, die directly from injured state ═══
         if (_isInjured)
         {
-            Debug.Log("[PlayerAnim] 💀 Dying from INJURED state - direct transition");
+            //Debug.Log("[PlayerAnim] 💀 Dying from INJURED state - direct transition");
             OnDieFromInjured(reason);
             return;
         }
@@ -504,11 +504,11 @@ public class PlayerAnimationController : MonoBehaviour
             return;
         }
 
-        Debug.Log("[PlayerAnim] ═══════════════════════════════");
-        Debug.Log("[PlayerAnim] 💀 DEATH FROM INJURED STATE");
-        Debug.Log($"[PlayerAnim] Reason: {reason}");
-        Debug.Log($"[PlayerAnim] Current Animation: Injured Walking");
-        Debug.Log("[PlayerAnim] ═══════════════════════════════");
+        // Debug.Log("[PlayerAnim] ═══════════════════════════════");
+        // Debug.Log("[PlayerAnim] 💀 DEATH FROM INJURED STATE");
+        // Debug.Log($"[PlayerAnim] Reason: {reason}");
+        // Debug.Log($"[PlayerAnim] Current Animation: Injured Walking");
+        // Debug.Log("[PlayerAnim] ═══════════════════════════════");
 
         // ═══ IMMEDIATELY SET STATE ═══
         ChangeState(PlayerAnimationState.Dead);
@@ -520,11 +520,11 @@ public class PlayerAnimationController : MonoBehaviour
         // ═══ STOP MOVEMENT ═══
         _animator.SetFloat(PARAM_SPEED, 0f);
         
-        Debug.Log("[PlayerAnim] ✓ Injured state cleared");
-        Debug.Log("[PlayerAnim] ✓ Speed set to 0");
+        // Debug.Log("[PlayerAnim] ✓ Injured state cleared");
+        // Debug.Log("[PlayerAnim] ✓ Speed set to 0");
 
         // ═══ TRIGGER DEATH ANIMATION (ALWAYS MUTANT DYING FROM INJURED) ═══
-        Debug.Log("[PlayerAnim] → Playing MUTANT DYING animation");
+        //Debug.Log("[PlayerAnim] → Playing MUTANT DYING animation");
         StartCoroutine(PlayMutantDyingSequence());
     }
 
@@ -536,10 +536,10 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _animator.SetTrigger(TRIGGER_FALL_FLAT);
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] 💀 Death animation: FALL FLAT");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] 💀 Death animation: FALL FLAT");
+        // }
         
         yield return new WaitForSeconds(fallFlatDuration);
         
@@ -553,10 +553,10 @@ public class PlayerAnimationController : MonoBehaviour
     {
         _animator.SetTrigger(TRIGGER_MUTANT_DYING);
 
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] 💀 Death animation: MUTANT DYING");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] 💀 Death animation: MUTANT DYING");
+        // }
 
         yield return new WaitForSeconds(mutantDyingDuration);
 
@@ -668,10 +668,10 @@ public class PlayerAnimationController : MonoBehaviour
         _turnTimer = 0f;
         _currentState = PlayerAnimationState.Idle;
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] ✓ Animations reset");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] ✓ Animations reset");
+        // }
     }
     #endregion
 
@@ -688,10 +688,10 @@ public class PlayerAnimationController : MonoBehaviour
         _animator.SetFloat(PARAM_SPEED, 0f);
         _isSliding = false;
         
-        if (showDebugLogs)
-        {
-            Debug.Log("[PlayerAnim] ⏸ All animations stopped");
-        }
+        // if (showDebugLogs)
+        // {
+        //     Debug.Log("[PlayerAnim] ⏸ All animations stopped");
+        // }
     }
     
     #endregion

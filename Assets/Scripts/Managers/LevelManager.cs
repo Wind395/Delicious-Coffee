@@ -87,13 +87,13 @@ public class LevelManager : MonoBehaviour
     private void ValidateReferences()
     {
         if (jsonSpawner == null)
-            jsonSpawner = FindObjectOfType<JSONSectionSpawner>();
+            jsonSpawner = FindAnyObjectByType<JSONSectionSpawner>();
         
         if (player == null)
-            player = FindObjectOfType<PlayerController>();
+            player = FindAnyObjectByType<PlayerController>();
         
         if (uiManager == null)
-            uiManager = FindObjectOfType<UIManager>();
+            uiManager = FindAnyObjectByType<UIManager>();
     }
     
     #endregion
@@ -111,7 +111,7 @@ public class LevelManager : MonoBehaviour
         ApplySessionSettings();
         UpdateSessionUI();
 
-        Debug.Log($"[LevelManager] Session started - Reach toilet before meter fills!");
+        //Debug.Log($"[LevelManager] Session started - Reach toilet before meter fills!");
     }
 
     /// <summary>
@@ -147,10 +147,10 @@ public class LevelManager : MonoBehaviour
         // Victory is determined by DistanceTracker only
         
         // Optional: Warning when time low
-        if (_sessionTimer <= 10f && _sessionTimer > 9.9f)
-        {
-            Debug.LogWarning("[LevelManager] ⏰ 10 seconds remaining!");
-        }
+        // if (_sessionTimer <= 10f && _sessionTimer > 9.9f)
+        // {
+        //     Debug.LogWarning("[LevelManager] ⏰ 10 seconds remaining!");
+        // }
     }
     
     #endregion
@@ -192,7 +192,7 @@ public class LevelManager : MonoBehaviour
     {
         _isSessionActive = false;
         
-        Debug.Log("[LevelManager] 🚽 Victory - stopping level systems");
+        //Debug.Log("[LevelManager] 🚽 Victory - stopping level systems");
     }
 
     void OnDestroy()

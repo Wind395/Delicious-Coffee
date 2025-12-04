@@ -37,8 +37,8 @@ public class PlayerController : MonoBehaviour
 
     private CameraFollowController _cameraController;
 
-    [Header("Debug")]
-    [SerializeField] private bool showDebugLogs = false;
+    // [Header("Debug")]
+    // [SerializeField] private bool showDebugLogs = false;
 
     #endregion
 
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _animationController = GetComponent<PlayerAnimationController>();
-        _cameraController = FindObjectOfType<CameraFollowController>();
+        _cameraController = FindAnyObjectByType<CameraFollowController>();
         _originalColliderHeight = _characterController.height;
     }
 
@@ -339,7 +339,7 @@ public class PlayerController : MonoBehaviour
         
         // Optional: Haptic feedback
         #if UNITY_ANDROID || UNITY_IOS
-        Handheld.Vibrate();
+        //Handheld.Vibrate();
         #endif
     }
 
@@ -795,7 +795,7 @@ public class PlayerController : MonoBehaviour
 
         // Haptic
         #if UNITY_ANDROID || UNITY_IOS
-        Handheld.Vibrate();
+        //Handheld.Vibrate();
         #endif
     }
 
@@ -861,7 +861,7 @@ public class PlayerController : MonoBehaviour
         _cameraController.Shake(0.3f, 0.5f);
 
         #if UNITY_ANDROID || UNITY_IOS
-        Handheld.Vibrate();
+        //Handheld.Vibrate();
         #endif
     }
 

@@ -10,7 +10,7 @@ public class CameraFollowController : MonoBehaviour
     
     [Header("Target")]
     [SerializeField] private Transform target;
-    [SerializeField] private bool autoFindPlayer = true;
+
     
     [Header("Follow Settings")]
     [SerializeField] private Vector3 offset = new Vector3(0, 5, -10);
@@ -74,7 +74,7 @@ public class CameraFollowController : MonoBehaviour
         }
         
         // Method 1: Via CharacterSpawner
-        CharacterSpawner spawner = FindObjectOfType<CharacterSpawner>();
+        CharacterSpawner spawner = FindAnyObjectByType<CharacterSpawner>();
         if (spawner != null && spawner.CurrentPlayer != null)
         {
             target = spawner.CurrentPlayer.transform;

@@ -44,8 +44,8 @@ public class DoorController : MonoBehaviour
     [Tooltip("Duration of closing animation (seconds)")]
     [SerializeField] private float closeDuration = 1.0f;
     
-    [Header("Debug")]
-    [SerializeField] private bool debugMode = true;
+    // [Header("Debug")]
+    // [SerializeField] private bool debugMode = true;
     
     #endregion
 
@@ -85,7 +85,7 @@ public class DoorController : MonoBehaviour
         
         if (doorAnimator == null)
         {
-            Debug.LogError("[DoorController] ❌ No Animator found!");
+            //Debug.LogError("[DoorController] ❌ No Animator found!");
             return;
         }
         
@@ -95,10 +95,10 @@ public class DoorController : MonoBehaviour
         // Set initial state to Closed
         SetState(new DoorClosedState());
         
-        if (debugMode)
-        {
-            Debug.Log("[DoorController] ✓ Initialized - State: Closed");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[DoorController] ✓ Initialized - State: Closed");
+        // }
     }
     
     #endregion
@@ -110,10 +110,10 @@ public class DoorController : MonoBehaviour
     /// </summary>
     public void Open()
     {
-        if (debugMode)
-        {
-            Debug.Log($"[DoorController] 🚪 Open() called - Current state: {_currentState?.GetType().Name}");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log($"[DoorController] 🚪 Open() called - Current state: {_currentState?.GetType().Name}");
+        // }
         
         _currentState?.Open(_context);
     }
@@ -123,10 +123,10 @@ public class DoorController : MonoBehaviour
     /// </summary>
     public void Close()
     {
-        if (debugMode)
-        {
-            Debug.Log($"[DoorController] 🚪 Close() called - Current state: {_currentState?.GetType().Name}");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log($"[DoorController] 🚪 Close() called - Current state: {_currentState?.GetType().Name}");
+        // }
         
         _currentState?.Close(_context);
     }
@@ -141,10 +141,10 @@ public class DoorController : MonoBehaviour
         _currentState = newState;
         _currentState?.OnEnter(_context);
         
-        if (debugMode)
-        {
-            Debug.Log($"[DoorController] State changed to: {newState?.GetType().Name}");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log($"[DoorController] State changed to: {newState?.GetType().Name}");
+        // }
     }
     
     #endregion
@@ -158,10 +158,10 @@ public class DoorController : MonoBehaviour
         doorAnimator.SetTrigger(openTrigger);
         doorAnimator.SetBool(isOpenParameter, true);
         
-        if (debugMode)
-        {
-            Debug.Log("[DoorController] ▶️ Playing OPEN animation");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[DoorController] ▶️ Playing OPEN animation");
+        // }
         
         // Start coroutine to detect animation completion
         StartCoroutine(WaitForAnimationComplete(openDuration, OnOpenAnimationComplete));
@@ -174,10 +174,10 @@ public class DoorController : MonoBehaviour
         doorAnimator.SetTrigger(closeTrigger);
         doorAnimator.SetBool(isOpenParameter, false);
         
-        if (debugMode)
-        {
-            Debug.Log("[DoorController] ▶️ Playing CLOSE animation");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[DoorController] ▶️ Playing CLOSE animation");
+        // }
         
         // Start coroutine to detect animation completion
         StartCoroutine(WaitForAnimationComplete(closeDuration, OnCloseAnimationComplete));
@@ -195,10 +195,10 @@ public class DoorController : MonoBehaviour
     
     private void OnOpenAnimationComplete()
     {
-        if (debugMode)
-        {
-            Debug.Log("[DoorController] ✅ Open animation COMPLETE");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[DoorController] ✅ Open animation COMPLETE");
+        // }
         
         // Transition to Open state
         SetState(new DoorOpenState());
@@ -209,10 +209,10 @@ public class DoorController : MonoBehaviour
     
     private void OnCloseAnimationComplete()
     {
-        if (debugMode)
-        {
-            Debug.Log("[DoorController] ✅ Close animation COMPLETE");
-        }
+        // if (debugMode)
+        // {
+        //     Debug.Log("[DoorController] ✅ Close animation COMPLETE");
+        // }
         
         // Transition to Closed state
         SetState(new DoorClosedState());

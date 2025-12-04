@@ -67,7 +67,7 @@ public class SceneController : MonoBehaviour
     {
         if (_isLoading) return;
         
-        Debug.Log("[SceneController] Loading Menu Scene...");
+        //Debug.Log("[SceneController] Loading Menu Scene...");
         
         // ← FIX: CRITICAL - Reset timeScale IMMEDIATELY
         Time.timeScale = 1f;
@@ -82,7 +82,7 @@ public class SceneController : MonoBehaviour
     {
         if (_isLoading) return;
         
-        Debug.Log("[SceneController] Loading Gameplay Scene...");
+        //Debug.Log("[SceneController] Loading Gameplay Scene...");
         
         // ← FIX: CRITICAL - Reset timeScale IMMEDIATELY
         Time.timeScale = 1f;
@@ -97,7 +97,7 @@ public class SceneController : MonoBehaviour
     {
         if (_isLoading) return;
         
-        Debug.Log("[SceneController] Reloading Current Scene...");
+        //Debug.Log("[SceneController] Reloading Current Scene...");
         
         // ← FIX: CRITICAL - Reset timeScale IMMEDIATELY
         Time.timeScale = 1f;
@@ -115,7 +115,7 @@ public class SceneController : MonoBehaviour
         // Reset timeScale
         Time.timeScale = 1f;
         
-        Debug.Log($"[SceneController] ▶ Loading scene: {sceneName} (TimeScale: {Time.timeScale})");
+        //Debug.Log($"[SceneController] ▶ Loading scene: {sceneName} (TimeScale: {Time.timeScale})");
         
         // Cleanup before loading
         CleanupBeforeSceneLoad();
@@ -143,13 +143,13 @@ public class SceneController : MonoBehaviour
             {
                 InputManager.Instance.SetEnabled(true);
                 InputManager.Instance.ClearInputState();
-                Debug.Log("[SceneController] ✓ Input enabled for gameplay scene");
+                //Debug.Log("[SceneController] ✓ Input enabled for gameplay scene");
             }
         }
         
         _isLoading = false;
         
-        Debug.Log($"[SceneController] ✓ Scene loaded: {sceneName}");
+        //Debug.Log($"[SceneController] ✓ Scene loaded: {sceneName}");
     }
 
     /// <summary>
@@ -164,7 +164,7 @@ public class SceneController : MonoBehaviour
         if (AudioManager.Instance != null)
         {
             AudioManager.Instance.StopMusic();
-            Debug.Log("[SceneController] 🔇 Music stopped");
+            //Debug.Log("[SceneController] 🔇 Music stopped");
         }
         
         // Clear powerups if leaving gameplay
@@ -173,7 +173,7 @@ public class SceneController : MonoBehaviour
             PowerUpManager.Instance?.ClearAllPowerUps();
         }
         
-        Debug.Log($"[SceneController] Cleanup complete (TimeScale: {Time.timeScale})");
+        //Debug.Log($"[SceneController] Cleanup complete (TimeScale: {Time.timeScale})");
     }
     
     #endregion
@@ -193,7 +193,7 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        Debug.Log("[SceneController] Quitting game...");
+        //Debug.Log("[SceneController] Quitting game...");
         
         // Reset timeScale before quit
         Time.timeScale = 1f;

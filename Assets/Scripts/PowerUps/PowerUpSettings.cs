@@ -108,10 +108,10 @@ public class PowerUpSettings : MonoBehaviour
         // Reset floating timer with random offset (so not all sync)
         _floatingTimer = Random.Range(0f, Mathf.PI * 2f);
         
-        Debug.Log($"[PowerUpSettings] Applied settings - " +
-                 $"Pos={powerUpTransform.position}, " +
-                 $"InitRot={initialRotation}, " +
-                 $"Scale={scaleOverride}");
+        // Debug.Log($"[PowerUpSettings] Applied settings - " +
+        //          $"Pos={powerUpTransform.position}, " +
+        //          $"InitRot={initialRotation}, " +
+        //          $"Scale={scaleOverride}");
     }
     
     /// <summary>
@@ -150,7 +150,7 @@ public class PowerUpSettings : MonoBehaviour
         rotationSpeed = 100f;
         rotationAxis = RotationAxis.Up;
         
-        Debug.Log($"[PowerUpSettings] Reset to defaults on {gameObject.name}");
+        //Debug.Log($"[PowerUpSettings] Reset to defaults on {gameObject.name}");
     }
     
     #endregion
@@ -226,7 +226,7 @@ public class PowerUpSettings : MonoBehaviour
         rotationAxis = RotationAxis.Up; // ← Spin upright
         gizmoColor = Color.cyan;
         
-        Debug.Log("[PowerUpSettings] Applied Ice Tea preset");
+        //Debug.Log("[PowerUpSettings] Applied Ice Tea preset");
     }
     
     [ContextMenu("Preset: Cold Towel (Fast Spin)")]
@@ -243,7 +243,7 @@ public class PowerUpSettings : MonoBehaviour
         rotationAxis = RotationAxis.Up; // ← FIX: Use simple Y axis rotation
         gizmoColor = Color.blue;
         
-        Debug.Log("[PowerUpSettings] Applied Cold Towel preset");
+        //Debug.Log("[PowerUpSettings] Applied Cold Towel preset");
     }
     
     [ContextMenu("Preset: Medicine (Pulsing)")]
@@ -260,7 +260,7 @@ public class PowerUpSettings : MonoBehaviour
         rotationAxis = RotationAxis.Up; // ← FIX: Use simple Y axis rotation
         gizmoColor = Color.green;
         
-        Debug.Log("[PowerUpSettings] Applied Medicine preset");
+        //Debug.Log("[PowerUpSettings] Applied Medicine preset");
     }
     
     #endregion
