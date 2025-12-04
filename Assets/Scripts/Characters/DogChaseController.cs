@@ -297,8 +297,8 @@ public class DogChaseController : MonoBehaviour
 
         if (_dogAnimator != null)
         {
-            _dogAnimator.SetBool("IsRunning", false);
-            _dogAnimator.SetBool("IsIdle", true);
+            _dogAnimator.SetBool(PARAM_IS_RUNNING, false);
+            _dogAnimator.SetBool(TRIGGER_IDLE, true);
             
             //Debug.Log("[DogChase] 🐕 Dog animations stopped");
         }
